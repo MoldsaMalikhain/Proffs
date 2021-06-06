@@ -47,7 +47,7 @@ public class JsonHandler {
     public void delete(Player player){
 
     }
-    public void createCatalog(final Player player){
+    public void createCatalog(final Player player) throws IOException {
 
         Date d = new Date();
         JsonObject jsonWriter = new JsonObject();
