@@ -1,0 +1,11 @@
+name: Professions
+version: ${project.version}
+main: moldas.professions.Professions
+api-version: 1.16
+authors: [ Moldas, AT13, Ximure ]
+description: Professions for minecraft
+commands:
+  getproff:
+    description: Your description
+    usage: /<command>
+    permission: yourplugin.yourcommandpermission
