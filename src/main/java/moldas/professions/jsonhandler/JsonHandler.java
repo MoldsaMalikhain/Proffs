@@ -16,16 +16,16 @@ public class JsonHandler {
 
         if(dataToChange[0] != null && dataToChange[1] != null){
 
-            FileReader reader = new FileReader(filePath);
-            FileWriter writer = new FileWriter(filePath);
-            JsonParser jsonParser = new JsonParser();
-            JsonObject jsonObject = (JsonObject) jsonParser.parse(reader);
-
+//            FileReader reader = new FileReader(filePath);
+//            JsonParser jsonParser = new JsonParser();
+//            JsonObject jsonObject = (JsonObject) jsonParser.parse(reader);
+//
+//            System.out.println(jsonObject.getAsString());
 
 //            jsonObject.remove(dataToChange[0]);
 //            jsonObject.addProperty(dataToChange[0], dataToChange[1]);
 
-            System.out.println(jsonObject);
+//            System.out.println(jsonObject);
 
 //            writer.write(String.valueOf(jsonObject));
 //            writer.close();
@@ -43,6 +43,8 @@ public class JsonHandler {
         FileReader reader = new FileReader(filePath);
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject = (JsonObject) jsonParser.parse(reader);
+
+        System.out.println(jsonObject.getAsString());
 
         JsonElement data = jsonObject.get(dataToRead[0]);
 
