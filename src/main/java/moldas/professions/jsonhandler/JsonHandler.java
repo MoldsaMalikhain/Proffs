@@ -1,7 +1,8 @@
 package moldas.professions.jsonhandler;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
+import jdk.nashorn.internal.parser.JSONParser;
+import netscape.javascript.JSException;
 import org.bukkit.entity.Player;
 
 import java.io.*;
@@ -9,34 +10,60 @@ import java.nio.file.Path;
 import java.util.Date;
 
 public class JsonHandler {
-    public void write(String data, Player player){
+    public void write(String[] dataToChange, Player player) throws IOException, NullPointerException, JsonIOException{
 
+        final String filePath = "plugins/Professions/data/" + player.getName() + "/" + player.getName() +".json";
+
+        if(dataToChange[0] != null && dataToChange[1] != null){
+
+            FileReader reader = new FileReader(filePath);
+            FileWriter writer = new FileWriter(filePath);
+            JsonParser jsonParser = new JsonParser();
+            JsonObject jsonObject = (JsonObject) jsonParser.parse(reader);
+
+
+//            jsonObject.remove(dataToChange[0]);
+//            jsonObject.addProperty(dataToChange[0], dataToChange[1]);
+
+            System.out.println(jsonObject);
+
+//            writer.write(String.valueOf(jsonObject));
+//            writer.close();
+        }
     }
 
     public void writeTo(String data, Player player, Path path){
 
     }
 
-    public boolean read(Player player, String[] dataToRead) throws FileNotFoundException, NullPointerException{
+    public boolean read(Player player, String[] dataToRead) throws FileNotFoundException, NullPointerException, JsonIOException{
 
         final String filePath = "plugins/Professions/data/" + player.getName() + "/" + player.getName() +".json";
 
         FileReader reader = new FileReader(filePath);
         JsonParser jsonParser = new JsonParser();
-        JsonObject jsonObject = new JsonObject();
+        JsonObject jsonObject = (JsonObject) jsonParser.parse(reader);
 
-        System.out.println(dataToRead[0] + " " + dataToRead[1]);
+        JsonElement data = jsonObject.get(dataToRead[0]);
 
-        if(dataToRead.length > 1){
-
-        }
-        else if(dataToRead == null){
-            System.out.println("Please enter what you need from file");
+        if(data == null){
+            System.out.println("JSON HANDLER ERROR : No such object in : " + "plugins/Professions/data/" + player.getName() + "/" + player.getName() +".json");
             return false;
         }
-        else if(dataToRead.length == 1){
-
+        if(data.toString() == dataToRead[1]){
+            System.out.println("JSON HANDLER SUCCESS : Read was successfully done from : " + "plugins/Professions/data/" + player.getName() + "/" + player.getName() +".json");
+            return true;
         }
+//        if(dataToRead.length > 1){
+//
+//        }
+//        else if(dataToRead == null){
+//            System.out.println("Please enter what you need from file");
+//            return false;
+//        }
+//        else if(dataToRead.length == 1){
+//
+//        }
 
         return true;
     }
@@ -52,6 +79,7 @@ public class JsonHandler {
         JsonObject jsonWriter = new JsonObject();
 
         jsonWriter.addProperty("playerName", player.getName());
+        jsonWriter.addProperty("playerProfession", " ");
         jsonWriter.addProperty("speed", 1);
         jsonWriter.addProperty("harvest", 1);
         jsonWriter.addProperty("health", 20);

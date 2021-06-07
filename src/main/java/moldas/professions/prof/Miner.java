@@ -11,18 +11,13 @@ import java.io.FileNotFoundException;
 
 public class Miner implements Listener {
 
-
-    public void setAsMiner(){
-
-    }
-
     @EventHandler
     public void onBlockDestroyed(BlockBreakEvent event) throws FileNotFoundException {
 
         Player player = event.getPlayer();
-        String[] inputForRead = {"profession", "miner"};
+        String[] inputForRead = {"playerProfession", "miner"};
         if(new JsonHandler().read(player, inputForRead)){
-
+            System.out.println("Block was mined");
         }
     }
 
