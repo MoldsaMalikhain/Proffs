@@ -9,37 +9,36 @@ import java.nio.file.Path;
 import java.util.Date;
 
 public class JsonHandler {
-    public void writeTo(Object object, Player player){
+    public void write(String data, Player player){
 
     }
 
-    public void write(Object object, Player player, Path path){
+    public void writeTo(String data, Player player, Path path){
 
     }
 
-    public String[] read(Player player, String[] dataToRead) throws FileNotFoundException, NullPointerException{
+    public boolean read(Player player, String[] dataToRead) throws FileNotFoundException, NullPointerException{
+
         final String filePath = "plugins/Professions/data/" + player.getName() + "/" + player.getName() +".json";
-        String[] parsedData = {};
-        try{
-            FileReader reader = new FileReader(filePath);
-            JsonParser jsonParser = new JsonParser();
-            JsonObject jsonObject = new JsonObject();
 
-            if(dataToRead.length > 1){
+        FileReader reader = new FileReader(filePath);
+        JsonParser jsonParser = new JsonParser();
+        JsonObject jsonObject = new JsonObject();
 
-            }
-            else if(dataToRead == null){
-                System.out.println("Please enter what you need from file");
-                return null;
-            }
-            else if(dataToRead.length == 1){
+        System.out.println(dataToRead[0] + " " + dataToRead[1]);
 
-            }
+        if(dataToRead.length > 1){
 
-        }catch(IOException e){
-            e.printStackTrace();
         }
-        return parsedData;
+        else if(dataToRead == null){
+            System.out.println("Please enter what you need from file");
+            return false;
+        }
+        else if(dataToRead.length == 1){
+
+        }
+
+        return true;
     }
     public void readFrom(Player player, Path path){
 
