@@ -16,9 +16,13 @@ public class Miner implements Listener {
 
         Player player = event.getPlayer();
         String[] inputForRead = {"playerProfession", "miner"};
+
         if(new JsonHandler().read(player, inputForRead)){
             System.out.println("Block was mined");
         }
+
+        player.giveExp(25);
+        player.sendMessage("You harvested" + event.getBlock());
     }
 
 
