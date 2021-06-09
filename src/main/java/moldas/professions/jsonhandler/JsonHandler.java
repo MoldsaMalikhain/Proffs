@@ -1,7 +1,6 @@
 package moldas.professions.jsonhandler;
 
 import com.google.gson.*;
-import jdk.nashorn.internal.parser.JSONParser;
 import netscape.javascript.JSException;
 import org.bukkit.entity.Player;
 
