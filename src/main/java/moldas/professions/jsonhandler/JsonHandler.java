@@ -5,29 +5,37 @@ import netscape.javascript.JSException;
 import org.bukkit.entity.Player;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 
 public class JsonHandler {
+
+    final GsonBuilder GSON_BUILDER = new GsonBuilder();
+    final Gson GSON = GSON_BUILDER.create();
+
     public void write(String[] dataToChange, Player player) throws IOException, NullPointerException, JsonIOException{
 
         final String filePath = "plugins/Professions/data/" + player.getName() + "/" + player.getName() +".json";
 
         if(dataToChange[0] != null && dataToChange[1] != null){
 
-//            FileReader reader = new FileReader(filePath);
-//            JsonParser jsonParser = new JsonParser();
-//            JsonObject jsonObject = (JsonObject) jsonParser.parse(reader);
-//
-//            System.out.println(jsonObject.getAsString());
+            try {
+                // create Gson instance
+                Gson gson = new Gson();
 
-//            jsonObject.remove(dataToChange[0]);
-//            jsonObject.addProperty(dataToChange[0], dataToChange[1]);
+                // create a writer
+                Writer writer = Files.newBufferedWriter(Paths.get(".json"));
 
-//            System.out.println(jsonObject);
+                // convert user object to JSON file
+                gson.toJson(2/*Input your player object here*/, writer);
 
-//            writer.write(String.valueOf(jsonObject));
-//            writer.close();
+                writer.close();
+            } catch (Exception ex) {
+
+                ex.printStackTrace();
+            }
         }
     }
 
@@ -55,25 +63,18 @@ public class JsonHandler {
             System.out.println("JSON HANDLER SUCCESS : Read was successfully done from : " + "plugins/Professions/data/" + player.getName() + "/" + player.getName() +".json");
             return true;
         }
-//        if(dataToRead.length > 1){
-//
-//        }
-//        else if(dataToRead == null){
-//            System.out.println("Please enter what you need from file");
-//            return false;
-//        }
-//        else if(dataToRead.length == 1){
-//
-//        }
 
         return true;
     }
+
     public void readFrom(Player player, Path path){
 
     }
+
     public void delete(Player player){
 
     }
+
     public void createCatalog(final Player player) throws IOException {
 
         Date d = new Date();
