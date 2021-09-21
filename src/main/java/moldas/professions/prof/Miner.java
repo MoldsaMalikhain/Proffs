@@ -1,6 +1,5 @@
 package moldas.professions.prof;
 
-import moldas.professions.jsonhandler.JsonHandler;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
