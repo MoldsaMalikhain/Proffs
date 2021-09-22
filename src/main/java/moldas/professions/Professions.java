@@ -23,12 +23,12 @@ public final class Professions extends JavaPlugin implements Listener {
 //        this.getCommand("listproff").setExecutor(new ListProff());
 //        this.getCommand("leaveproff").setExecutor(new LeaveProff());
 
-        System.out.println("PLUGIN: prof-plugin is started");
-        System.out.println("Profession plugin is Created by Moldas and AT13");
 
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);
 
+        System.out.println("PLUGIN: prof-plugin is started");
+        System.out.println("Profession plugin is Created by Moldas and AT13");
     }
 
     @Override

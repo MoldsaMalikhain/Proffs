@@ -1,5 +1,7 @@
 package moldas.professions;
 
+import org.bukkit.entity.Player;
+
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -22,5 +24,9 @@ public class PlayerDataHandler {
         }
 
         return false;
+    }
+
+    public void playerUpdate(UUID playerUUID, PlayerData playerData) {
+        players.replace(playerUUID, playerData);
     }
 }
