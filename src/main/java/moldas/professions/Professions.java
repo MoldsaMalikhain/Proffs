@@ -8,44 +8,43 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.IOException;
-
 public final class Professions extends JavaPlugin implements Listener {
+
+    PlayerDataHandler playersData = new PlayerDataHandler();
 
     @Override
     public void onEnable() {
 
-//        this.getCommand("myproff").setExecutor(new MyProff());
-        this.getCommand("getproff").setExecutor(new GetProff());
-//        this.getCommand("helpproff").setExecutor(new HelpProff());
-//        this.getCommand("listproff").setExecutor(new ListProff());
-//        this.getCommand("leaveproff").setExecutor(new LeaveProff());
+        //TODO Read players data from database
 
-        System.out.println("PLUGIN: prof-plugin is started");
-        System.out.println("Profession plugin is Created by Moldas");
+        this.getCommand("myproff").setExecutor(new MyProff());
+        this.getCommand("getproff").setExecutor(new GetProff());
+        this.getCommand("helpproff").setExecutor(new HelpProff());
+        this.getCommand("listproff").setExecutor(new ListProff());
+        this.getCommand("leaveproff").setExecutor(new LeaveProff());
 
         getServer().getPluginManager().registerEvents(this, this);
-        getServer().getPluginManager().registerEvents(new Miner(), this);
+        getServer().getPluginManager().registerEvents(new Miner(playersData), this);
 
+        System.out.println("PLUGIN: prof-plugin is started");
+        System.out.println("Profession plugin is Created by AT13, Moldas and ximure");
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        //TODO Save players data to database
     }
-
-//    @EventHandler
-//    public void onMine(BlockBreakEvent event){
-//        System.out.print("Mined");
-//        Player player = event.getPlayer();
-//        player.giveExp(25);
-//        player.sendMessage("You harvested" + event.getBlock());
-//    }
 
     @EventHandler
     public void onLogin(PlayerLoginEvent event){
-        System.out.println(event.getPlayer().getName() + " entered to your server");
         Player player = event.getPlayer();
-
+        if(playersData.addPlayer(player.getUniqueId(), player.getName())) {
+            System.out.println(player.getName() + " entered to your server, a newbie here!");
+            player.sendMessage("Welcome, " + player.getName() + ", please choose your professions using command...");
+        }
+        else {
+            //TODO Changing players stats
+            player.setMaxHealth(30);
+        }
     }
 }

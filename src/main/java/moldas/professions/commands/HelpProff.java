@@ -8,6 +8,9 @@ public class HelpProff implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
+
+        //TODO show information about plugin
+
         return false;
     }
 }

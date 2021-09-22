@@ -8,6 +8,9 @@ public class LeaveProff implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
+
+        //TODO Delete choosed profession from user
+
         return false;
     }
 }
