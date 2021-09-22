@@ -27,7 +27,7 @@ public final class Professions extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);
 
         System.out.println("PLUGIN: prof-plugin is started");
-        System.out.println("Profession plugin is Created by Moldas and AT13");
+        System.out.println("Profession plugin is Created by AT13, Moldas and ximure");
     }
 
     @Override
