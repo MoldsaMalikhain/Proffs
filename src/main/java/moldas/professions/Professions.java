@@ -42,5 +42,9 @@ public final class Professions extends JavaPlugin implements Listener {
             System.out.println(player.getName() + " entered to your server, a newbie here!");
             player.sendMessage("Welcome, " + player.getName() + ", please choose your professions using command...");
         }
+        else {
+            //TODO Changing players stats
+            player.setMaxHealth(30);
+        }
     }
 }
