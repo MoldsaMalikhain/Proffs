@@ -1,6 +1,6 @@
 package moldas.professions.prof.data;
 
 public class FarmerData {
-    public final String PROF_TYPE = "Primary";
-    public final String PROF_NAME = "Farmer";
+    public final static String PROF_TYPE = "Primary";
+    public final static String PROF_NAME = "Farmer";
 }

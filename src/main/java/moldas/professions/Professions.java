@@ -1,6 +1,7 @@
 package moldas.professions;
 
 import moldas.professions.commands.*;
+import moldas.professions.prof.data.MinerData;
 import moldas.professions.prof.listners.Miner;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,6 +24,7 @@ public final class Professions extends JavaPlugin implements Listener {
 //        this.getCommand("listproff").setExecutor(new ListProff());
 //        this.getCommand("leaveproff").setExecutor(new LeaveProff());
 
+        String lmao = MinerData.PROF_TYPE;
 
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);
