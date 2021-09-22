@@ -1,5 +1,6 @@
 package moldas.professions.prof.listners;
 
+import moldas.professions.PlayerDataHandler;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,11 +11,16 @@ import java.io.FileNotFoundException;
 
 public class Miner implements Listener {
 
+    PlayerDataHandler players;
+
+    public Miner(PlayerDataHandler _players) {
+        players = _players;
+    }
+
     @EventHandler
     public void onBlockDestroyed(BlockBreakEvent event) throws FileNotFoundException {
 
         Player player = event.getPlayer();
-        String[] inputForRead = {"playerProfession", "miner"};
 
         System.out.println("Block was mined");
 

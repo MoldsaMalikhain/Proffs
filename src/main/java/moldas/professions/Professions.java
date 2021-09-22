@@ -8,12 +8,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.IOException;
-
 public final class Professions extends JavaPlugin implements Listener {
+
+    PlayerDataHandler playersData = new PlayerDataHandler();
 
     @Override
     public void onEnable() {
+
+        //TODO Read players data from database
 
 //        this.getCommand("myproff").setExecutor(new MyProff());
         this.getCommand("getproff").setExecutor(new GetProff());
@@ -22,30 +24,24 @@ public final class Professions extends JavaPlugin implements Listener {
 //        this.getCommand("leaveproff").setExecutor(new LeaveProff());
 
         System.out.println("PLUGIN: prof-plugin is started");
-        System.out.println("Profession plugin is Created by Moldas");
+        System.out.println("Profession plugin is Created by Moldas and AT13");
 
         getServer().getPluginManager().registerEvents(this, this);
-        getServer().getPluginManager().registerEvents(new Miner(), this);
+        getServer().getPluginManager().registerEvents(new Miner(playersData), this);
 
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        //TODO Save players data to database
     }
-
-//    @EventHandler
-//    public void onMine(BlockBreakEvent event){
-//        System.out.print("Mined");
-//        Player player = event.getPlayer();
-//        player.giveExp(25);
-//        player.sendMessage("You harvested" + event.getBlock());
-//    }
 
     @EventHandler
     public void onLogin(PlayerLoginEvent event){
-        System.out.println(event.getPlayer().getName() + " entered to your server");
         Player player = event.getPlayer();
-
+        if(playersData.addPlayer(player.getUniqueId(), player.getName())) {
+            System.out.println(player.getName() + " entered to your server, a newbie here!");
+            player.sendMessage("Welcome, " + player.getName() + ", please choose your professions using command...");
+        }
     }
 }

@@ -1,14 +1,7 @@
 package moldas.professions;
 
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
 public class PlayerData {
 
@@ -22,6 +15,9 @@ public class PlayerData {
     public double damage = 1;
     public double armor = 1;
     public double shiftSpeed = 1;
-    public Date createdAt = new Date();
+
+    PlayerData(String _playerName) {
+        playerName = _playerName;
+    }
 
 }
