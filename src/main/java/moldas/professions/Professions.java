@@ -1,19 +1,16 @@
 package moldas.professions;
 
 import moldas.professions.commands.*;
-import moldas.professions.prof.Miner;
-import moldas.professions.jsonhandler.JsonHandler;
+import moldas.professions.prof.listners.Miner;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 
 public final class Professions extends JavaPlugin implements Listener {
-
 
     @Override
     public void onEnable() {
@@ -47,18 +44,8 @@ public final class Professions extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onLogin(PlayerLoginEvent event){
-        System.out.println("Someone entered to your server");
-        JsonHandler handler = new JsonHandler();
+        System.out.println(event.getPlayer().getName() + " entered to your server");
         Player player = event.getPlayer();
-        try{
-            handler.createCatalog(player);
-        }catch(IOException e){
-            e.printStackTrace();
-        }finally {
-            player.sendMessage("Your file was created");
-        }
-
-
 
     }
 }

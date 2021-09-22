@@ -13,7 +13,7 @@ import java.util.Map;
 public class PlayerData {
 
     public String playerName;
-    public HashMap <String, Integer> playerProfession = new HashMap<>();
+    public HashMap <String, String> playerProfession = new HashMap<>();
     public double speed = 1;
     public double harvestSpeed = 1;
     public double health = 20;
