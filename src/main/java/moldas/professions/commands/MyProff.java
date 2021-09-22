@@ -8,6 +8,9 @@ public class MyProff implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
+
+        //TODO Show list of player profession
+
         return false;
     }
 }
