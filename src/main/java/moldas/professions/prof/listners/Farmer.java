@@ -1,4 +1,4 @@
-package moldas.professions.prof;
+package moldas.professions.prof.listners;
 
 import org.bukkit.event.Listener;
 
