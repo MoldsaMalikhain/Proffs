@@ -1,6 +1,5 @@
 package moldas.professions;
 
-import java.util.Date;
 import java.util.HashMap;
 
 public class PlayerData {
@@ -9,17 +8,16 @@ public class PlayerData {
     public HashMap <String, String> playerProfession = new HashMap<>();
     public int primaryProfLvl = 0;
     public int secondaryProfLvl = 0;
-    public double speed = 1;
-    public double harvestSpeed = 1;
-    public double health = 20;
-    public double jumpHeight = 1;
-    public double fallingDamage = 1;
-    public double damage = 1;
-    public double armor = 1;
-    public double shiftSpeed = 1;
+    public float speed = 1;
+    public float harvestSpeedMultiplier = 1;
+    public float health = 20;
+    public float jumpHeightMultiplier = 1;
+    public float fallingDamageMultiplier = 1;
+    public float damageMultiplier = 1;
+    public float armorMultiplier = 1;
+    public float shiftSpeedMultiplier = 1;
 
     PlayerData(String _playerName) {
         playerName = _playerName;
     }
-
 }

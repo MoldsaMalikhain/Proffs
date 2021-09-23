@@ -5,8 +5,11 @@ import moldas.professions.prof.listners.Miner;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.UUID;
 
 public final class Professions extends JavaPlugin implements Listener {
 
@@ -17,11 +20,13 @@ public final class Professions extends JavaPlugin implements Listener {
 
         //TODO Read players data from database
 
-        this.getCommand("myproff").setExecutor(new MyProff());
-        this.getCommand("getproff").setExecutor(new GetProff());
-        this.getCommand("helpproff").setExecutor(new HelpProff());
-        this.getCommand("listproff").setExecutor(new ListProff());
-        this.getCommand("leaveproff").setExecutor(new LeaveProff());
+        this.getCommand("myprof").setExecutor(new MyProf());
+        this.getCommand("getprof").setExecutor(new GetProf());
+        this.getCommand("helpprof").setExecutor(new HelpProf());
+        this.getCommand("listprof").setExecutor(new ListProf());
+        this.getCommand("leaveprof").setExecutor(new LeaveProf());
+        this.getCommand("changestat").setExecutor(new ChangeStat(playersData));
+        this.getCommand("getstats").setExecutor(new GetStats(playersData));
 
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);
@@ -36,15 +41,20 @@ public final class Professions extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void onLogin(PlayerLoginEvent event){
+    public void onLogin(PlayerJoinEvent event){
         Player player = event.getPlayer();
-        if(playersData.addPlayer(player.getUniqueId(), player.getName())) {
+        UUID playerUUID = player.getUniqueId();
+
+        if(playersData.addPlayer(playerUUID, player.getName())) {
             System.out.println(player.getName() + " entered to your server, a newbie here!");
             player.sendMessage("Welcome, " + player.getName() + ", please choose your professions using command...");
         }
-        else {
-            //TODO Changing players stats
-            player.setMaxHealth(30);
-        }
+
+        //TODO Changing players stats
+        //example of set logged in player stat from hash table
+        //setting only stats that can be set by existing methods for object Player
+        PlayerData currentPlayerStats = playersData.getPlayer(playerUUID);
+
+        playersData.playerUpdate(playerUUID, currentPlayerStats);
     }
 }
