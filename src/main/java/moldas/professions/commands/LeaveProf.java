@@ -3,13 +3,20 @@ package moldas.professions.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
-public class MyProff implements CommandExecutor {
+public class LeaveProf implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
 
-        //TODO Show list of player profession
+        if(sender instanceof Player) {
+            sender.sendMessage("Help");
+
+            return true;
+        }
+
+        //TODO Delete choosed profession from user
 
         return false;
     }

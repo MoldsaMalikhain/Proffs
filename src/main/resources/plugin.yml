@@ -25,3 +25,11 @@ commands:
     description: Your description
     usage: /<command>
     permission: yourplugin.yourcommandpermission
+  changestat:
+    description: Your description
+    usage: /<command>
+    permission: yourplugin.yourcommandpermission
+  getstats:
+    description: Your description
+    usage: /<command>
+    permission: yourplugin.yourcommandpermission
