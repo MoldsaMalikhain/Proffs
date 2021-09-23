@@ -8,7 +8,7 @@ public class PlayerData {
     public HashMap <String, String> playerProfession = new HashMap<>();
     public int primaryProfLvl = 0;
     public int secondaryProfLvl = 0;
-    public float speed = 1;
+    public float speed = (float) 0.2;
     public float harvestSpeedMultiplier = 1;
     public float health = 20;
     public float jumpHeightMultiplier = 1;
