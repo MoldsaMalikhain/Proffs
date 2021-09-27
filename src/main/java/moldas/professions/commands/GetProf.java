@@ -86,8 +86,6 @@ public class GetProf implements CommandExecutor {
             return true;
         }
 
-        //TODO add profession to player
-
         return true;
     }
 }
