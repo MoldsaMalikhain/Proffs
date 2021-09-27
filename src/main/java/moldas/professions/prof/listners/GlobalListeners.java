@@ -18,7 +18,7 @@ public class GlobalListeners implements Listener {
     }
 
     @EventHandler
-    public void onLogin(PlayerJoinEvent event){
+    public void onLogin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         UUID playerUUID = player.getUniqueId();
 

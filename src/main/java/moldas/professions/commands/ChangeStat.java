@@ -46,10 +46,10 @@ public class ChangeStat implements CommandExecutor {
                 playerUUID = Bukkit.getServer().getPlayer(playerName).getUniqueId();
                 player = players.getPlayer(playerUUID);
             } catch (NumberFormatException e) {
-                sender.sendMessage("Player do not exist!");
+                sender.sendMessage("Cant find a player " + playerName);
                 return false;
             } catch (NullPointerException e) {
-                sender.sendMessage("Player do not exist!");
+                sender.sendMessage("Cant find a player " + playerName);
                 return false;
             }
 

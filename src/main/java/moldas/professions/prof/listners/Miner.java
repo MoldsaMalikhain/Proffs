@@ -8,6 +8,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 
 import java.io.FileNotFoundException;
+import java.util.UUID;
 
 public class Miner implements Listener {
 
@@ -21,20 +22,23 @@ public class Miner implements Listener {
     public void onBlockDestroyed(BlockBreakEvent event) throws FileNotFoundException {
 
         Player player = event.getPlayer();
+        UUID playerUUID = player.getUniqueId();
 
-        System.out.println("Block was mined");
+        if(players.playerExist(playerUUID)) {
+            System.out.println("Block was mined");
 
-        player.giveExp(25);
-        player.sendMessage("You harvested" + event.getBlock());
+            player.giveExp(25);
+            player.sendMessage("You harvested" + event.getBlock());
+        }
     }
 
 
     @EventHandler
-    public void onLogin(PlayerLoginEvent event){
+    public void onLogin(PlayerLoginEvent event) {
 
     }
 
-    public void onLevelUp(){
+    public void onLevelUp() {
 
     }
 
