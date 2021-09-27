@@ -29,6 +29,7 @@ public class PlayerData {
      * @param professionType
      * @param professionName
      * @return true if profession added
+     * false if player already have profession of that type
      */
     public boolean setProfession(String professionType, String professionName) {
 
