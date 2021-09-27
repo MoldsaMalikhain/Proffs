@@ -28,7 +28,7 @@ public class PlayerData {
      * Set profession for player
      * @param professionType
      * @param professionName
-     * @return boolean
+     * @return true if profession added
      */
     public boolean setProfession(String professionType, String professionName) {
 

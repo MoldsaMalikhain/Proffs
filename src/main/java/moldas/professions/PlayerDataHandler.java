@@ -8,21 +8,20 @@ import java.util.UUID;
 
 public class PlayerDataHandler {
     private HashMap <UUID, PlayerData> players = new HashMap<>();
-
-    //Return Hashmap of all Players
+    /**
+     * @return Hashmap of all Players
+     */
     public HashMap <UUID, PlayerData> getAllPlayers() { return players; }
 
     /**
-     * Return Player from hashmap by its UUID
      * @param playerUUID
-     * @return PlayerData
+     * @return Player from hashmap by its UUID
      */
     public PlayerData getPlayer(UUID playerUUID) { return players.get(playerUUID); }
 
     /**
-     * Return 'true' if player exist in hashmap
      * @param playerUUID
-     * @return boolean
+     * @return true if player exist in hashmap
      */
     public boolean playerExist(UUID playerUUID) { return players.containsKey(playerUUID); }
 
@@ -30,7 +29,7 @@ public class PlayerDataHandler {
      * Add new unique Player to Hashmap, if player added return 'true'
      * @param playerUUID
      * @param playerName
-     * @return
+     * @return true if player added
      */
     public boolean addPlayer(UUID playerUUID, String playerName) {
         if(!players.containsKey(playerUUID)) {
