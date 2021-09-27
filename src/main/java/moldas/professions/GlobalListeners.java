@@ -1,4 +1,4 @@
-package moldas.professions.prof.listners;
+package moldas.professions;
 
 import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
@@ -27,7 +27,7 @@ public class GlobalListeners implements Listener {
             System.out.println(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
                     ChatColor.RESET + player.getName() + " entered to your server, a newbie here!");
             player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
-                    ChatColor.RESET + "Welcome, " + player.getName() + ", please choose your professions using command...");
+                    ChatColor.RESET + " Welcome, " + player.getName() + ", please choose your professions using command...");
         }
 
         //TODO Changing players stats

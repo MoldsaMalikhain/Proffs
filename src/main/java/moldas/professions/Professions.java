@@ -1,7 +1,6 @@
 package moldas.professions;
 
 import moldas.professions.commands.*;
-import moldas.professions.prof.listners.GlobalListeners;
 import moldas.professions.prof.listners.Miner;
 import org.bukkit.plugin.java.JavaPlugin;
 
