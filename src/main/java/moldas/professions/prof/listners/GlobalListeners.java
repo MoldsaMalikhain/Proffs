@@ -2,6 +2,7 @@ package moldas.professions.prof.listners;
 
 import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,8 +24,10 @@ public class GlobalListeners implements Listener {
         UUID playerUUID = player.getUniqueId();
 
         if(playersData.addPlayer(playerUUID, player.getName())) {
-            System.out.println(player.getName() + " entered to your server, a newbie here!");
-            player.sendMessage("Welcome, " + player.getName() + ", please choose your professions using command...");
+            System.out.println(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
+                    ChatColor.RESET + player.getName() + " entered to your server, a newbie here!");
+            player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
+                    ChatColor.RESET + "Welcome, " + player.getName() + ", please choose your professions using command...");
         }
 
         //TODO Changing players stats

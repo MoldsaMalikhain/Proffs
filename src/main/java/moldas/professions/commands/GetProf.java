@@ -4,6 +4,7 @@ import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
 import moldas.professions.prof.data.*;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -23,7 +24,8 @@ public class GetProf implements CommandExecutor {
         if(sender instanceof Player) {
 
             if(args.length != 2){
-                sender.sendMessage("Please enter command correct: /getprof <player_nickname> <profession>");
+                sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
+                        ChatColor.RESET + " Please enter command correct: /getprof <player_nickname> <profession>");
                 return false;
             }
 
@@ -37,7 +39,8 @@ public class GetProf implements CommandExecutor {
                 playerUUID = Bukkit.getServer().getPlayer(playerName).getUniqueId();
                 player = players.getPlayer(playerUUID);
             } catch (NullPointerException e) {
-                sender.sendMessage("Cant find a player " + playerName);
+                sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
+                        ChatColor.RESET + " Cant find a player " + playerName);
                 return false;
             }
 
@@ -70,7 +73,8 @@ public class GetProf implements CommandExecutor {
                     player.setProfession(WarriorData.PROF_TYPE, WarriorData.PROF_NAME);
                     break;
                 default:
-                    sender.sendMessage("Entered wrong argument!");
+                    sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
+                            ChatColor.RESET + " Entered wrong argument!");
                     break;
             }
 
