@@ -33,6 +33,3 @@ commands:
     description: Your description
     usage: /<command>
     permission: yourplugin.yourcommandpermission
-  array:
-    - 1
-    - 1

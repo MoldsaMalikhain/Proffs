@@ -18,14 +18,14 @@ public class StatTabCompleter implements TabCompleter {
 
             //TODO Change to .env file
 
-            arguments.add(AlchemistData.PROF_NAME);
-            arguments.add(ArcherData.PROF_NAME);
-            arguments.add(BlacksmithData.PROF_NAME);
-            arguments.add(EnchanterData.PROF_NAME);
-            arguments.add(FarmerData.PROF_NAME);
-            arguments.add(LumberjackData.PROF_NAME);
-            arguments.add(MinerData.PROF_NAME);
-            arguments.add(WarriorData.PROF_NAME);
+            arguments.add("health");
+            arguments.add("speed");
+            arguments.add("harvestSpeed");
+            arguments.add("jumpHeight");
+            arguments.add("fallingDamage");
+            arguments.add("damage");
+            arguments.add("armor");
+            arguments.add("shiftSpeed");
 
             return arguments;
         }
