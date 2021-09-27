@@ -2,11 +2,7 @@ package moldas.professions.commands;
 
 import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
-import moldas.professions.prof.data.FarmerData;
-import moldas.professions.prof.data.LumberjackData;
-import moldas.professions.prof.data.MinerData;
-import moldas.professions.prof.listners.Lumberjack;
-import moldas.professions.prof.listners.Miner;
+import moldas.professions.prof.data.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -49,14 +45,29 @@ public class GetProf implements CommandExecutor {
 
             //For debug
             switch(profName) {
-                case "Miner":
+                case MinerData.PROF_NAME:
                     player.setProfession(MinerData.PROF_TYPE, MinerData.PROF_NAME);
                     break;
-                case "Lumberjack":
+                case LumberjackData.PROF_NAME:
                     player.setProfession(LumberjackData.PROF_TYPE, LumberjackData.PROF_NAME);
                     break;
-                case "Farmer":
+                case FarmerData.PROF_NAME:
                     player.setProfession(FarmerData.PROF_TYPE, FarmerData.PROF_NAME);
+                    break;
+                case BlacksmithData.PROF_NAME:
+                    player.setProfession(BlacksmithData.PROF_TYPE, BlacksmithData.PROF_NAME);
+                    break;
+                case AlchemistData.PROF_NAME:
+                    player.setProfession(AlchemistData.PROF_TYPE, AlchemistData.PROF_NAME);
+                    break;
+                case ArcherData.PROF_NAME:
+                    player.setProfession(ArcherData.PROF_TYPE, ArcherData.PROF_NAME);
+                    break;
+                case EnchanterData.PROF_NAME:
+                    player.setProfession(EnchanterData.PROF_TYPE, EnchanterData.PROF_NAME);
+                    break;
+                case WarriorData.PROF_NAME:
+                    player.setProfession(WarriorData.PROF_TYPE, WarriorData.PROF_NAME);
                     break;
                 default:
                     sender.sendMessage("Entered wrong argument!");
