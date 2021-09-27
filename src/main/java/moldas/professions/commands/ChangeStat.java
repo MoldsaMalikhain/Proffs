@@ -33,6 +33,7 @@ public class ChangeStat implements CommandExecutor {
             String statName = args[1];
             String statValue = args[2];
 
+            //Check whether the entered value is a number
             try {
                 Float.valueOf(statValue);
             } catch (NumberFormatException e) {
@@ -85,7 +86,7 @@ public class ChangeStat implements CommandExecutor {
 
             sender.sendMessage(player.speed + " " + player.health + " " + player.armorMultiplier);
 
-            //Saving updated stat
+            //Saving players updated stat
             players.playerUpdate(playerUUID, player);
 
             return true;
