@@ -9,11 +9,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.UUID;
 
-public class GlobalListners implements Listener {
+public class GlobalListeners implements Listener {
 
     PlayerDataHandler playersData = new PlayerDataHandler();
 
-    public GlobalListners(PlayerDataHandler _playerData) {
+    public GlobalListeners(PlayerDataHandler _playerData) {
         playersData = _playerData;
     }
 

@@ -1,11 +1,14 @@
 package moldas.professions;
 
+import moldas.professions.stats.StatsData;
+
 import java.util.HashMap;
 
 public class PlayerData {
 
     public String playerName;
     public HashMap <String, String> playerProfession = new HashMap<>();
+    public StatsData playerStats = new StatsData();
     public int primaryProfLvl = 0;
     public int secondaryProfLvl = 0;
     public float speed = (float) 0.2;
