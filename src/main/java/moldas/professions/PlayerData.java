@@ -23,4 +23,20 @@ public class PlayerData {
     PlayerData(String _playerName) {
         playerName = _playerName;
     }
+
+    /**
+     * Set profession for player
+     * @param professionType
+     * @param professionName
+     * @return boolean
+     */
+    public boolean setProfession(String professionType, String professionName) {
+
+        if(playerProfession.containsKey("Primary")) { return false; }
+        if(playerProfession.containsKey("Secondary")) { return false; }
+
+        playerProfession.put(professionType, professionName);
+
+        return true;
+    }
 }

@@ -1,13 +1,13 @@
 package moldas.professions.prof.listners;
 
 import moldas.professions.PlayerDataHandler;
+import moldas.professions.prof.data.MinerData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 
-import java.io.FileNotFoundException;
 import java.util.UUID;
 
 public class Miner implements Listener {
@@ -19,28 +19,15 @@ public class Miner implements Listener {
     }
 
     @EventHandler
-    public void onBlockDestroyed(BlockBreakEvent event) throws FileNotFoundException {
-
+    public void onBlockDestroyed(BlockBreakEvent event) {
         Player player = event.getPlayer();
         UUID playerUUID = player.getUniqueId();
 
-        if(players.playerExist(playerUUID)) {
+        if(players.playerExist(playerUUID) && players.getPlayer(playerUUID).playerProfession.containsValue(MinerData.PROF_NAME)) {
             System.out.println("Block was mined");
 
             player.giveExp(25);
             player.sendMessage("You harvested" + event.getBlock());
         }
     }
-
-
-    @EventHandler
-    public void onLogin(PlayerLoginEvent event) {
-
-    }
-
-    public void onLevelUp() {
-
-    }
-
-
 }

@@ -2,6 +2,7 @@ package moldas.professions;
 
 import moldas.professions.commands.*;
 import moldas.professions.prof.listners.GlobalListeners;
+import moldas.professions.prof.listners.Lumberjack;
 import moldas.professions.prof.listners.Miner;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,7 +16,7 @@ public final class Professions extends JavaPlugin {
         //TODO Read players data from database
 
         this.getCommand("myprof").setExecutor(new MyProf());
-        this.getCommand("getprof").setExecutor(new GetProf());
+        this.getCommand("getprof").setExecutor(new GetProf(playersData));
         this.getCommand("helpprof").setExecutor(new HelpProf());
         this.getCommand("listprof").setExecutor(new ListProf());
         this.getCommand("leaveprof").setExecutor(new LeaveProf());
