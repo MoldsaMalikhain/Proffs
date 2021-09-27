@@ -1,11 +1,9 @@
 package moldas.professions;
 
 import org.bukkit.Bukkit;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.UUID;
 
 public class PlayerDataHandler {
@@ -14,12 +12,26 @@ public class PlayerDataHandler {
     //Return Hashmap of all Players
     public HashMap <UUID, PlayerData> getAllPlayers() { return players; }
 
-    //Return Player by its UUID
+    /**
+     * Return Player from hashmap by its UUID
+     * @param playerUUID
+     * @return PlayerData
+     */
     public PlayerData getPlayer(UUID playerUUID) { return players.get(playerUUID); }
 
+    /**
+     * Return 'true' if player exist in hashmap
+     * @param playerUUID
+     * @return boolean
+     */
     public boolean playerExist(UUID playerUUID) { return players.containsKey(playerUUID); }
 
-    //Add new unique Player to Hashmap, if player added return 'true'
+    /**
+     * Add new unique Player to Hashmap, if player added return 'true'
+     * @param playerUUID
+     * @param playerName
+     * @return
+     */
     public boolean addPlayer(UUID playerUUID, String playerName) {
         if(!players.containsKey(playerUUID)) {
             PlayerData newPlayer = new PlayerData(playerName);
@@ -32,6 +44,11 @@ public class PlayerDataHandler {
         return false;
     }
 
+    /**
+     * Update player stats
+     * @param playerUUID
+     * @param playerData
+     */
     public void playerUpdate(UUID playerUUID, PlayerData playerData) {
         //TODO All stats needed to be updated here whenever player gets upgraded his stats
         players.replace(playerUUID, playerData);
