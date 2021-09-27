@@ -2,7 +2,6 @@ package moldas.professions;
 
 import moldas.professions.stats.StatsData;
 
-import java.sql.Struct;
 import java.util.HashMap;
 
 public class PlayerData {
