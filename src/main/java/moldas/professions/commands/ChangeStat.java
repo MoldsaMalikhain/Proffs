@@ -35,7 +35,7 @@ public class ChangeStat implements CommandExecutor {
 
             //Check whether the entered value is a number
             try {
-                Float.valueOf(statValue);
+                if(Float.valueOf(statValue) == 0) return false;
             } catch (NumberFormatException e) {
                 sender.sendMessage("Entered wrong values!");
             }
