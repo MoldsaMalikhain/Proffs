@@ -51,6 +51,8 @@ public class PlayerDataHandler {
      */
     public void playerUpdate(UUID playerUUID, PlayerData playerData) {
         //TODO All stats needed to be updated here whenever player gets upgraded his stats
+
+        //TODO Save info to bd
         players.replace(playerUUID, playerData);
         Player player = Bukkit.getPlayer(playerData.playerName);
 

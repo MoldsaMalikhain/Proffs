@@ -31,6 +31,7 @@ public class GlobalListeners implements Listener {
         }
 
         //TODO Changing players stats
+
         //example of set logged in player stat from hash table
         //setting only stats that can be set by existing methods for object Player
         PlayerData currentPlayerStats = playersData.getPlayer(playerUUID);
