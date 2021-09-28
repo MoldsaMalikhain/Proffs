@@ -6,7 +6,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerBedLeaveEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.UUID;
 
@@ -37,5 +39,15 @@ public class GlobalListeners implements Listener {
         PlayerData currentPlayerStats = playersData.getPlayer(playerUUID);
 
         playersData.playerUpdate(playerUUID, currentPlayerStats);
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        UUID playerUUID = player.getUniqueId();
+
+        //TODO Save data to database
+
+        playersData.deletePlayer(playerUUID);
     }
 }

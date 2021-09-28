@@ -43,6 +43,16 @@ public class PlayerDataHandler {
         return false;
     }
 
+    public boolean deletePlayer(UUID playerUUID) {
+        if(!players.containsKey(playerUUID)) {
+            players.remove(playerUUID);
+
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * Update player stats
      * @param playerUUID
