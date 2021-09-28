@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.UUID;
@@ -18,7 +19,12 @@ public class GlobalListeners implements Listener {
     }
 
     @EventHandler
-    public void onLogin(PlayerJoinEvent event) {
+    public void onLogin(PlayerLoginEvent event) {
+        //TODO Read logged in player data
+    }
+
+    @EventHandler
+    public void onEnter(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         UUID playerUUID = player.getUniqueId();
 
@@ -43,7 +49,7 @@ public class GlobalListeners implements Listener {
         Player player = event.getPlayer();
         UUID playerUUID = player.getUniqueId();
 
-        //TODO Save data to database
+        //TODO Save quiting player data to database and deleting from hashmap
 
         playersData.deletePlayer(playerUUID);
     }

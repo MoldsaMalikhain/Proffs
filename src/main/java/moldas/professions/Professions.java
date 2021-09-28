@@ -15,8 +15,6 @@ public final class Professions extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        //TODO Read players data from database
-
         this.getCommand("myprof").setExecutor(new MyProf(playersData));
         this.getCommand("getprof").setExecutor(new GetProf(playersData));
         this.getCommand("getprof").setTabCompleter(new GetProfTabCompleter());
