@@ -33,7 +33,7 @@ public final class Professions extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GlobalListeners(playersData), this);
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);
 
-        System.out.println(ChatColor.YELLOW + "" + ChatColor.BOLD + "PLUGIN:" +
+        System.out.println(ChatColor.YELLOW + "" + "[PLUGIN] " +
                 ChatColor.RESET + " prof-plugin is started");
         System.out.println("Profession plugin is Created by AT13, Moldas and ximure");
     }
