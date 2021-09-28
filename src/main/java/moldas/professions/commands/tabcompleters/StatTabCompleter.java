@@ -1,6 +1,5 @@
-package moldas.professions.commands;
+package moldas.professions.commands.tabcompleters;
 
-import moldas.professions.prof.data.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -14,7 +13,7 @@ public class StatTabCompleter implements TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String s, String[] args) {
 
         if(args.length == 2) {
-            List<String> arguments = new ArrayList<String>();
+            List<String> arguments = new ArrayList<>();
 
             //TODO Change to .yml file
 

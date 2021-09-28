@@ -1,6 +1,8 @@
 package moldas.professions;
 
 import moldas.professions.stats.StatsData;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 
 import java.util.HashMap;
 
@@ -33,9 +35,14 @@ public class PlayerData {
      */
     public boolean setProfession(String professionType, String professionName) {
 
-        if(playerProfession.containsKey("Primary")) { return false; }
-        if(playerProfession.containsKey("Secondary")) { return false; }
+        if(playerProfession.containsKey(professionType)) {
+            Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
+                    ChatColor.RESET + " You already have " + professionType + " profession!");
+            return false;
+        }
 
+        Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
+                ChatColor.GOLD + " Congratulation, you now have " + professionName + " profession!");
         playerProfession.put(professionType, professionName);
 
         return true;

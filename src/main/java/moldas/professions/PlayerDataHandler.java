@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class PlayerDataHandler {
+
     private HashMap <UUID, PlayerData> players = new HashMap<>();
     /**
      * @return Hashmap of all Players

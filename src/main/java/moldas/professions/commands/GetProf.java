@@ -78,8 +78,6 @@ public class GetProf implements CommandExecutor {
                     break;
             }
 
-            sender.sendMessage(player.speed + " " + player.health + " " + player.armorMultiplier);
-
             //Saving players updated stat
             players.playerUpdate(playerUUID, player);
 
