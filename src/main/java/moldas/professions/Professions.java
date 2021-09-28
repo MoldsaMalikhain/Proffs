@@ -17,7 +17,7 @@ public final class Professions extends JavaPlugin {
 
         //TODO Read players data from database
 
-        this.getCommand("myprof").setExecutor(new MyProf());
+        this.getCommand("myprof").setExecutor(new MyProf(playersData));
         this.getCommand("getprof").setExecutor(new GetProf(playersData));
         this.getCommand("getprof").setTabCompleter(new GetProfTabCompleter());
         this.getCommand("helpprof").setExecutor(new HelpProf());
@@ -26,7 +26,7 @@ public final class Professions extends JavaPlugin {
         this.getCommand("leaveprof").setTabCompleter(new LeaveProfTabCompleter(playersData));
         this.getCommand("changestat").setExecutor(new ChangeStat(playersData));
         this.getCommand("changestat").setTabCompleter(new StatTabCompleter());
-        this.getCommand("statslist").setExecutor(new StatsList(playersData));
+        this.getCommand("mystats").setExecutor(new MyStats(playersData));
 
         getServer().getPluginManager().registerEvents(new GlobalListeners(playersData), this);
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);

@@ -7,11 +7,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class StatsList implements CommandExecutor {
+public class MyStats implements CommandExecutor {
     
     PlayerDataHandler players;
     
-    public StatsList(PlayerDataHandler _players) {
+    public MyStats(PlayerDataHandler _players) {
         players = _players;
     }
     
@@ -19,6 +19,7 @@ public class StatsList implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
 
         if(sender instanceof Player) {
+            //TODO Show stats of player in GUI
             PlayerData playerData = players.getPlayer(((Player) sender).getUniqueId());
             sender.sendMessage("Your stats is:");
             sender.sendMessage("Health: " + playerData.health);
