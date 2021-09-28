@@ -24,7 +24,7 @@ public final class Professions extends JavaPlugin {
         this.getCommand("leaveprof").setExecutor(new LeaveProf());
         this.getCommand("changestat").setExecutor(new ChangeStat(playersData));
         this.getCommand("changestat").setTabCompleter(new StatTabCompleter());
-        this.getCommand("getstats").setExecutor(new GetStats(playersData));
+        this.getCommand("statslist").setExecutor(new StatsList(playersData));
 
         getServer().getPluginManager().registerEvents(new GlobalListeners(playersData), this);
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);

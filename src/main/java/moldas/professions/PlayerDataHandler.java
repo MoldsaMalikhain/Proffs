@@ -8,28 +8,28 @@ import java.util.UUID;
 
 public class PlayerDataHandler {
 
-    private HashMap <UUID, PlayerData> players = new HashMap<>();
+    private final HashMap <UUID, PlayerData> players = new HashMap<>();
     /**
      * @return Hashmap of all Players
      */
     public HashMap <UUID, PlayerData> getAllPlayers() { return players; }
 
     /**
-     * @param playerUUID
+     * @param playerUUID UUID
      * @return Player from hashmap by its UUID
      */
     public PlayerData getPlayer(UUID playerUUID) { return players.get(playerUUID); }
 
     /**
-     * @param playerUUID
+     * @param playerUUID UUID
      * @return true if player exist in hashmap
      */
     public boolean playerExist(UUID playerUUID) { return players.containsKey(playerUUID); }
 
     /**
      * Add new unique Player to Hashmap, if player added return 'true'
-     * @param playerUUID
-     * @param playerName
+     * @param playerUUID UUID
+     * @param playerName String
      * @return true if player added
      */
     public boolean addPlayer(UUID playerUUID, String playerName) {
@@ -46,12 +46,12 @@ public class PlayerDataHandler {
 
     /**
      * Deleting player from hashmap of all players
-     * @param playerUUID
+     * @param playerUUID UUID
      * @return true if player was deleted
      * false if player do not exist in hashmap
      */
     public boolean deletePlayer(UUID playerUUID) {
-        if(!players.containsKey(playerUUID)) {
+        if(players.containsKey(playerUUID)) {
             players.remove(playerUUID);
 
             return true;
@@ -62,8 +62,8 @@ public class PlayerDataHandler {
 
     /**
      * Update player stats
-     * @param playerUUID
-     * @param playerData
+     * @param playerUUID UUID
+     * @param playerData PlayerData
      */
     public void playerUpdate(UUID playerUUID, PlayerData playerData) {
         //TODO All stats needed to be updated here whenever player gets upgraded his stats

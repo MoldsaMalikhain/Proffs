@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class GlobalListeners implements Listener {
 
-    PlayerDataHandler playersData = new PlayerDataHandler();
+    PlayerDataHandler playersData;
 
     public GlobalListeners(PlayerDataHandler _playerData) {
         playersData = _playerData;

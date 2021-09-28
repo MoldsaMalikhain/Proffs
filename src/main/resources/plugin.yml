@@ -29,7 +29,7 @@ commands:
     description: Your description
     usage: /<command>
     permission: yourplugin.yourcommandpermission
-  getstats:
+  statslist:
     description: Your description
     usage: /<command>
     permission: yourplugin.yourcommandpermission

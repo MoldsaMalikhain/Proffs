@@ -7,11 +7,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class GetStats implements CommandExecutor {
+public class StatsList implements CommandExecutor {
     
     PlayerDataHandler players;
     
-    public GetStats(PlayerDataHandler _players) {
+    public StatsList(PlayerDataHandler _players) {
         players = _players;
     }
     

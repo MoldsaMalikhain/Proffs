@@ -11,12 +11,12 @@ public class LeaveProf implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
 
         if(sender instanceof Player) {
-            sender.sendMessage("Help");
+
 
             return true;
         }
 
-        //TODO Delete choosed profession from user
+        //TODO Delete profession from user
 
         return false;
     }
