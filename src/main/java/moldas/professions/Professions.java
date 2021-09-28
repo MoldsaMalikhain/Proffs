@@ -30,7 +30,7 @@ public final class Professions extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GlobalListeners(playersData), this);
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);
 
-        getServer().getPluginManager().registerEvents(new ClickEvent(), this);
+        getServer().getPluginManager().registerEvents(new ClickEvent(playersData), this);
 
         System.out.println(ChatColor.YELLOW + "" + "[PLUGIN] " +
                 ChatColor.RESET + " prof-plugin is started");
