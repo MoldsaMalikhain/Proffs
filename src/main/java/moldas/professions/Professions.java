@@ -5,6 +5,7 @@ import moldas.professions.commands.tabcompleters.GetProfTabCompleter;
 import moldas.professions.commands.tabcompleters.LeaveProfTabCompleter;
 import moldas.professions.commands.tabcompleters.StatTabCompleter;
 import moldas.professions.prof.listners.Miner;
+import moldas.professions.professiongui.listeners.ClickEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -28,6 +29,8 @@ public final class Professions extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new GlobalListeners(playersData), this);
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);
+
+        getServer().getPluginManager().registerEvents(new ClickEvent(), this);
 
         System.out.println(ChatColor.YELLOW + "" + "[PLUGIN] " +
                 ChatColor.RESET + " prof-plugin is started");
