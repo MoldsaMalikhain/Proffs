@@ -86,8 +86,6 @@ public class LeaveProf implements CommandExecutor {
             return true;
         }
 
-        //TODO Delete profession from user
-
         return false;
     }
 }
