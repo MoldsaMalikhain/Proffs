@@ -43,6 +43,12 @@ public class PlayerDataHandler {
         return false;
     }
 
+    /**
+     * Deleting player from hashmap of all players
+     * @param playerUUID
+     * @return true if player was deleted
+     * false if player do not exist in hashmap
+     */
     public boolean deletePlayer(UUID playerUUID) {
         if(!players.containsKey(playerUUID)) {
             players.remove(playerUUID);
