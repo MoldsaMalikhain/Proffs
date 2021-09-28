@@ -47,4 +47,15 @@ public class PlayerData {
 
         return true;
     }
+
+    public boolean deleteProfession(String professionType) {
+
+        if(playerProfession.containsKey(professionType)) {
+            playerProfession.remove(professionType);
+
+            return true;
+        }
+
+        return false;
+    }
 }
