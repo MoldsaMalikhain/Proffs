@@ -75,7 +75,7 @@ public class GetProf implements CommandExecutor {
                 default:
                     sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
                             ChatColor.RESET + " Entered wrong argument!");
-                    break;
+                    return true;
             }
 
             //Saving players updated stat

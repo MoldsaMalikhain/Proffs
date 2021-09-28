@@ -51,10 +51,15 @@ public class PlayerData {
     public boolean deleteProfession(String professionType) {
 
         if(playerProfession.containsKey(professionType)) {
+            Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
+                    ChatColor.GOLD + " You leave " + playerProfession.get(professionType) + " profession!");
             playerProfession.remove(professionType);
 
             return true;
         }
+
+        Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
+                ChatColor.GOLD + " You don`t have that profession!");
 
         return false;
     }

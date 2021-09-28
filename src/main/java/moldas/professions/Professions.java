@@ -2,6 +2,7 @@ package moldas.professions;
 
 import moldas.professions.commands.*;
 import moldas.professions.commands.tabcompleters.GetProfTabCompleter;
+import moldas.professions.commands.tabcompleters.LeaveProfTabCompleter;
 import moldas.professions.commands.tabcompleters.StatTabCompleter;
 import moldas.professions.prof.listners.Miner;
 import org.bukkit.ChatColor;
@@ -22,6 +23,7 @@ public final class Professions extends JavaPlugin {
         this.getCommand("helpprof").setExecutor(new HelpProf());
         this.getCommand("listprof").setExecutor(new ListProf());
         this.getCommand("leaveprof").setExecutor(new LeaveProf(playersData));
+        this.getCommand("leaveprof").setTabCompleter(new LeaveProfTabCompleter(playersData));
         this.getCommand("changestat").setExecutor(new ChangeStat(playersData));
         this.getCommand("changestat").setTabCompleter(new StatTabCompleter());
         this.getCommand("statslist").setExecutor(new StatsList(playersData));
