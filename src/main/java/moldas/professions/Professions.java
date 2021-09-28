@@ -7,13 +7,9 @@ import moldas.professions.prof.listners.Miner;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-
 public final class Professions extends JavaPlugin {
 
     PlayerDataHandler playersData = new PlayerDataHandler();
-
-    public static final File STATS_YAML = new File("./plugins/Professions/messages.yml");
 
     @Override
     public void onEnable() {

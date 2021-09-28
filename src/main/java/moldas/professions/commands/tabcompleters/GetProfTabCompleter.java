@@ -7,7 +7,6 @@ import org.bukkit.command.TabCompleter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class GetProfTabCompleter implements TabCompleter {
 
