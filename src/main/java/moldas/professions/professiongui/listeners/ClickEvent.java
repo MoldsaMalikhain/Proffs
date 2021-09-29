@@ -9,15 +9,18 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
+import org.bukkit.inventory.Inventory;
 
 import java.util.UUID;
 
 public class ClickEvent implements Listener {
 
     PlayerDataHandler players;
+    Inventory professionPickGUI;
 
-    public ClickEvent(PlayerDataHandler _players) {
+    public ClickEvent(PlayerDataHandler _players, Inventory _professionPickGUI) {
         players = _players;
+        professionPickGUI = _professionPickGUI;
     }
 
     @EventHandler
@@ -27,7 +30,7 @@ public class ClickEvent implements Listener {
         PlayerData playerData = players.getPlayer(playerUUID);
 
         try {
-            if (e.getClickedInventory().toString() != ChatColor.GOLD + "Profession choice") {
+            if (e.getClickedInventory().equals(professionPickGUI)) {
                 if (e.getCurrentItem() == null || e.getCurrentItem().getType().isAir()) return;
                 e.setCancelled(true);
 
@@ -45,16 +48,19 @@ public class ClickEvent implements Listener {
                         playerData.setProfession(ArcherData.PROF_TYPE, ArcherData.PROF_NAME);
                         break;
                     case IRON_SWORD:
-                        playerData.setProfession(AlchemistData.PROF_TYPE, AlchemistData.PROF_NAME);
+                        playerData.setProfession(WarriorData.PROF_TYPE, WarriorData.PROF_NAME);
                         break;
                     case ANVIL:
                         playerData.setProfession(BlacksmithData.PROF_TYPE, BlacksmithData.PROF_NAME);
                         break;
                     case BREWING_STAND:
-                        playerData.setProfession(EnchanterData.PROF_TYPE, EnchanterData.PROF_NAME);
+                        playerData.setProfession(AlchemistData.PROF_TYPE, AlchemistData.PROF_NAME);
                         break;
                     case ENCHANTING_TABLE:
-                        playerData.setProfession(WarriorData.PROF_TYPE, WarriorData.PROF_NAME);
+                        playerData.setProfession(EnchanterData.PROF_TYPE, EnchanterData.PROF_NAME);
+                        break;
+                    case BARRIER:
+                        player.closeInventory();
                         break;
                 }
 
@@ -69,7 +75,7 @@ public class ClickEvent implements Listener {
     @EventHandler
     public void onClick(final InventoryDragEvent e) {
         try {
-            if (e.getInventory().toString() != ChatColor.GOLD + "Profession choice") {
+            if (e.getInventory().equals(professionPickGUI)) {
                 e.setCancelled(true);
             }
         } catch (NullPointerException exception) {
