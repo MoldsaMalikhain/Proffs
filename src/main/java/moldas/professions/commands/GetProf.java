@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class GetProf implements CommandExecutor {
@@ -40,21 +41,21 @@ public class GetProf implements CommandExecutor {
 
             if(args.length == 0) {
                 GUIButton miner = new GUIButton(Material.IRON_PICKAXE, ChatColor.GOLD,
-                        MinerData.PROF_NAME, "Test description");
+                        MinerData.PROF_NAME, MinerData.BUTTON_LORE);
                 GUIButton lumberjack = new GUIButton(Material.IRON_AXE, ChatColor.RED,
-                        LumberjackData.PROF_NAME, "Lumberjack");
+                        LumberjackData.PROF_NAME, LumberjackData.BUTTON_LORE);
                 GUIButton farmer = new GUIButton(Material.IRON_HOE, ChatColor.YELLOW,
-                        FarmerData.PROF_NAME, "Farmer description", "Another one line");
+                        FarmerData.PROF_NAME, FarmerData.BUTTON_LORE);
                 GUIButton archer = new GUIButton(Material.BOW, ChatColor.DARK_BLUE,
-                        ArcherData.PROF_NAME, "Archer description");
+                        ArcherData.PROF_NAME, ArcherData.BUTTON_LORE);
                 GUIButton warrior = new GUIButton(Material.IRON_SWORD, ChatColor.DARK_GREEN,
-                        WarriorData.PROF_NAME, "Warrior description");
+                        WarriorData.PROF_NAME, WarriorData.BUTTON_LORE);
                 GUIButton blacksmith = new GUIButton(Material.ANVIL, ChatColor.BLACK,
-                        BlacksmithData.PROF_NAME, "Blacksmith description");
+                        BlacksmithData.PROF_NAME, BlacksmithData.BUTTON_LORE);
                 GUIButton alchemist = new GUIButton(Material.BREWING_STAND, ChatColor.AQUA,
-                        AlchemistData.PROF_NAME, "Alchemist description");
+                        AlchemistData.PROF_NAME, AlchemistData.BUTTON_LORE);
                 GUIButton enchanter = new GUIButton(Material.ENCHANTING_TABLE, ChatColor.DARK_PURPLE,
-                        EnchanterData.PROF_NAME, "Enchanter description");
+                        EnchanterData.PROF_NAME, EnchanterData.BUTTON_LORE);
                 GUIButton close = new GUIButton(Material.BARRIER, ChatColor.WHITE, "Close", "");
 
                 ItemStack[] menuItems = {
