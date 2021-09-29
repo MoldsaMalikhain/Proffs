@@ -5,6 +5,7 @@ import moldas.professions.PlayerDataHandler;
 import moldas.professions.gui.data.MenuDataCreator;
 import moldas.professions.gui.data.GUIButtons;
 import moldas.professions.prof.data.*;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -34,7 +35,7 @@ public class GetProf implements CommandExecutor {
                 return false;
             }
 
-            Player player = ((Player) sender).getPlayer();;
+            Player player = ((Player) sender).getPlayer();
 
             //Open GUI and ignore console command
             if(args.length == 0) {
@@ -57,7 +58,7 @@ public class GetProf implements CommandExecutor {
             PlayerData playerData;
 
             try {
-                playerUUID = player.getUniqueId();
+                playerUUID = Bukkit.getPlayer(playerName).getUniqueId();
                 playerData = players.getPlayer(playerUUID);
             } catch (NullPointerException e) {
                 sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
@@ -66,35 +67,37 @@ public class GetProf implements CommandExecutor {
             }
 
             //For debug
-            switch(profName) {
-                case MinerData.PROF_NAME:
-                    playerData.setProfession(MinerData.PROF_TYPE, MinerData.PROF_NAME);
-                    break;
-                case LumberjackData.PROF_NAME:
-                    playerData.setProfession(LumberjackData.PROF_TYPE, LumberjackData.PROF_NAME);
-                    break;
-                case FarmerData.PROF_NAME:
-                    playerData.setProfession(FarmerData.PROF_TYPE, FarmerData.PROF_NAME);
-                    break;
-                case BlacksmithData.PROF_NAME:
-                    playerData.setProfession(BlacksmithData.PROF_TYPE, BlacksmithData.PROF_NAME);
-                    break;
-                case AlchemistData.PROF_NAME:
-                    playerData.setProfession(AlchemistData.PROF_TYPE, AlchemistData.PROF_NAME);
-                    break;
-                case ArcherData.PROF_NAME:
-                    playerData.setProfession(ArcherData.PROF_TYPE, ArcherData.PROF_NAME);
-                    break;
-                case EnchanterData.PROF_NAME:
-                    playerData.setProfession(EnchanterData.PROF_TYPE, EnchanterData.PROF_NAME);
-                    break;
-                case WarriorData.PROF_NAME:
-                    playerData.setProfession(WarriorData.PROF_TYPE, WarriorData.PROF_NAME);
-                    break;
-                default:
-                    sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
-                            ChatColor.RESET + " Entered wrong argument!");
-                    return true;
+            if(player.isOp()) {
+                switch (profName) {
+                    case MinerData.PROF_NAME:
+                        playerData.setProfession(MinerData.PROF_TYPE, MinerData.PROF_NAME);
+                        break;
+                    case LumberjackData.PROF_NAME:
+                        playerData.setProfession(LumberjackData.PROF_TYPE, LumberjackData.PROF_NAME);
+                        break;
+                    case FarmerData.PROF_NAME:
+                        playerData.setProfession(FarmerData.PROF_TYPE, FarmerData.PROF_NAME);
+                        break;
+                    case BlacksmithData.PROF_NAME:
+                        playerData.setProfession(BlacksmithData.PROF_TYPE, BlacksmithData.PROF_NAME);
+                        break;
+                    case AlchemistData.PROF_NAME:
+                        playerData.setProfession(AlchemistData.PROF_TYPE, AlchemistData.PROF_NAME);
+                        break;
+                    case ArcherData.PROF_NAME:
+                        playerData.setProfession(ArcherData.PROF_TYPE, ArcherData.PROF_NAME);
+                        break;
+                    case EnchanterData.PROF_NAME:
+                        playerData.setProfession(EnchanterData.PROF_TYPE, EnchanterData.PROF_NAME);
+                        break;
+                    case WarriorData.PROF_NAME:
+                        playerData.setProfession(WarriorData.PROF_TYPE, WarriorData.PROF_NAME);
+                        break;
+                    default:
+                        sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
+                                ChatColor.RESET + " Entered wrong argument!");
+                        return true;
+                }
             }
 
             //Saving players updated stat

@@ -76,35 +76,37 @@ public class LeaveProf implements CommandExecutor {
             }
 
             //For debug
-            switch(profName) {
-                case MinerData.PROF_NAME:
-                    playerData.deleteProfession(MinerData.PROF_TYPE);
-                    break;
-                case LumberjackData.PROF_NAME:
-                    playerData.deleteProfession(LumberjackData.PROF_TYPE);
-                    break;
-                case FarmerData.PROF_NAME:
-                    playerData.deleteProfession(FarmerData.PROF_TYPE);
-                    break;
-                case BlacksmithData.PROF_NAME:
-                    playerData.deleteProfession(BlacksmithData.PROF_TYPE);
-                    break;
-                case AlchemistData.PROF_NAME:
-                    playerData.deleteProfession(AlchemistData.PROF_TYPE);
-                    break;
-                case ArcherData.PROF_NAME:
-                    playerData.deleteProfession(ArcherData.PROF_TYPE);
-                    break;
-                case EnchanterData.PROF_NAME:
-                    playerData.deleteProfession(EnchanterData.PROF_TYPE);
-                    break;
-                case WarriorData.PROF_NAME:
-                    playerData.deleteProfession(WarriorData.PROF_TYPE);
-                    break;
-                default:
-                    sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
-                            ChatColor.RESET + " Entered wrong argument!");
-                    return true;
+            if(player.isOp()) {
+                switch (profName) {
+                    case MinerData.PROF_NAME:
+                        playerData.deleteProfession(MinerData.PROF_TYPE);
+                        break;
+                    case LumberjackData.PROF_NAME:
+                        playerData.deleteProfession(LumberjackData.PROF_TYPE);
+                        break;
+                    case FarmerData.PROF_NAME:
+                        playerData.deleteProfession(FarmerData.PROF_TYPE);
+                        break;
+                    case BlacksmithData.PROF_NAME:
+                        playerData.deleteProfession(BlacksmithData.PROF_TYPE);
+                        break;
+                    case AlchemistData.PROF_NAME:
+                        playerData.deleteProfession(AlchemistData.PROF_TYPE);
+                        break;
+                    case ArcherData.PROF_NAME:
+                        playerData.deleteProfession(ArcherData.PROF_TYPE);
+                        break;
+                    case EnchanterData.PROF_NAME:
+                        playerData.deleteProfession(EnchanterData.PROF_TYPE);
+                        break;
+                    case WarriorData.PROF_NAME:
+                        playerData.deleteProfession(WarriorData.PROF_TYPE);
+                        break;
+                    default:
+                        sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
+                                ChatColor.RESET + " Entered wrong argument!");
+                        return true;
+                }
             }
 
             //Saving players updated stat
