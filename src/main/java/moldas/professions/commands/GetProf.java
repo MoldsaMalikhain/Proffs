@@ -2,6 +2,7 @@ package moldas.professions.commands;
 
 import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
+import moldas.professions.gui.data.ProfessionMenuData;
 import moldas.professions.prof.data.*;
 import moldas.professions.gui.GUIButton;
 import org.bukkit.ChatColor;
@@ -40,29 +41,7 @@ public class GetProf implements CommandExecutor {
             Player player = ((Player) sender).getPlayer();;
 
             if(args.length == 0) {
-                GUIButton miner = new GUIButton(Material.IRON_PICKAXE, ChatColor.GOLD,
-                        MinerData.PROF_NAME, MinerData.BUTTON_LORE);
-                GUIButton lumberjack = new GUIButton(Material.IRON_AXE, ChatColor.RED,
-                        LumberjackData.PROF_NAME, LumberjackData.BUTTON_LORE);
-                GUIButton farmer = new GUIButton(Material.IRON_HOE, ChatColor.YELLOW,
-                        FarmerData.PROF_NAME, FarmerData.BUTTON_LORE);
-                GUIButton archer = new GUIButton(Material.BOW, ChatColor.DARK_BLUE,
-                        ArcherData.PROF_NAME, ArcherData.BUTTON_LORE);
-                GUIButton warrior = new GUIButton(Material.IRON_SWORD, ChatColor.DARK_GREEN,
-                        WarriorData.PROF_NAME, WarriorData.BUTTON_LORE);
-                GUIButton blacksmith = new GUIButton(Material.ANVIL, ChatColor.BLACK,
-                        BlacksmithData.PROF_NAME, BlacksmithData.BUTTON_LORE);
-                GUIButton alchemist = new GUIButton(Material.BREWING_STAND, ChatColor.AQUA,
-                        AlchemistData.PROF_NAME, AlchemistData.BUTTON_LORE);
-                GUIButton enchanter = new GUIButton(Material.ENCHANTING_TABLE, ChatColor.DARK_PURPLE,
-                        EnchanterData.PROF_NAME, EnchanterData.BUTTON_LORE);
-                GUIButton close = new GUIButton(Material.BARRIER, ChatColor.WHITE, "Close", "");
-
-                ItemStack[] menuItems = {
-                        miner.itemStack, lumberjack.itemStack, farmer.itemStack, archer.itemStack, warrior.itemStack,
-                        blacksmith.itemStack, alchemist.itemStack, enchanter.itemStack,  close.itemStack };
-                professionPickGUI.setContents(menuItems);
-
+                professionPickGUI.setContents(ProfessionMenuData.menuItems);
                 player.openInventory(professionPickGUI);
 
                 return true;
