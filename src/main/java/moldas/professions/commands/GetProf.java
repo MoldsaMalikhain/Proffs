@@ -19,9 +19,12 @@ import java.util.UUID;
 public class GetProf implements CommandExecutor {
 
     PlayerDataHandler players;
-    Inventory gui;
+    Inventory professionPickGUI;
 
-    public GetProf(PlayerDataHandler _players) { players = _players; }
+    public GetProf(PlayerDataHandler _players, Inventory _professionPickGUI) {
+        players = _players;
+        professionPickGUI = _professionPickGUI;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
@@ -38,8 +41,6 @@ public class GetProf implements CommandExecutor {
 
             //TODO GUI for choosing profession NOW
             if(args.length == 0) {
-                gui = Bukkit.createInventory(player, 9, ChatColor.GOLD + "Profession choice");
-
                 GUIButton miner = new GUIButton(Material.IRON_PICKAXE, ChatColor.GOLD,
                         MinerData.PROF_NAME, "Test description");
                 GUIButton lumberjack = new GUIButton(Material.IRON_AXE, ChatColor.RED,
@@ -56,13 +57,14 @@ public class GetProf implements CommandExecutor {
                         AlchemistData.PROF_NAME, "Alchemist description");
                 GUIButton enchanter = new GUIButton(Material.ENCHANTING_TABLE, ChatColor.DARK_PURPLE,
                         EnchanterData.PROF_NAME, "Enchanter description");
+                GUIButton close = new GUIButton(Material.BARRIER, ChatColor.WHITE, "Close", "");
 
                 ItemStack[] menuItems = {
                         miner.itemStack, lumberjack.itemStack, farmer.itemStack, archer.itemStack, warrior.itemStack,
-                        blacksmith.itemStack, alchemist.itemStack, enchanter.itemStack };
-                gui.setContents(menuItems);
+                        blacksmith.itemStack, alchemist.itemStack, enchanter.itemStack,  close.itemStack };
+                professionPickGUI.setContents(menuItems);
 
-                player.openInventory(gui);
+                player.openInventory(professionPickGUI);
 
                 return true;
             }
