@@ -2,19 +2,15 @@ package moldas.professions.commands;
 
 import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
-import moldas.professions.gui.data.ProfessionMenuData;
+import moldas.professions.gui.data.MenuDataCreator;
+import moldas.professions.gui.data.GUIButtons;
 import moldas.professions.prof.data.*;
-import moldas.professions.gui.GUIButton;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class GetProf implements CommandExecutor {
@@ -32,7 +28,7 @@ public class GetProf implements CommandExecutor {
 
         if(sender instanceof Player) {
 
-            if(args.length != 2 && args.length != 0){
+            if(args.length != 2 && args.length != 0) {
                 sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
                         ChatColor.RESET + " Please enter command correct: /getprof <player_nickname> <profession>");
                 return false;
@@ -40,8 +36,16 @@ public class GetProf implements CommandExecutor {
 
             Player player = ((Player) sender).getPlayer();;
 
+            //Open GUI and ignore console command
             if(args.length == 0) {
-                professionPickGUI.setContents(ProfessionMenuData.menuItems);
+                MenuDataCreator menu = new MenuDataCreator(
+                        GUIButtons.MINER_BUTTON.itemStack, GUIButtons.LUMBERJACK_BUTTON.itemStack,
+                        GUIButtons.FARMER_BUTTON.itemStack, GUIButtons.ARCHER_BUTTON.itemStack,
+                        GUIButtons.WARRIOR_BUTTON.itemStack, GUIButtons.BLACKSMITH_BUTTON.itemStack,
+                        GUIButtons.ALCHEMIST_BUTTON.itemStack, GUIButtons.ENCHANTER_BUTTON.itemStack,
+                        GUIButtons.CLOSE_BUTTON.itemStack
+                );
+                professionPickGUI.setContents(menu.getMenuItems());
                 player.openInventory(professionPickGUI);
 
                 return true;

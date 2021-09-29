@@ -10,26 +10,29 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.Inventory;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class ClickEvent implements Listener {
 
     PlayerDataHandler players;
     Inventory professionPickGUI;
+    Inventory professionLeaveGUI;
 
-    public ClickEvent(PlayerDataHandler _players, Inventory _professionPickGUI) {
+    public ClickEvent(PlayerDataHandler _players, Inventory _professionPickGUI, Inventory _professionLeaveGUI) {
         players = _players;
         professionPickGUI = _professionPickGUI;
+        professionLeaveGUI = _professionLeaveGUI;
     }
 
     @EventHandler
-    public void onClick(InventoryClickEvent e) {
+    public void onClickAddProfession(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
         UUID playerUUID = player.getUniqueId();
         PlayerData playerData = players.getPlayer(playerUUID);
 
         try {
-            if (e.getClickedInventory().equals(professionPickGUI)) {
+            if (Objects.equals(e.getClickedInventory(), professionPickGUI)) {
                 if (e.getCurrentItem() == null || e.getCurrentItem().getType().isAir()) return;
                 e.setCancelled(true);
 
@@ -72,7 +75,56 @@ public class ClickEvent implements Listener {
     }
 
     @EventHandler
-    public void onClick(final InventoryDragEvent e) {
+    public void onClickLeaveProfession(InventoryClickEvent e) {
+        Player player = (Player) e.getWhoClicked();
+        UUID playerUUID = player.getUniqueId();
+        PlayerData playerData = players.getPlayer(playerUUID);
+
+        try {
+            if (e.getClickedInventory().equals(professionLeaveGUI)) {
+                if (e.getCurrentItem() == null || e.getCurrentItem().getType().isAir()) return;
+                e.setCancelled(true);
+
+                switch (e.getCurrentItem().getType()) {
+                    case IRON_PICKAXE:
+                        playerData.deleteProfession(MinerData.PROF_TYPE);
+                        break;
+                    case IRON_AXE:
+                        playerData.deleteProfession(LumberjackData.PROF_TYPE);
+                        break;
+                    case IRON_HOE:
+                        playerData.deleteProfession(FarmerData.PROF_TYPE);
+                        break;
+                    case BOW:
+                        playerData.deleteProfession(ArcherData.PROF_TYPE);
+                        break;
+                    case IRON_SWORD:
+                        playerData.deleteProfession(WarriorData.PROF_TYPE);
+                        break;
+                    case ANVIL:
+                        playerData.deleteProfession(BlacksmithData.PROF_TYPE);
+                        break;
+                    case BREWING_STAND:
+                        playerData.deleteProfession(AlchemistData.PROF_TYPE);
+                        break;
+                    case ENCHANTING_TABLE:
+                        playerData.deleteProfession(EnchanterData.PROF_TYPE);
+                        break;
+                    case BARRIER:
+                        player.closeInventory();
+                        break;
+                }
+
+                player.closeInventory();
+                return;
+            }
+        } catch (NullPointerException exception) {
+            return;
+        }
+    }
+
+    @EventHandler
+    public void onClickCancel(final InventoryDragEvent e) {
         try {
             if (e.getInventory().equals(professionPickGUI)) {
                 e.setCancelled(true);
