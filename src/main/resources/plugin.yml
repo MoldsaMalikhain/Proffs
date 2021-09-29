@@ -30,7 +30,7 @@ commands:
     usage: /<command>
   changestat:
     description: Your description
-    usage: /<command
+    usage: /<command>
     permission: yourplugin.yourcommandpermission
   mystats:
     description: Your description
