@@ -1,24 +1,20 @@
 package moldas.professions.commands.tabcompleters;
 
-import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
-import moldas.professions.prof.data.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-public class LeaveProfTabCompleter implements TabCompleter {
+public class DeletePlayerProfTabCompleter implements TabCompleter {
 
     PlayerDataHandler players;
 
-    public LeaveProfTabCompleter(PlayerDataHandler _players) {
+    public DeletePlayerProfTabCompleter(PlayerDataHandler _players) {
         players = _players;
     }
 
