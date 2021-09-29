@@ -3,8 +3,7 @@ package moldas.professions.commands;
 import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
 import moldas.professions.prof.data.*;
-import moldas.professions.professiongui.GUIButton;
-import org.bukkit.Bukkit;
+import moldas.professions.gui.GUIButton;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -39,7 +38,6 @@ public class GetProf implements CommandExecutor {
 
             Player player = ((Player) sender).getPlayer();;
 
-            //TODO GUI for choosing profession NOW
             if(args.length == 0) {
                 GUIButton miner = new GUIButton(Material.IRON_PICKAXE, ChatColor.GOLD,
                         MinerData.PROF_NAME, "Test description");
