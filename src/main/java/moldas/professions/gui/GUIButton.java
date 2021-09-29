@@ -1,4 +1,4 @@
-package moldas.professions.professiongui;
+package moldas.professions.gui;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

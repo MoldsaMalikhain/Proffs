@@ -5,7 +5,7 @@ import moldas.professions.commands.tabcompleters.GetProfTabCompleter;
 import moldas.professions.commands.tabcompleters.LeaveProfTabCompleter;
 import moldas.professions.commands.tabcompleters.StatTabCompleter;
 import moldas.professions.prof.listners.Miner;
-import moldas.professions.professiongui.listeners.ClickEvent;
+import moldas.professions.gui.listeners.ClickEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.Inventory;
