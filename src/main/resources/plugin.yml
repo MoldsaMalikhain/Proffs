@@ -8,23 +8,18 @@ commands:
   getprof:
     description: Your description
     usage: /<command>
-    permission: yourplugin.yourcommandpermission
   helpprof:
     description: Your description
     usage: /<command>
-    permission: yourplugin.yourcommandpermission
   leaveprof:
     description: Your description
     usage: /<command>
-    permission: yourplugin.yourcommandpermission
   listprof:
     description: Your description
     usage: /<command>
-    permission: yourplugin.yourcommandpermission
   myprof:
     description: Your description
     usage: /<command>
-    permission: yourplugin.yourcommandpermission
   changestat:
     description: Your description
     usage: /<command>
@@ -32,4 +27,3 @@ commands:
   mystats:
     description: Your description
     usage: /<command>
-    permission: yourplugin.yourcommandpermission

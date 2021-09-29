@@ -15,7 +15,8 @@ public final class Professions extends JavaPlugin {
 
     PlayerDataHandler playersData = new PlayerDataHandler();
 
-    final Inventory professionPickGUI = Bukkit.createInventory(null, 9, ChatColor.GOLD + "Profession choice");
+    final Inventory professionPickGUI = Bukkit.createInventory(null, 9, ChatColor.DARK_PURPLE + "Profession choice");
+    final Inventory professionLeaveGUI = Bukkit.createInventory(null, 9, ChatColor.DARK_PURPLE + "Leave profession");
 
     @Override
     public void onEnable() {
@@ -25,7 +26,7 @@ public final class Professions extends JavaPlugin {
         this.getCommand("getprof").setTabCompleter(new GetProfTabCompleter());
         this.getCommand("helpprof").setExecutor(new HelpProf());
         this.getCommand("listprof").setExecutor(new ListProf());
-        this.getCommand("leaveprof").setExecutor(new LeaveProf(playersData));
+        this.getCommand("leaveprof").setExecutor(new LeaveProf(playersData, professionLeaveGUI));
         this.getCommand("leaveprof").setTabCompleter(new LeaveProfTabCompleter(playersData));
         this.getCommand("changestat").setExecutor(new ChangeStat(playersData));
         this.getCommand("changestat").setTabCompleter(new StatTabCompleter());
@@ -34,7 +35,7 @@ public final class Professions extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GlobalListeners(playersData), this);
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);
 
-        getServer().getPluginManager().registerEvents(new ClickEvent(playersData, professionPickGUI), this);
+        getServer().getPluginManager().registerEvents(new ClickEvent(playersData, professionPickGUI, professionLeaveGUI), this);
 
         System.out.println(ChatColor.YELLOW + "" + "[PLUGIN] " +
                 ChatColor.RESET + " prof-plugin is started");
