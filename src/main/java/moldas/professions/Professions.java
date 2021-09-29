@@ -1,8 +1,10 @@
 package moldas.professions;
 
 import moldas.professions.commands.*;
-import moldas.professions.commands.tabcompleters.GetProfTabCompleter;
-import moldas.professions.commands.tabcompleters.LeaveProfTabCompleter;
+import moldas.professions.commands.guicommands.GetProf;
+import moldas.professions.commands.guicommands.LeaveProf;
+import moldas.professions.commands.tabcompleters.SetPlayerProfTabCompleter;
+import moldas.professions.commands.tabcompleters.DeletePlayerProfTabCompleter;
 import moldas.professions.commands.tabcompleters.StatTabCompleter;
 import moldas.professions.prof.listners.Miner;
 import moldas.professions.gui.listeners.ClickEvent;
@@ -22,12 +24,14 @@ public final class Professions extends JavaPlugin {
     public void onEnable() {
 
         this.getCommand("myprof").setExecutor(new MyProf(playersData));
-        this.getCommand("getprof").setExecutor(new GetProf(playersData, professionPickGUI));
-        this.getCommand("getprof").setTabCompleter(new GetProfTabCompleter());
+        this.getCommand("getprof").setExecutor(new GetProf(professionPickGUI));
+        this.getCommand("setplayerprof").setExecutor(new SetPlayerProf(playersData));
+        this.getCommand("setplayerprof").setTabCompleter(new SetPlayerProfTabCompleter());
         this.getCommand("helpprof").setExecutor(new HelpProf());
         this.getCommand("listprof").setExecutor(new ListProf());
-        this.getCommand("leaveprof").setExecutor(new LeaveProf(playersData, professionLeaveGUI));
-        this.getCommand("leaveprof").setTabCompleter(new LeaveProfTabCompleter(playersData));
+        this.getCommand("leaveprof").setExecutor(new LeaveProf(professionLeaveGUI));
+        this.getCommand("deleteplayerprof").setExecutor(new DeletePlayerProf(playersData));
+        this.getCommand("deleteplayerprof").setTabCompleter(new DeletePlayerProfTabCompleter(playersData));
         this.getCommand("changestat").setExecutor(new ChangeStat(playersData));
         this.getCommand("changestat").setTabCompleter(new StatTabCompleter());
         this.getCommand("mystats").setExecutor(new MyStats(playersData));

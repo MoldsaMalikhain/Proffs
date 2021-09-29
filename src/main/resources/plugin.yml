@@ -8,12 +8,20 @@ commands:
   getprof:
     description: Your description
     usage: /<command>
+  setplayerprof:
+    description: Your description
+    usage: /<command>
+    permission: yourplugin.yourcommandpermission
   helpprof:
     description: Your description
     usage: /<command>
   leaveprof:
     description: Your description
     usage: /<command>
+  deleteplayerprof:
+    description: Your description
+    usage: /<command>
+    permission: yourplugin.yourcommandpermission
   listprof:
     description: Your description
     usage: /<command>
@@ -22,7 +30,7 @@ commands:
     usage: /<command>
   changestat:
     description: Your description
-    usage: /<command>
+    usage: /<command
     permission: yourplugin.yourcommandpermission
   mystats:
     description: Your description
