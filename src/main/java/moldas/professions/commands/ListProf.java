@@ -1,8 +1,6 @@
 package moldas.professions.commands;
 
 import moldas.professions.prof.data.*;
-import moldas.professions.prof.listners.Alchemist;
-import moldas.professions.prof.listners.Miner;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

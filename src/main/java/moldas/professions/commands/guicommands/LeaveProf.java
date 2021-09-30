@@ -33,13 +33,6 @@ public class LeaveProf implements CommandExecutor {
             PlayerData playerData = players.getPlayer(playerUUID);
 
             //Open GUI
-            //MenuDataCreator menu = new MenuDataCreator(
-            //        GUIButtons.MINER_BUTTON.itemStack, GUIButtons.LUMBERJACK_BUTTON.itemStack,
-            //        GUIButtons.FARMER_BUTTON.itemStack, GUIButtons.ARCHER_BUTTON.itemStack,
-            //        GUIButtons.WARRIOR_BUTTON.itemStack, GUIButtons.BLACKSMITH_BUTTON.itemStack,
-            //        GUIButtons.ALCHEMIST_BUTTON.itemStack, GUIButtons.ENCHANTER_BUTTON.itemStack,
-            //        GUIButtons.CLOSE_BUTTON.itemStack
-            //);
             GUIButton[] check = {
                     GUIButtons.MINER_BUTTON, GUIButtons.LUMBERJACK_BUTTON,
                     GUIButtons.FARMER_BUTTON, GUIButtons.ARCHER_BUTTON,

@@ -20,6 +20,7 @@ public class GetProf implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if(sender instanceof Player) {
             Player player = ((Player) sender).getPlayer();
+
             //Open GUI
             if(args.length == 0) {
                 MenuDataCreator menu = new MenuDataCreator(

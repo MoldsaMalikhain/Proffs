@@ -2,7 +2,6 @@ package moldas.professions.gui.listeners;
 
 import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
-import moldas.professions.gui.data.GUIButtons;
 import moldas.professions.prof.data.*;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
@@ -27,6 +26,7 @@ public class ClickEvent implements Listener {
         professionLeaveGUI = _professionLeaveGUI;
     }
 
+    //GUI EventHandler for /getprof command
     @EventHandler
     public void onClickAddProfession(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
@@ -76,6 +76,7 @@ public class ClickEvent implements Listener {
         }
     }
 
+    //GUI EventHandler for /leaveprof command
     @EventHandler
     public void onClickLeaveProfession(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
