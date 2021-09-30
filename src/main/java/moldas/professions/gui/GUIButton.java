@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class GUIButton {
     public ItemStack itemStack;
-    private String buttonName;
+    private final String buttonName;
 
     public GUIButton(Material _itemStack, ChatColor _tittleColor, String _buttonName, final String... _buttonLore) {
         itemStack = new ItemStack(_itemStack);
