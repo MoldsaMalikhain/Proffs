@@ -41,31 +41,31 @@ public class ClickEvent implements Listener {
                 switch (e.getCurrentItem().getType()) {
                     case IRON_PICKAXE:
                         playerData.setProfession(MinerData.PROF_TYPE, MinerData.PROF_NAME);
-                        break;
+                        return;
                     case IRON_AXE:
                         playerData.setProfession(LumberjackData.PROF_TYPE, LumberjackData.PROF_NAME);
-                        break;
+                        return;
                     case IRON_HOE:
                         playerData.setProfession(FarmerData.PROF_TYPE, FarmerData.PROF_NAME);
-                        break;
+                        return;
                     case BOW:
                         playerData.setProfession(ArcherData.PROF_TYPE, ArcherData.PROF_NAME);
-                        break;
+                        return;
                     case IRON_SWORD:
                         playerData.setProfession(WarriorData.PROF_TYPE, WarriorData.PROF_NAME);
-                        break;
+                        return;
                     case ANVIL:
                         playerData.setProfession(BlacksmithData.PROF_TYPE, BlacksmithData.PROF_NAME);
-                        break;
+                        return;
                     case BREWING_STAND:
                         playerData.setProfession(AlchemistData.PROF_TYPE, AlchemistData.PROF_NAME);
-                        break;
+                        return;
                     case ENCHANTING_TABLE:
                         playerData.setProfession(EnchanterData.PROF_TYPE, EnchanterData.PROF_NAME);
-                        break;
+                        return;
                     case BARRIER:
                         player.closeInventory();
-                        break;
+                        return;
                 }
 
                 player.closeInventory();
@@ -117,7 +117,7 @@ public class ClickEvent implements Listener {
                         break;
                     case "Close the UI":
                         player.closeInventory();
-                        break;
+                        return;
                     case "Primary":
                     case "Secondary":
                         player.chat("/getprof");
