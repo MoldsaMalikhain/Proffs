@@ -7,12 +7,16 @@ import java.sql.Statement;
 
 import static moldas.professions.Professions.DATABASE_URL;
 
-public class DatabaseDAO {
+public class DatabaseManager {
     private static Connection connection;
 
     public Boolean createDatabase() {
         try {
-            return DriverManager.getConnection(DATABASE_URL) != null;
+            Connection connection = DriverManager.getConnection(DATABASE_URL);
+            if (connection != null) {
+                connection.close();
+                return true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -33,32 +37,15 @@ public class DatabaseDAO {
         return null;
     }
 
-    public Boolean createPlayerDataTable() {
+    public Boolean createPlayerdataTable() {
         connection = this.getConnection();
         String query = "CREATE TABLE IF NOT EXISTS playerdata(" +
-                "uuid TEXT PRIMARY KEY," +
-                "player_name TEXT," +
-                "primary_lvl INTEGER," +
-                "primary_prof TEXT," +
-                "secondary_lvl INTEGER," +
-                "secondary_prof TEXT," +
-                "speed REAL," +
-                "harvest_speed REAL," +
-                "health INTEGER," +
-                "jump_height REAL," +
-                "falling_damage REAL," +
-                "damage REAL," +
-                "armor REAL," +
-                "shift_speed REAL," +
-                "athletic INTEGER," +
-                "acrobatic INTEGER," +
-                "strength INTEGER," +
-                "blocking INTEGER," +
-                "vitality INTEGER," +
-                "stealth INTEGER)";
+                "uuid UUID PRIMARY KEY," +
+                "player_object BLOB)";
         try {
             Statement statement = connection.createStatement();
             statement.execute(query);
+            connection.close();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

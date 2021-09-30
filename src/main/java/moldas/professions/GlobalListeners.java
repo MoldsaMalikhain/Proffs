@@ -42,9 +42,6 @@ public class GlobalListeners implements Listener {
 
         //example of set logged in player stat from hash table
         //setting only stats that can be set by existing methods for object Player
-        PlayerData currentPlayerStats = playersData.getPlayer(playerUUID);
-
-        playersData.playerUpdate(playerUUID, currentPlayerStats);
     }
 
     @EventHandler

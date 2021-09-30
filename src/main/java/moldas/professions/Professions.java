@@ -6,7 +6,7 @@ import moldas.professions.commands.guicommands.LeaveProf;
 import moldas.professions.commands.tabcompleters.DeletePlayerProfTabCompleter;
 import moldas.professions.commands.tabcompleters.SetPlayerProfTabCompleter;
 import moldas.professions.commands.tabcompleters.StatTabCompleter;
-import moldas.professions.database.DatabaseDAO;
+import moldas.professions.database.DatabaseManager;
 import moldas.professions.database.PlayerDAO;
 import moldas.professions.gui.listeners.ClickEvent;
 import moldas.professions.prof.listners.Miner;
@@ -24,8 +24,8 @@ public final class Professions extends JavaPlugin {
     public final String ANSI_RESET = "\u001B[0m";
 
     PlayerDataHandler playersData = new PlayerDataHandler();
-    final DatabaseDAO databaseDAO = new DatabaseDAO();
-    final PlayerDAO playerDAO = new PlayerDAO(databaseDAO);
+    final DatabaseManager databaseManager = new DatabaseManager();
+    final PlayerDAO playerDAO = new PlayerDAO(databaseManager);
     private final Logger logger = Bukkit.getLogger();
 
     final Inventory professionPickGUI = Bukkit.createInventory(null, 9, ChatColor.DARK_PURPLE + "Profession choice");
@@ -46,12 +46,12 @@ public final class Professions extends JavaPlugin {
         }
         // creating database file if it doesn't exist...
         if (!DATABASE_FILE.exists()) {
-            if (!databaseDAO.createDatabase()) {
+            if (!databaseManager.createDatabase()) {
                 logger.info(ANSI_RED + "[Professions] Database file cannot be created. Plugin will shutdown now"
                         + ANSI_RESET);
             }
             // ...and table
-            if (!databaseDAO.createPlayerDataTable()) {
+            if (!databaseManager.createPlayerdataTable()) {
                 logger.info(ANSI_RED + "[Professions] Database table cannot be created. Plugin will shutdown now"
                         + ANSI_RESET);
             }
