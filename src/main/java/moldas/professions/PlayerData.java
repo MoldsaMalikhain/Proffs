@@ -4,9 +4,10 @@ import moldas.professions.stats.StatsData;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class PlayerData {
+public class PlayerData implements Serializable {
 
     public String playerName;
     public HashMap <String, String> playerProfession = new HashMap<>();

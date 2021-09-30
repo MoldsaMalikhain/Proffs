@@ -1,6 +1,8 @@
 package moldas.professions.stats;
 
-public class StatsData {
+import java.io.Serializable;
+
+public class StatsData implements Serializable {
     public int athletic = 1;
     public int acrobatic = 1;
     public int strength = 1;

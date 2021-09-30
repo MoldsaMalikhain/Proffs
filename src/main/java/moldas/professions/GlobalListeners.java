@@ -1,5 +1,6 @@
 package moldas.professions;
 
+import moldas.professions.database.PlayerDAO;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,11 +12,12 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import java.util.UUID;
 
 public class GlobalListeners implements Listener {
-
+    PlayerDAO playerDAO;
     PlayerDataHandler playersData;
 
-    public GlobalListeners(PlayerDataHandler _playerData) {
+    public GlobalListeners(PlayerDataHandler _playerData, PlayerDAO _playerDAO) {
         playersData = _playerData;
+        playerDAO = _playerDAO;
     }
 
     @EventHandler
@@ -24,10 +26,11 @@ public class GlobalListeners implements Listener {
     }
 
     @EventHandler
-    public void onEnter(PlayerJoinEvent event) {
+    public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         UUID playerUUID = player.getUniqueId();
 
+        // TODO: change this logic to use database checks
         if(playersData.addPlayer(playerUUID, player.getName())) {
             System.out.println(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
                     ChatColor.RESET + player.getName() + " entered to your server, a newbie here!");
@@ -39,9 +42,6 @@ public class GlobalListeners implements Listener {
 
         //example of set logged in player stat from hash table
         //setting only stats that can be set by existing methods for object Player
-        PlayerData currentPlayerStats = playersData.getPlayer(playerUUID);
-
-        playersData.playerUpdate(playerUUID, currentPlayerStats);
     }
 
     @EventHandler
