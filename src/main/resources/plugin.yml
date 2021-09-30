@@ -22,9 +22,6 @@ commands:
     description: Your description
     usage: /<command>
     permission: yourplugin.yourcommandpermission
-  listprof:
-    description: Your description
-    usage: /<command>
   myprof:
     description: Your description
     usage: /<command>
