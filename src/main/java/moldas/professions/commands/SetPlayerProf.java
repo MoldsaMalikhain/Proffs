@@ -9,14 +9,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
 import java.util.UUID;
 
-public class LeaveProf implements CommandExecutor {
+public class SetPlayerProf implements CommandExecutor {
 
     PlayerDataHandler players;
 
-    public LeaveProf (PlayerDataHandler _players) {
+    public SetPlayerProf(PlayerDataHandler _players) {
         players = _players;
     }
 
@@ -25,54 +24,51 @@ public class LeaveProf implements CommandExecutor {
 
         if(sender instanceof Player) {
 
-            if(args.length != 2){
+            if(args.length != 2) {
                 sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
-                        ChatColor.RESET + " Please enter command correct: /leaveprof <player_nickname> <profession>");
+                        ChatColor.RESET + " Please enter command correct: /getprof <player_nickname> <profession>");
                 return false;
             }
 
             String playerName = args[0];
             String profName = args[1];
-
             UUID playerUUID;
-            PlayerData player;
+            PlayerData playerData;
 
             try {
-                playerUUID = Bukkit.getServer().getPlayer(playerName).getUniqueId();
-                player = players.getPlayer(playerUUID);
+                playerUUID = Bukkit.getPlayer(playerName).getUniqueId();
+                playerData = players.getPlayer(playerUUID);
             } catch (NullPointerException e) {
                 sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
                         ChatColor.RESET + " Cant find a player " + playerName);
                 return false;
             }
 
-            //TODO GUI for choosing profession
-
             //For debug
-            switch(profName) {
+            switch (profName) {
                 case MinerData.PROF_NAME:
-                    player.deleteProfession(MinerData.PROF_TYPE);
+                    playerData.setProfession(MinerData.PROF_TYPE, MinerData.PROF_NAME);
                     break;
                 case LumberjackData.PROF_NAME:
-                    player.deleteProfession(LumberjackData.PROF_TYPE);
+                    playerData.setProfession(LumberjackData.PROF_TYPE, LumberjackData.PROF_NAME);
                     break;
                 case FarmerData.PROF_NAME:
-                    player.deleteProfession(FarmerData.PROF_TYPE);
+                    playerData.setProfession(FarmerData.PROF_TYPE, FarmerData.PROF_NAME);
                     break;
                 case BlacksmithData.PROF_NAME:
-                    player.deleteProfession(BlacksmithData.PROF_TYPE);
+                    playerData.setProfession(BlacksmithData.PROF_TYPE, BlacksmithData.PROF_NAME);
                     break;
                 case AlchemistData.PROF_NAME:
-                    player.deleteProfession(AlchemistData.PROF_TYPE);
+                    playerData.setProfession(AlchemistData.PROF_TYPE, AlchemistData.PROF_NAME);
                     break;
                 case ArcherData.PROF_NAME:
-                    player.deleteProfession(ArcherData.PROF_TYPE);
+                    playerData.setProfession(ArcherData.PROF_TYPE, ArcherData.PROF_NAME);
                     break;
                 case EnchanterData.PROF_NAME:
-                    player.deleteProfession(EnchanterData.PROF_TYPE);
+                    playerData.setProfession(EnchanterData.PROF_TYPE, EnchanterData.PROF_NAME);
                     break;
                 case WarriorData.PROF_NAME:
-                    player.deleteProfession(WarriorData.PROF_TYPE);
+                    playerData.setProfession(WarriorData.PROF_TYPE, WarriorData.PROF_NAME);
                     break;
                 default:
                     sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
@@ -81,11 +77,11 @@ public class LeaveProf implements CommandExecutor {
             }
 
             //Saving players updated stat
-            players.playerUpdate(playerUUID, player);
+            players.playerUpdate(playerUUID, playerData);
 
             return true;
         }
 
-        return false;
+        return true;
     }
 }
