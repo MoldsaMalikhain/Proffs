@@ -2,6 +2,7 @@ package moldas.professions.gui.listeners;
 
 import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
+import moldas.professions.gui.data.GUIConfirmationWindow;
 import moldas.professions.prof.data.*;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
@@ -19,6 +20,8 @@ public class ClickEvent implements Listener {
     PlayerDataHandler players;
     Inventory professionPickGUI;
     Inventory professionLeaveGUI;
+
+    String clickedProf = "";
 
     public ClickEvent(PlayerDataHandler _players, Inventory _professionPickGUI, Inventory _professionLeaveGUI) {
         players = _players;
@@ -83,39 +86,75 @@ public class ClickEvent implements Listener {
         UUID playerUUID = player.getUniqueId();
         PlayerData playerData = players.getPlayer(playerUUID);
 
+        GUIConfirmationWindow confirmWindow = new GUIConfirmationWindow();
+
         try {
+
             if (e.getClickedInventory().equals(professionLeaveGUI)) {
                 if (e.getCurrentItem() == null || e.getCurrentItem().getType().isAir()) return;
                 e.setCancelled(true);
 
+                clickedProf = null;
                 String click = (ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 
                 switch (click) {
                     case MinerData.PROF_NAME:
-                        playerData.deleteProfession(MinerData.PROF_TYPE);
-                        break;
+                        if(playerData.professionExist(MinerData.PROF_TYPE)) {
+                            clickedProf = MinerData.PROF_TYPE;
+                            confirmWindow.open(player);
+                            break;
+                        }
+                        else return;
                     case LumberjackData.PROF_NAME:
-                        playerData.deleteProfession(LumberjackData.PROF_TYPE);
-                        break;
+                        if(playerData.professionExist(LumberjackData.PROF_TYPE)) {
+                            clickedProf = LumberjackData.PROF_TYPE;
+                            confirmWindow.open(player);
+                            break;
+                        }
+                        else return;
                     case FarmerData.PROF_NAME:
-                        playerData.deleteProfession(FarmerData.PROF_TYPE);
-                        break;
+                        if(playerData.professionExist(FarmerData.PROF_TYPE)) {
+                            clickedProf = FarmerData.PROF_TYPE;
+                            confirmWindow.open(player);
+                            break;
+                        }
+                        else return;
                     case ArcherData.PROF_NAME:
-                        playerData.deleteProfession(ArcherData.PROF_TYPE);
-                        break;
+                        if(playerData.professionExist(ArcherData.PROF_TYPE)) {
+                            clickedProf = ArcherData.PROF_TYPE;
+                            confirmWindow.open(player);
+                            break;
+                        }
+                        return;
                     case WarriorData.PROF_NAME:
-                        playerData.deleteProfession(WarriorData.PROF_TYPE);
-                        break;
+                        if(playerData.professionExist(WarriorData.PROF_TYPE)) {
+                            clickedProf = WarriorData.PROF_TYPE;
+                            confirmWindow.open(player);
+                            break;
+                        }
+                        else return;
                     case BlacksmithData.PROF_NAME:
-                        playerData.deleteProfession(BlacksmithData.PROF_TYPE);
-                        break;
+                        if(playerData.professionExist(BlacksmithData.PROF_TYPE)) {
+                            clickedProf = BlacksmithData.PROF_TYPE;
+                            confirmWindow.open(player);
+                            break;
+                        }
+                        else return;
                     case AlchemistData.PROF_NAME:
-                        playerData.deleteProfession(AlchemistData.PROF_TYPE);
-                        break;
+                        if(playerData.professionExist(AlchemistData.PROF_TYPE)) {
+                            clickedProf = AlchemistData.PROF_TYPE;
+                            confirmWindow.open(player);
+                            break;
+                        }
+                        else return;
                     case EnchanterData.PROF_NAME:
-                        playerData.deleteProfession(EnchanterData.PROF_TYPE);
-                        break;
-                    case "Close the UI":
+                        if(playerData.professionExist(EnchanterData.PROF_TYPE)) {
+                            clickedProf = EnchanterData.PROF_TYPE;
+                            confirmWindow.open(player);
+                            break;
+                        }
+                        else return;
+                    case "Close":
                         player.closeInventory();
                         return;
                     case "Primary":
@@ -123,10 +162,21 @@ public class ClickEvent implements Listener {
                         player.chat("/getprof");
                         return;
                 }
-
-                player.closeInventory();
-                return;
             }
+
+            if(clickedProf != null && e.getClickedInventory().equals(GUIConfirmationWindow.confirmationWindowGUI)) {
+                String click = (ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+
+                if (e.getCurrentItem() == null || e.getCurrentItem().getType().isAir()) return;
+                e.setCancelled(true);
+
+                if(confirmWindow.confirm(click)){
+                    playerData.deleteProfession(clickedProf);
+                }
+                player.chat("/leaveprof");
+            }
+
+            return;
         } catch (NullPointerException exception) {
             return;
         }
