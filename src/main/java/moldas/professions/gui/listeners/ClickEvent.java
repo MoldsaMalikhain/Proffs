@@ -2,7 +2,9 @@ package moldas.professions.gui.listeners;
 
 import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
+import moldas.professions.gui.data.GUIButtons;
 import moldas.professions.prof.data.*;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -85,34 +87,42 @@ public class ClickEvent implements Listener {
                 if (e.getCurrentItem() == null || e.getCurrentItem().getType().isAir()) return;
                 e.setCancelled(true);
 
-                switch (e.getCurrentItem().getType()) {
-                    case IRON_PICKAXE:
+                String click = (ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+
+                player.sendMessage(click);
+
+                switch (click) {
+                    case MinerData.PROF_NAME:
                         playerData.deleteProfession(MinerData.PROF_TYPE);
                         break;
-                    case IRON_AXE:
+                    case LumberjackData.PROF_NAME:
                         playerData.deleteProfession(LumberjackData.PROF_TYPE);
                         break;
-                    case IRON_HOE:
+                    case FarmerData.PROF_NAME:
                         playerData.deleteProfession(FarmerData.PROF_TYPE);
                         break;
-                    case BOW:
+                    case ArcherData.PROF_NAME:
                         playerData.deleteProfession(ArcherData.PROF_TYPE);
                         break;
-                    case IRON_SWORD:
+                    case WarriorData.PROF_NAME:
                         playerData.deleteProfession(WarriorData.PROF_TYPE);
                         break;
-                    case ANVIL:
+                    case BlacksmithData.PROF_NAME:
                         playerData.deleteProfession(BlacksmithData.PROF_TYPE);
                         break;
-                    case BREWING_STAND:
+                    case AlchemistData.PROF_NAME:
                         playerData.deleteProfession(AlchemistData.PROF_TYPE);
                         break;
-                    case ENCHANTING_TABLE:
+                    case EnchanterData.PROF_NAME:
                         playerData.deleteProfession(EnchanterData.PROF_TYPE);
                         break;
-                    case BARRIER:
+                    case "Close the UI":
                         player.closeInventory();
                         break;
+                    case "Primary":
+                    case "Secondary":
+                        player.chat("/getprof");
+                        return;
                 }
 
                 player.closeInventory();
