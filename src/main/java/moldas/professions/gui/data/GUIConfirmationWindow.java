@@ -26,7 +26,6 @@ public class GUIConfirmationWindow {
      */
     public void open(Player player) {
         player.openInventory(confirmationWindowGUI);
-        player.sendMessage("Confirm opened");
     }
 
     /**
