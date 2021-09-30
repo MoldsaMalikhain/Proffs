@@ -40,8 +40,8 @@ public class GUIButtons {
             "Close", ChatColor.WHITE + "Close the UI");
     public static final GUIButton NONE_BUTTON = new GUIButton(Material.WHITE_STAINED_GLASS_PANE, ChatColor.GOLD,
             "~There nothing here right now~", "");
-    public static final GUIButton YES_BUTTON = new GUIButton(Material.GREEN_BANNER, ChatColor.GREEN, "Yes",
+    public static final GUIButton YES_BUTTON = new GUIButton(Material.GREEN_WOOL, ChatColor.GREEN, "Yes",
             "Yes, i agree");
-    public static final GUIButton NO_BUTTON = new GUIButton(Material.RED_BANNER, ChatColor.GREEN, "No",
+    public static final GUIButton NO_BUTTON = new GUIButton(Material.RED_WOOL, ChatColor.GREEN, "No",
             "No, i disagree");
 }
