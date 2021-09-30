@@ -91,6 +91,7 @@ public class ClickEvent implements Listener {
         try {
 
             if (e.getClickedInventory().equals(professionLeaveGUI)) {
+                //Need to be right here, otherwise player can`t move items in his inventory
                 if (e.getCurrentItem() == null || e.getCurrentItem().getType().isAir()) return;
                 e.setCancelled(true);
 
@@ -167,6 +168,7 @@ public class ClickEvent implements Listener {
             if(clickedProf != null && e.getClickedInventory().equals(GUIConfirmationWindow.confirmationWindowGUI)) {
                 String click = (ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 
+                //Need to be right here, otherwise player can`t move items in his inventory
                 if (e.getCurrentItem() == null || e.getCurrentItem().getType().isAir()) return;
                 e.setCancelled(true);
 
