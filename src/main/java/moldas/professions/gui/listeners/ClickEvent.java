@@ -90,8 +90,6 @@ public class ClickEvent implements Listener {
 
                 String click = (ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 
-                player.sendMessage(click);
-
                 switch (click) {
                     case MinerData.PROF_NAME:
                         playerData.deleteProfession(MinerData.PROF_TYPE);
