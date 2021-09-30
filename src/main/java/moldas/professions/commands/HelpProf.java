@@ -16,7 +16,10 @@ public class HelpProf implements CommandExecutor {
             return true;
         }
 
-        //TODO show information about plugin
+        //TODO
+        // show information about professions and
+        // plugin
+        // in GUI
 
         return false;
     }
