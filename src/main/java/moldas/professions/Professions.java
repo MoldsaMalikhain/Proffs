@@ -29,7 +29,7 @@ public final class Professions extends JavaPlugin {
         this.getCommand("setplayerprof").setTabCompleter(new SetPlayerProfTabCompleter());
         this.getCommand("helpprof").setExecutor(new HelpProf());
         this.getCommand("listprof").setExecutor(new ListProf());
-        this.getCommand("leaveprof").setExecutor(new LeaveProf(professionLeaveGUI));
+        this.getCommand("leaveprof").setExecutor(new LeaveProf(professionLeaveGUI, playersData));
         this.getCommand("deleteplayerprof").setExecutor(new DeletePlayerProf(playersData));
         this.getCommand("deleteplayerprof").setTabCompleter(new DeletePlayerProfTabCompleter(playersData));
         this.getCommand("changestat").setExecutor(new ChangeStat(playersData));
