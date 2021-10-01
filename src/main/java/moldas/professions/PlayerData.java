@@ -75,14 +75,22 @@ public class PlayerData implements Serializable {
         else return false;
     }
 
+    /**
+     * @param amount will ve added to primary profession progress if it exist
+     * @return true if added
+     * false if player already get max lvl of that profession
+     */
     public boolean addPrimaryProgress(int amount) {
-        if(!playerProfessionProgress.primaryMaxLvl()) {
+        if(!playerProfessionProgress.primaryMaxLvl() && playerProfession.get("Primary") != null) {
             playerProfessionProgress.primaryProfProgress += amount;
             if((playerProfessionProgress.primaryProfLvl * playerProfessionProgress.pointsToLvlUp)
                     <= playerProfessionProgress.primaryProfProgress) {
                 playerProfessionProgress.primaryProfProgress -=
                         playerProfessionProgress.primaryProfLvl * playerProfessionProgress.pointsToLvlUp;
                 playerProfessionProgress.primaryProfLvl += 1;
+                Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
+                        ChatColor.GOLD + " You get a new lvl of " + playerProfession.get("Primary") + " profession! " +
+                        "Now its " + playerProfessionProgress.primaryProfLvl + "!");
             }
             return true;
         }
@@ -90,13 +98,16 @@ public class PlayerData implements Serializable {
     }
 
     public boolean addSecondaryProgress(int amount) {
-        if(!playerProfessionProgress.secondaryMaxLvl()) {
+        if(!playerProfessionProgress.secondaryMaxLvl() && playerProfession.get("Secondary") != null) {
             playerProfessionProgress.secondaryProfProgress += amount;
             if((playerProfessionProgress.secondaryProfLvl * playerProfessionProgress.pointsToLvlUp)
                     <= playerProfessionProgress.secondaryProfProgress) {
                 playerProfessionProgress.secondaryProfProgress -=
                         playerProfessionProgress.secondaryProfLvl * playerProfessionProgress.pointsToLvlUp;
                 playerProfessionProgress.secondaryProfLvl += 1;
+                Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
+                        ChatColor.GOLD + " You get a new lvl of " + playerProfession.get("Secondary") + " profession! " +
+                        "Now its " + playerProfessionProgress.secondaryProfLvl + "!");
             }
             return true;
         }
