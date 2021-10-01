@@ -1,6 +1,8 @@
 package moldas.professions.progress;
 
-public class StatsProgress {
+import java.io.Serializable;
+
+public class StatsProgress implements Serializable {
     public int athleticProgress = 0;
     public int acrobaticProgress = 0;
     public int strengthProgress = 0;

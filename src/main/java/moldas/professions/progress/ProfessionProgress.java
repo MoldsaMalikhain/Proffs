@@ -1,6 +1,8 @@
 package moldas.professions.progress;
 
-public class ProfessionProgress {
+import java.io.Serializable;
+
+public class ProfessionProgress implements Serializable {
     public int primaryProfLvl = 0;
     public int primaryProfProgress = 0;
     public int secondaryProfLvl = 0;

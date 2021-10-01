@@ -1,6 +1,8 @@
 package moldas.professions.stats;
 
-public class StatsData {
+import java.io.Serializable;
+
+public class StatsData implements Serializable {
     public float speed = (float) 0.2;
     public float harvestSpeedMultiplier = 1;
     public float health = 20;
