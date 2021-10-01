@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Arrays;
 import java.util.UUID;
 
 public class MyProf implements CommandExecutor {
@@ -50,15 +49,19 @@ public class MyProf implements CommandExecutor {
             for(int i = 0; i < check.length; i++) {
                 if(playerData.playerProfession.get("Primary") != null &&
                         playerData.playerProfession.get("Primary").equals(check[i].getButtonName())) {
-                    check[i].setButtonLore("Your profession level: " + players.getPlayer(playerUUID).primaryProfLvl);
-                    player.sendMessage("Your profession level: " + players.getPlayer(playerUUID).primaryProfLvl);
+                    check[i].setButtonLore("Your profession level: "
+                                    + players.getPlayer(playerUUID).playerProfessionProgress.primaryProfLvl,
+                            "Your progress on this profession "
+                                    + players.getPlayer(playerUUID).playerProfessionProgress.primaryProfProgress);
                     items[0] = check[i].itemStack;
                     continue;
                 }
                 if(playerData.playerProfession.get("Secondary") != null &&
                         playerData.playerProfession.get("Secondary").equals(check[i].getButtonName())) {
-                    player.sendMessage("Your profession level: " + players.getPlayer(playerUUID).secondaryProfLvl);
-                    check[i].setButtonLore("Your profession level: " + players.getPlayer(playerUUID).secondaryProfLvl);
+                    check[i].setButtonLore("Your profession level: "
+                                    + players.getPlayer(playerUUID).playerProfessionProgress.secondaryProfLvl,
+                            "Your progress on this profession: "
+                                    + players.getPlayer(playerUUID).playerProfessionProgress.secondaryProfProgress);
                     items[1] = check[i].itemStack;
                     continue;
                 }

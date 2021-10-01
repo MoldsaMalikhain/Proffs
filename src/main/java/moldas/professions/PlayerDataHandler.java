@@ -73,7 +73,7 @@ public class PlayerDataHandler {
         Player player = Bukkit.getPlayer(playerData.playerName);
 
         player.setHealth(20);
-        player.setHealthScale(playerData.health);
-        player.setWalkSpeed(playerData.speed);
+        player.setHealthScale(playerData.playerStats.health);
+        player.setWalkSpeed(playerData.playerStats.speed);
     }
 }

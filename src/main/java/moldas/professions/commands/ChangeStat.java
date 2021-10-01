@@ -56,35 +56,33 @@ public class ChangeStat implements CommandExecutor {
 
             switch(statName) {
                 case "health":
-                    player.health = Integer.parseInt(statValue);
+                    player.playerStats.health = Integer.parseInt(statValue);
                     break;
                 case "speed":
-                    player.speed = Float.parseFloat(statValue);
+                    player.playerStats.speed = Float.parseFloat(statValue);
                     break;
                 case "harvestSpeed":
-                    player.harvestSpeedMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.harvestSpeedMultiplier = Float.parseFloat(statValue);
                     break;
                 case "jumpHeight":
-                    player.jumpHeightMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.jumpHeightMultiplier = Float.parseFloat(statValue);
                     break;
                 case "fallingDamage":
-                    player.fallingDamageMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.fallingDamageMultiplier = Float.parseFloat(statValue);
                     break;
                 case "damage":
-                    player.damageMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.damageMultiplier = Float.parseFloat(statValue);
                     break;
                 case "armor":
-                    player.armorMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.armorMultiplier = Float.parseFloat(statValue);
                     break;
                 case "shiftSpeed":
-                    player.shiftSpeedMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.shiftSpeedMultiplier = Float.parseFloat(statValue);
                     break;
                 default:
                     sender.sendMessage("Entered wrong argument!");
                     break;
             }
-
-            sender.sendMessage(player.speed + " " + player.health + " " + player.armorMultiplier);
 
             //Saving players updated stat
             players.playerUpdate(playerUUID, player);

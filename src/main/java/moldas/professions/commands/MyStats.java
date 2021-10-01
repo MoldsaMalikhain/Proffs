@@ -22,14 +22,14 @@ public class MyStats implements CommandExecutor {
             //TODO Show stats of player in GUI
             PlayerData playerData = players.getPlayer(((Player) sender).getUniqueId());
             sender.sendMessage("Your stats is:");
-            sender.sendMessage("Health: " + playerData.health);
-            sender.sendMessage("Speed: " + playerData.speed);
-            sender.sendMessage("Harvest speed: " + playerData.harvestSpeedMultiplier);
-            sender.sendMessage("Jump height: " + playerData.jumpHeightMultiplier);
-            sender.sendMessage("Falling damage reduce: " + playerData.fallingDamageMultiplier);
-            sender.sendMessage("Damage: " + playerData.damageMultiplier);
-            sender.sendMessage("Armor: " + playerData.armorMultiplier);
-            sender.sendMessage("Shift speed: " + playerData.shiftSpeedMultiplier);
+            sender.sendMessage("Health: " + playerData.playerStats.health);
+            sender.sendMessage("Speed: " + playerData.playerStats.speed);
+            sender.sendMessage("Harvest speed: " + playerData.playerStats.harvestSpeedMultiplier);
+            sender.sendMessage("Jump height: " + playerData.playerStats.jumpHeightMultiplier);
+            sender.sendMessage("Falling damage reduce: " + playerData.playerStats.fallingDamageMultiplier);
+            sender.sendMessage("Damage: " + playerData.playerStats.damageMultiplier);
+            sender.sendMessage("Armor: " + playerData.playerStats.armorMultiplier);
+            sender.sendMessage("Shift speed: " + playerData.playerStats.shiftSpeedMultiplier);
         }
 
         return false;
