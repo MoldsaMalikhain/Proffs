@@ -3,12 +3,13 @@ package moldas.professions;
 import moldas.professions.commands.*;
 import moldas.professions.commands.guicommands.GetProf;
 import moldas.professions.commands.guicommands.LeaveProf;
+import moldas.professions.commands.guicommands.MyProf;
 import moldas.professions.commands.tabcompleters.DeletePlayerProfTabCompleter;
 import moldas.professions.commands.tabcompleters.SetPlayerProfTabCompleter;
 import moldas.professions.commands.tabcompleters.StatTabCompleter;
 import moldas.professions.database.DatabaseManager;
 import moldas.professions.database.PlayerDAO;
-import moldas.professions.gui.listeners.ClickEvent;
+import moldas.professions.gui.listeners.GUIClickEvent;
 import moldas.professions.prof.listners.Miner;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,6 +31,7 @@ public final class Professions extends JavaPlugin {
 
     final Inventory professionPickGUI = Bukkit.createInventory(null, 9, ChatColor.DARK_PURPLE + "Profession choice");
     final Inventory professionLeaveGUI = Bukkit.createInventory(null, 9, ChatColor.DARK_PURPLE + "Leave profession");
+    final Inventory myProfessionGUI = Bukkit.createInventory(null, 27, ChatColor.DARK_PURPLE + "My professions");
 
     private final File DATABASE_FILE = new File("./plugins/professions/player_data.db");
     private final File PLUGIN_FOLDER = new File("./plugins/professions");
@@ -57,7 +59,7 @@ public final class Professions extends JavaPlugin {
             }
         }
 
-        this.getCommand("myprof").setExecutor(new MyProf(playersData));
+        this.getCommand("myprof").setExecutor(new MyProf(playersData, myProfessionGUI));
         this.getCommand("getprof").setExecutor(new GetProf(professionPickGUI));
         this.getCommand("setplayerprof").setExecutor(new SetPlayerProf(playersData));
         this.getCommand("setplayerprof").setTabCompleter(new SetPlayerProfTabCompleter());
@@ -72,7 +74,7 @@ public final class Professions extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GlobalListeners(playersData, playerDAO), this);
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);
 
-        getServer().getPluginManager().registerEvents(new ClickEvent(playersData, professionPickGUI, professionLeaveGUI), this);
+        getServer().getPluginManager().registerEvents(new GUIClickEvent(playersData, professionPickGUI, professionLeaveGUI, myProfessionGUI), this);
 
         logger.info(ANSI_GREEN + "[Professions] Plugin started successfully" + ANSI_RESET);
     }
