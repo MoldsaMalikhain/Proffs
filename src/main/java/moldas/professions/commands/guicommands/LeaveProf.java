@@ -44,8 +44,6 @@ public class LeaveProf implements CommandExecutor {
             items[0] = GUIButtons.PRIMARY_PROF_NOT_DEFINED.itemStack;
             items[1] = GUIButtons.SECONDARY_PROF_NOT_DEFINED.itemStack;
 
-
-
             for(int i = 0; i < check.length; i++) {
                 if(playerData.playerProfession.get("Primary") != null &&
                         playerData.playerProfession.get("Primary").equals(check[i].getButtonName())) {

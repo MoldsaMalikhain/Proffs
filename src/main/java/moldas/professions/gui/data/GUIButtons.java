@@ -27,11 +27,29 @@ public class GUIButtons {
     public static final GUIButton ENCHANTER_BUTTON = new GUIButton(Material.ENCHANTING_TABLE, ChatColor.DARK_PURPLE,
             EnchanterData.PROF_NAME, EnchanterData.BUTTON_LORE);
 
+    //Custom buttons for show player data in GUI
+    public static GUIButton MINER_BUTTON_CUSTOM = new GUIButton(Material.IRON_PICKAXE, ChatColor.GOLD,
+            MinerData.PROF_NAME);
+    public static GUIButton LUMBERJACK_BUTTON_CUSTOM = new GUIButton(Material.IRON_AXE, ChatColor.RED,
+            LumberjackData.PROF_NAME);
+    public static GUIButton FARMER_BUTTON_CUSTOM = new GUIButton(Material.IRON_HOE, ChatColor.YELLOW,
+            FarmerData.PROF_NAME);
+    public static GUIButton ARCHER_BUTTON_CUSTOM = new GUIButton(Material.BOW, ChatColor.DARK_BLUE,
+            ArcherData.PROF_NAME);
+    public static GUIButton WARRIOR_BUTTON_CUSTOM = new GUIButton(Material.IRON_SWORD, ChatColor.DARK_GREEN,
+            WarriorData.PROF_NAME);
+    public static GUIButton BLACKSMITH_BUTTON_CUSTOM = new GUIButton(Material.ANVIL, ChatColor.DARK_GRAY,
+            BlacksmithData.PROF_NAME);
+    public static GUIButton ALCHEMIST_BUTTON_CUSTOM = new GUIButton(Material.BREWING_STAND, ChatColor.AQUA,
+            AlchemistData.PROF_NAME);
+    public static GUIButton ENCHANTER_BUTTON_CUSTOM = new GUIButton(Material.ENCHANTING_TABLE, ChatColor.DARK_PURPLE,
+            EnchanterData.PROF_NAME);
+
     //Message buttons
     public static final GUIButton PRIMARY_PROF_NOT_DEFINED = new GUIButton(Material.BOOK, ChatColor.LIGHT_PURPLE,
             "Primary", ChatColor.GOLD + "You don`t have your primary profession yet",
             ChatColor.UNDERLINE + "*Press on this button to get it*");
-    public final static GUIButton SECONDARY_PROF_NOT_DEFINED = new GUIButton(Material.BOOK, ChatColor.LIGHT_PURPLE,
+    public static final GUIButton SECONDARY_PROF_NOT_DEFINED = new GUIButton(Material.BOOK, ChatColor.LIGHT_PURPLE,
             "Secondary", ChatColor.GOLD + "You don`t have your secondary profession yet",
             ChatColor.UNDERLINE + "*Press on this button to get it*");
 

@@ -16,18 +16,20 @@ import org.bukkit.inventory.Inventory;
 import java.util.Objects;
 import java.util.UUID;
 
-public class ClickEvent implements Listener {
+public class GUIClickEvent implements Listener {
 
     PlayerDataHandler players;
     Inventory professionPickGUI;
     Inventory professionLeaveGUI;
+    Inventory myProfessionGUI;
 
     String clickedProf = "";
 
-    public ClickEvent(PlayerDataHandler _players, Inventory _professionPickGUI, Inventory _professionLeaveGUI) {
+    public GUIClickEvent(PlayerDataHandler _players, Inventory _professionPickGUI, Inventory _professionLeaveGUI, Inventory _myProfessionGUI) {
         players = _players;
         professionPickGUI = _professionPickGUI;
         professionLeaveGUI = _professionLeaveGUI;
+        myProfessionGUI = _myProfessionGUI;
     }
 
     //GUI EventHandler for /getprof command
@@ -185,6 +187,79 @@ public class ClickEvent implements Listener {
 
             return;
         } catch (NullPointerException exception) {
+            return;
+        }
+    }
+
+    @EventHandler
+    public void onClickMyProfession(InventoryClickEvent e) {
+        Player player = (Player) e.getWhoClicked();
+        UUID playerUUID = player.getUniqueId();
+        PlayerData playerData = players.getPlayer(playerUUID);
+
+        try {
+            if (e.getClickedInventory().equals(myProfessionGUI)) {
+                //Need to be right here, otherwise player can`t move items in his inventory
+                if (e.getCurrentItem() == null || e.getCurrentItem().getType().isAir()) return;
+                e.setCancelled(true);
+
+                clickedProf = null;
+                String click = (ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+
+                switch (click) {
+                    case MinerData.PROF_NAME:
+                        if (playerData.professionExist(MinerData.PROF_TYPE)) {
+                            // ...
+                            break;
+                        } else return;
+                    case LumberjackData.PROF_NAME:
+                        if (playerData.professionExist(LumberjackData.PROF_TYPE)) {
+                            // ...
+                            break;
+                        } else return;
+                    case FarmerData.PROF_NAME:
+                        if (playerData.professionExist(FarmerData.PROF_TYPE)) {
+                            // ...
+                            break;
+                        } else return;
+                    case ArcherData.PROF_NAME:
+                        if (playerData.professionExist(ArcherData.PROF_TYPE)) {
+                            // ...
+                            break;
+                        }
+                        return;
+                    case WarriorData.PROF_NAME:
+                        if (playerData.professionExist(WarriorData.PROF_TYPE)) {
+                            // ...
+                            break;
+                        } else return;
+                    case BlacksmithData.PROF_NAME:
+                        if (playerData.professionExist(BlacksmithData.PROF_TYPE)) {
+                            // ...
+                            break;
+                        } else return;
+                    case AlchemistData.PROF_NAME:
+                        if (playerData.professionExist(AlchemistData.PROF_TYPE)) {
+                            // ...
+                            break;
+                        } else return;
+                    case EnchanterData.PROF_NAME:
+                        if (playerData.professionExist(EnchanterData.PROF_TYPE)) {
+                            // ...
+                            break;
+                        } else return;
+                    case "Close":
+                        player.closeInventory();
+                        return;
+                    case "Primary":
+                    case "Secondary":
+                        player.chat("/getprof");
+                        return;
+                }
+            }
+
+            return;
+        } catch(NullPointerException exeption) {
             return;
         }
     }
