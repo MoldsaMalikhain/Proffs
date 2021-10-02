@@ -40,7 +40,6 @@ public class GlobalListeners implements Listener {
         } else {
             // TODO: get playerData form database and update it in hashmap
         }
-
         //example of set logged in player stat from hash table
         //setting only stats that can be set by existing methods for object Player
     }
