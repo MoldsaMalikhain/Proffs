@@ -10,11 +10,14 @@ import static moldas.professions.Professions.DATABASE_URL;
 public class DatabaseManager {
     private static Connection connection;
 
+    /**
+     * Creates a database file
+     * @return  true if database has been created, false otherwise
+     */
     public Boolean createDatabase() {
         try {
             Connection connection = DriverManager.getConnection(DATABASE_URL);
             if (connection != null) {
-                connection.close();
                 return true;
             }
         } catch (SQLException e) {
@@ -23,20 +26,23 @@ public class DatabaseManager {
         return false;
     }
 
+    /**
+     * @return  Connection to the database
+     */
     public Connection getConnection() {
-        if (connection != null) {
+        try {
+            connection = DriverManager.getConnection(DATABASE_URL);
             return connection;
-        } else {
-            try {
-                connection = DriverManager.getConnection(DATABASE_URL);
-                return connection;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
 
+    /**
+     * Create database table in format(uuid (uuid) / player_object (blob))
+     * @return  true if table has been created, false otherwise
+     */
     public Boolean createPlayerdataTable() {
         connection = this.getConnection();
         String query = "CREATE TABLE IF NOT EXISTS playerdata(" +
