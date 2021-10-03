@@ -9,6 +9,8 @@ import moldas.professions.commands.tabcompleters.SetPlayerProfTabCompleter;
 import moldas.professions.commands.tabcompleters.StatTabCompleter;
 import moldas.professions.database.DatabaseManager;
 import moldas.professions.database.PlayerDAO;
+import moldas.professions.database.interfaces.DatabaseManagerInterface;
+import moldas.professions.database.interfaces.PlayerDAOInterface;
 import moldas.professions.gui.listeners.GUIClickEvent;
 import moldas.professions.prof.listners.Miner;
 import org.bukkit.Bukkit;
@@ -28,8 +30,8 @@ public final class Professions extends JavaPlugin {
     private final Logger logger = Bukkit.getLogger();
 
     // database manipulation objects
-    DatabaseManager databaseManager = new DatabaseManager();
-    final PlayerDAO playerDAO = new PlayerDAO(databaseManager, logger);
+    final DatabaseManager databaseManager = new DatabaseManager();
+    final PlayerDAO playerDAO = new PlayerDAO(databaseManager);
 
     PlayerDataHandler playersData = new PlayerDataHandler();
 

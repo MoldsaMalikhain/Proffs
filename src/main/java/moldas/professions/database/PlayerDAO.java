@@ -2,22 +2,17 @@ package moldas.professions.database;
 
 import moldas.professions.PlayerData;
 import moldas.professions.database.interfaces.PlayerDAOInterface;
+import moldas.professions.exceptions.SetPlayerException;
 
 import java.io.*;
 import java.sql.*;
 import java.util.UUID;
-import java.util.logging.Logger;
-
-import static moldas.professions.Professions.ANSI_RED;
-import static moldas.professions.Professions.ANSI_RESET;
 
 public class PlayerDAO implements PlayerDAOInterface {
     private final DatabaseManager databaseManager;
-    private final Logger logger;
 
-    public PlayerDAO(DatabaseManager databaseManager, Logger logger) {
+    public PlayerDAO(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
-        this.logger = logger;
     }
 
     /**
@@ -64,11 +59,10 @@ public class PlayerDAO implements PlayerDAOInterface {
      * @return              true if everything goes OK, false otherwise
      */
     @Override
-    public Boolean setPlayerData(UUID playerUUID, PlayerData playerData) {
+    public Boolean setPlayerData(UUID playerUUID, PlayerData playerData) throws SetPlayerException {
         if (this.exists(playerUUID)) {
-            logger.info(ANSI_RED + "[Professions] Cannot set player: he's already in the database." +
-                    " Player's UUID: " + playerUUID + ANSI_RESET);
-            return false;
+            throw new SetPlayerException(String.format("Cannot set player with UUID: %s. He's already in the database",
+                    playerUUID.toString()));
         }
         byte[] playerDataBytes = BytesManipulation.objectToBytes(playerData);
         String query = "INSERT INTO playerdata(uuid, player_object) VALUES(?, ?)";
