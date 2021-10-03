@@ -1,6 +1,7 @@
 package moldas.professions.database;
 
 import moldas.professions.PlayerData;
+import moldas.professions.database.interfaces.PlayerDAOInterface;
 
 import java.io.*;
 import java.sql.*;
@@ -10,7 +11,7 @@ import java.util.logging.Logger;
 import static moldas.professions.Professions.ANSI_RED;
 import static moldas.professions.Professions.ANSI_RESET;
 
-public class PlayerDAO {
+public class PlayerDAO implements PlayerDAOInterface {
     private final DatabaseManager databaseManager;
     private final Logger logger;
 
@@ -23,7 +24,8 @@ public class PlayerDAO {
      * @param playerUUID    which player existence in database to check (by uuid)
      * @return              true if player in the database, false otherwise and null if something goes heck
      */
-    public synchronized Boolean exists(UUID playerUUID) {
+    @Override
+    public Boolean exists(UUID playerUUID) {
         String query = "SELECT uuid FROM playerdata WHERE uuid=" + "'" + playerUUID + "'";
         try (Connection connection = databaseManager.getConnection()) {
             Statement stmt = connection.createStatement();
@@ -40,7 +42,8 @@ public class PlayerDAO {
      * @param playerData    player object with new stats
      * @return              true if everything goes OK, false otherwise
      */
-    public synchronized Boolean updatePlayerData(UUID playerUUID, PlayerData playerData) {
+    @Override
+    public Boolean updatePlayerData(UUID playerUUID, PlayerData playerData) {
         byte[] playerDataBytes = BytesManipulation.objectToBytes(playerData);
         String query = "UPDATE playerdata SET player_object=? WHERE uuid=?";
         try (Connection connection = databaseManager.getConnection()) {
@@ -60,7 +63,8 @@ public class PlayerDAO {
      * @param playerData    player object which will be written to the DB
      * @return              true if everything goes OK, false otherwise
      */
-    public synchronized Boolean setPlayerData(UUID playerUUID, PlayerData playerData) {
+    @Override
+    public Boolean setPlayerData(UUID playerUUID, PlayerData playerData) {
         if (this.exists(playerUUID)) {
             logger.info(ANSI_RED + "[Professions] Cannot set player: he's already in the database." +
                     " Player's UUID: " + playerUUID + ANSI_RESET);
@@ -84,7 +88,8 @@ public class PlayerDAO {
      * @param playerUUID    id by which player object will be retrieved from the DB
      * @return              player object. Null of something goes wrong
      */
-    public synchronized PlayerData getPlayerData(UUID playerUUID) {
+    @Override
+    public PlayerData getPlayerData(UUID playerUUID) {
         String query = String.format("SELECT player_object FROM playerdata WHERE uuid='%s'", playerUUID.toString());
         try (Connection connection = databaseManager.getConnection()) {
             Statement stmt = connection.createStatement();
