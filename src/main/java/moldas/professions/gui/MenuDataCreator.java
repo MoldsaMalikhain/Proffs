@@ -1,4 +1,4 @@
-package moldas.professions.gui.data;
+package moldas.professions.gui;
 
 import org.bukkit.inventory.ItemStack;
 

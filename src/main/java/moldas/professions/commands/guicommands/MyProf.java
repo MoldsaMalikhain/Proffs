@@ -4,7 +4,8 @@ import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
 import moldas.professions.gui.GUIButton;
 import moldas.professions.gui.data.GUIButtons;
-import moldas.professions.gui.data.MenuDataCreator;
+import moldas.professions.gui.MenuDataCreator;
+import moldas.professions.progress.data.ProgressMaxValues;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -51,23 +52,23 @@ public class MyProf implements CommandExecutor {
             for(int i = 0; i < check.length; i++) {
                 if(playerData.playerProfession.get("Primary") != null &&
                         playerData.playerProfession.get("Primary").equals(check[i].getButtonName())) {
-                    check[i].setButtonLore("Your profession level: "
+                    check[i].setButtonLore("Profession level: "
                                     + playerData.playerProfessionProgress.primaryProfLvl + "/"
-                                    + playerData.playerProfessionProgress.maxLvl,
-                            ChatColor.YELLOW + "Your progress on this profession "
+                                    + ProgressMaxValues.MAX_LVL,
+                            ChatColor.YELLOW + "Your progress on this profession: "
                                     + playerData.playerProfessionProgress.primaryProfProgress + "/"
-                                    + playerData.playerProfessionProgress.pointsToLvlUp);
+                                    + ProgressMaxValues.POINTS_TO_LVL_UP);
                     items[0] = check[i].itemStack;
                     continue;
                 }
                 if(playerData.playerProfession.get("Secondary") != null &&
                         playerData.playerProfession.get("Secondary").equals(check[i].getButtonName())) {
-                    check[i].setButtonLore("Your profession level: "
+                    check[i].setButtonLore("Profession level: "
                                     + playerData.playerProfessionProgress.secondaryProfLvl + "/"
-                                    + playerData.playerProfessionProgress.maxLvl,
+                                    + ProgressMaxValues.MAX_LVL,
                             ChatColor.YELLOW + "Your progress on this profession: "
                                     + playerData.playerProfessionProgress.secondaryProfProgress + "/"
-                                    + playerData.playerProfessionProgress.pointsToLvlUp);
+                                    + ProgressMaxValues.POINTS_TO_LVL_UP);
                     items[1] = check[i].itemStack;
                     continue;
                 }
@@ -85,7 +86,6 @@ public class MyProf implements CommandExecutor {
                     GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack);
 
             myProfessionGUI.setContents(menu.getMenuItems());
-
             player.openInventory(myProfessionGUI);
 
             return true;

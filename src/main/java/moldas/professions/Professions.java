@@ -4,6 +4,7 @@ import moldas.professions.commands.*;
 import moldas.professions.commands.guicommands.GetProf;
 import moldas.professions.commands.guicommands.LeaveProf;
 import moldas.professions.commands.guicommands.MyProf;
+import moldas.professions.commands.guicommands.MyStats;
 import moldas.professions.commands.tabcompleters.DeletePlayerProfTabCompleter;
 import moldas.professions.commands.tabcompleters.SetPlayerProfTabCompleter;
 import moldas.professions.commands.tabcompleters.StatTabCompleter;
@@ -38,6 +39,7 @@ public final class Professions extends JavaPlugin {
     final Inventory professionPickGUI = Bukkit.createInventory(null, 9, ChatColor.DARK_PURPLE + "Profession choice");
     final Inventory professionLeaveGUI = Bukkit.createInventory(null, 9, ChatColor.DARK_PURPLE + "Leave profession");
     final Inventory myProfessionGUI = Bukkit.createInventory(null, 27, ChatColor.DARK_PURPLE + "My professions");
+    final Inventory myStatsGUI = Bukkit.createInventory(null, 27, ChatColor.DARK_PURPLE + "Your Stats");
 
     // paths to crucial plugin directories
     private final File DATABASE_FILE = new File("./plugins/professions/player_data.db");
@@ -80,12 +82,13 @@ public final class Professions extends JavaPlugin {
         this.getCommand("deleteplayerprof").setTabCompleter(new DeletePlayerProfTabCompleter(playersData));
         this.getCommand("changestat").setExecutor(new ChangeStat(playersData));
         this.getCommand("changestat").setTabCompleter(new StatTabCompleter());
-        this.getCommand("mystats").setExecutor(new MyStats(playersData));
+        this.getCommand("mystats").setExecutor(new MyStats(playersData, myStatsGUI));
 
         getServer().getPluginManager().registerEvents(new GlobalListeners(playersData, playerDAO), this);
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);
 
-        getServer().getPluginManager().registerEvents(new GUIClickEvent(playersData, professionPickGUI, professionLeaveGUI, myProfessionGUI), this);
+        getServer().getPluginManager().registerEvents(new GUIClickEvent(playersData, professionPickGUI,
+                professionLeaveGUI, myProfessionGUI, myStatsGUI), this);
 
         Collection<Player> players = (Collection<Player>) Bukkit.getOnlinePlayers();
 

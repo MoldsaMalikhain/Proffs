@@ -9,6 +9,4 @@ public class StatsProgress implements Serializable {
     public int blockingProgress = 0;
     public int vitalityProgress = 0;
     public int stealthProgress = 0;
-
-    public int maxStatProgress = 100;
 }
