@@ -22,14 +22,17 @@ public class GUIClickEvent implements Listener {
     Inventory professionPickGUI;
     Inventory professionLeaveGUI;
     Inventory myProfessionGUI;
+    Inventory myStatsGUI;
 
     String clickedProf = "";
 
-    public GUIClickEvent(PlayerDataHandler _players, Inventory _professionPickGUI, Inventory _professionLeaveGUI, Inventory _myProfessionGUI) {
+    public GUIClickEvent(PlayerDataHandler _players, Inventory _professionPickGUI, Inventory _professionLeaveGUI,
+                         Inventory _myProfessionGUI, Inventory _myStatsGUI) {
         players = _players;
         professionPickGUI = _professionPickGUI;
         professionLeaveGUI = _professionLeaveGUI;
         myProfessionGUI = _myProfessionGUI;
+        myStatsGUI = _myStatsGUI;
     }
 
     //GUI EventHandler for /getprof command
@@ -254,6 +257,34 @@ public class GUIClickEvent implements Listener {
                     case "Primary":
                     case "Secondary":
                         player.chat("/getprof");
+                        return;
+                }
+            }
+
+            return;
+        } catch(NullPointerException exeption) {
+            return;
+        }
+    }
+
+    @EventHandler
+    public void onClickMyStats(InventoryClickEvent e) {
+        Player player = (Player) e.getWhoClicked();
+        UUID playerUUID = player.getUniqueId();
+        PlayerData playerData = players.getPlayer(playerUUID);
+
+        try {
+            if (e.getClickedInventory().equals(myStatsGUI)) {
+                //Need to be right here, otherwise player can`t move items in his inventory
+                if (e.getCurrentItem() == null || e.getCurrentItem().getType().isAir()) return;
+                e.setCancelled(true);
+
+                clickedProf = null;
+                String click = (ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+
+                switch (click) {
+                    case "Close":
+                        player.closeInventory();
                         return;
                 }
             }

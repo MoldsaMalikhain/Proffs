@@ -4,7 +4,9 @@ import moldas.professions.PlayerData;
 import moldas.professions.PlayerDataHandler;
 import moldas.professions.gui.GUIButton;
 import moldas.professions.gui.data.GUIButtons;
-import moldas.professions.gui.data.MenuDataCreator;
+import moldas.professions.gui.MenuDataCreator;
+import moldas.professions.progress.data.ProgressMaxValues;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -32,8 +34,6 @@ public class MyProf implements CommandExecutor {
             UUID playerUUID = player.getUniqueId();
             PlayerData playerData = players.getPlayer(playerUUID);
 
-            //TODO Show list of player profession in GUI
-
             //Open GUI
             GUIButton[] check = {
                     GUIButtons.MINER_BUTTON_CUSTOM, GUIButtons.LUMBERJACK_BUTTON_CUSTOM,
@@ -46,22 +46,29 @@ public class MyProf implements CommandExecutor {
             items[0] = GUIButtons.PRIMARY_PROF_NOT_DEFINED.itemStack;
             items[1] = GUIButtons.SECONDARY_PROF_NOT_DEFINED.itemStack;
 
+            //TODO: On button click open achievements for player profs
+
+            //Custom buttons construction with player data information
             for(int i = 0; i < check.length; i++) {
                 if(playerData.playerProfession.get("Primary") != null &&
                         playerData.playerProfession.get("Primary").equals(check[i].getButtonName())) {
-                    check[i].setButtonLore("Your profession level: "
-                                    + players.getPlayer(playerUUID).playerProfessionProgress.primaryProfLvl,
-                            "Your progress on this profession "
-                                    + players.getPlayer(playerUUID).playerProfessionProgress.primaryProfProgress);
+                    check[i].setButtonLore("Profession level: "
+                                    + playerData.playerProfessionProgress.primaryProfLvl + "/"
+                                    + ProgressMaxValues.MAX_LVL,
+                            ChatColor.YELLOW + "Your progress on this profession: "
+                                    + playerData.playerProfessionProgress.primaryProfProgress + "/"
+                                    + ProgressMaxValues.POINTS_TO_LVL_UP);
                     items[0] = check[i].itemStack;
                     continue;
                 }
                 if(playerData.playerProfession.get("Secondary") != null &&
                         playerData.playerProfession.get("Secondary").equals(check[i].getButtonName())) {
-                    check[i].setButtonLore("Your profession level: "
-                                    + players.getPlayer(playerUUID).playerProfessionProgress.secondaryProfLvl,
-                            "Your progress on this profession: "
-                                    + players.getPlayer(playerUUID).playerProfessionProgress.secondaryProfProgress);
+                    check[i].setButtonLore("Profession level: "
+                                    + playerData.playerProfessionProgress.secondaryProfLvl + "/"
+                                    + ProgressMaxValues.MAX_LVL,
+                            ChatColor.YELLOW + "Your progress on this profession: "
+                                    + playerData.playerProfessionProgress.secondaryProfProgress + "/"
+                                    + ProgressMaxValues.POINTS_TO_LVL_UP);
                     items[1] = check[i].itemStack;
                     continue;
                 }
@@ -79,7 +86,6 @@ public class MyProf implements CommandExecutor {
                     GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack);
 
             myProfessionGUI.setContents(menu.getMenuItems());
-
             player.openInventory(myProfessionGUI);
 
             return true;

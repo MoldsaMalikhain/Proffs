@@ -1,5 +1,7 @@
 package moldas.professions.progress;
 
+import moldas.professions.progress.data.ProgressMaxValues;
+
 import java.io.Serializable;
 
 public class ProfessionProgress implements Serializable {
@@ -8,21 +10,13 @@ public class ProfessionProgress implements Serializable {
     public int secondaryProfLvl = 0;
     public int secondaryProfProgress = 0;
 
-    public int pointsToLvlUp = 100;
-
     /**
      * @return true if max lvl of primary profession reached
      */
-    public boolean primaryMaxLvl() {
-        int maxPrimaryLvl = 100;
-        return primaryProfLvl == maxPrimaryLvl;
-    }
+    public boolean primaryMaxLvl() { return primaryProfLvl == ProgressMaxValues.POINTS_TO_LVL_UP; }
 
     /**
      * @return true if max lvl of secondary profession reached
      */
-    public boolean secondaryMaxLvl() {
-        int maxSecondaryLvl = 100;
-        return secondaryProfLvl == maxSecondaryLvl;
-    }
+    public boolean secondaryMaxLvl() { return secondaryProfLvl == ProgressMaxValues.POINTS_TO_LVL_UP; }
 }

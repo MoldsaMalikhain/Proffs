@@ -1,7 +1,7 @@
 package moldas.professions.commands.guicommands;
 
 import moldas.professions.gui.data.GUIButtons;
-import moldas.professions.gui.data.MenuDataCreator;
+import moldas.professions.gui.MenuDataCreator;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

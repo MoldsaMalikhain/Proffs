@@ -45,6 +45,20 @@ public class GUIButtons {
     public static GUIButton ENCHANTER_BUTTON_CUSTOM = new GUIButton(Material.ENCHANTING_TABLE, ChatColor.DARK_PURPLE,
             EnchanterData.PROF_NAME);
 
+    //Custom buttons for show player stats in GUI
+    public static GUIButton ATHLETIC_BUTTON_CUSTOM = new GUIButton(Material.LEATHER_BOOTS, ChatColor.AQUA,
+            "Athletic");
+    public static GUIButton ACROBATIC_BUTTONS_CUSTOM = new GUIButton(Material.RABBIT_FOOT, ChatColor.GREEN,
+            "Acrobatic");
+    public static GUIButton STRENGTH_BUTTON_CUSTOM = new GUIButton(Material.NETHERITE_SWORD, ChatColor.GRAY,
+            "Strength");
+    public static GUIButton BLOCKING_BUTTON_CUSTOM = new GUIButton(Material.SHIELD, ChatColor.DARK_BLUE,
+            "Blocking");
+    public static GUIButton VITALITY_BUTTON_CUSTOM = new GUIButton(Material.NETHERITE_CHESTPLATE, ChatColor.DARK_RED,
+            "Vitality");
+    public static GUIButton STEALTH_BUTTON_CUSTOM = new GUIButton(Material.TIPPED_ARROW, ChatColor.YELLOW,
+            "Stealth");
+
     //Message buttons
     public static final GUIButton PRIMARY_PROF_NOT_DEFINED = new GUIButton(Material.BOOK, ChatColor.LIGHT_PURPLE,
             "Primary", ChatColor.GOLD + "You don`t have your primary profession yet",

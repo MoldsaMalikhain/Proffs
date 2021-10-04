@@ -2,6 +2,7 @@ package moldas.professions;
 
 import moldas.professions.progress.ProfessionProgress;
 import moldas.professions.progress.StatsProgress;
+import moldas.professions.progress.data.ProgressMaxValues;
 import moldas.professions.stats.StatsData;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -83,10 +84,10 @@ public class PlayerData implements Serializable {
     public boolean addPrimaryProgress(int amount) {
         if(!playerProfessionProgress.primaryMaxLvl() && playerProfession.get("Primary") != null) {
             playerProfessionProgress.primaryProfProgress += amount;
-            if((playerProfessionProgress.primaryProfLvl * playerProfessionProgress.pointsToLvlUp)
+            if((playerProfessionProgress.primaryProfLvl * ProgressMaxValues.POINTS_TO_LVL_UP)
                     <= playerProfessionProgress.primaryProfProgress) {
                 playerProfessionProgress.primaryProfProgress -=
-                        playerProfessionProgress.primaryProfLvl * playerProfessionProgress.pointsToLvlUp;
+                        playerProfessionProgress.primaryProfLvl * ProgressMaxValues.POINTS_TO_LVL_UP;
                 playerProfessionProgress.primaryProfLvl += 1;
                 Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
                         ChatColor.GOLD + " You get a new lvl of " + playerProfession.get("Primary") + " profession! " +
@@ -105,10 +106,10 @@ public class PlayerData implements Serializable {
     public boolean addSecondaryProgress(int amount) {
         if(!playerProfessionProgress.secondaryMaxLvl() && playerProfession.get("Secondary") != null) {
             playerProfessionProgress.secondaryProfProgress += amount;
-            if((playerProfessionProgress.secondaryProfLvl * playerProfessionProgress.pointsToLvlUp)
+            if((playerProfessionProgress.secondaryProfLvl * ProgressMaxValues.POINTS_TO_LVL_UP)
                     <= playerProfessionProgress.secondaryProfProgress) {
                 playerProfessionProgress.secondaryProfProgress -=
-                        playerProfessionProgress.secondaryProfLvl * playerProfessionProgress.pointsToLvlUp;
+                        playerProfessionProgress.secondaryProfLvl * ProgressMaxValues.POINTS_TO_LVL_UP;
                 playerProfessionProgress.secondaryProfLvl += 1;
                 Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
                         ChatColor.GOLD + " You get a new lvl of " + playerProfession.get("Secondary") + " profession! " +
