@@ -262,7 +262,7 @@ public class GUIClickEvent implements Listener {
             }
 
             return;
-        } catch(NullPointerException exeption) {
+        } catch(NullPointerException exception) {
             return;
         }
     }
@@ -279,7 +279,6 @@ public class GUIClickEvent implements Listener {
                 if (e.getCurrentItem() == null || e.getCurrentItem().getType().isAir()) return;
                 e.setCancelled(true);
 
-                clickedProf = null;
                 String click = (ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 
                 switch (click) {
@@ -290,7 +289,7 @@ public class GUIClickEvent implements Listener {
             }
 
             return;
-        } catch(NullPointerException exeption) {
+        } catch(NullPointerException exception) {
             return;
         }
     }
