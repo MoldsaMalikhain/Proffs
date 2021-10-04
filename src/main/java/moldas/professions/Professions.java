@@ -9,8 +9,6 @@ import moldas.professions.commands.tabcompleters.SetPlayerProfTabCompleter;
 import moldas.professions.commands.tabcompleters.StatTabCompleter;
 import moldas.professions.database.DatabaseManager;
 import moldas.professions.database.PlayerDAO;
-import moldas.professions.database.interfaces.DatabaseManagerInterface;
-import moldas.professions.database.interfaces.PlayerDAOInterface;
 import moldas.professions.gui.listeners.GUIClickEvent;
 import moldas.professions.prof.listners.Miner;
 import org.bukkit.Bukkit;
@@ -19,6 +17,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 public final class Professions extends JavaPlugin {
@@ -92,6 +93,10 @@ public final class Professions extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        //TODO: Save players data to database
+        HashMap <UUID, PlayerData> allPlayersData = playersData.getAllPlayers();
+
+        for (Map.Entry<UUID, PlayerData> set : allPlayersData.entrySet()) {
+            playerDAO.updatePlayerData(set.getKey(), set.getValue());
+        }
     }
 }
