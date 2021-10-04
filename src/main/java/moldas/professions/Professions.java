@@ -9,6 +9,8 @@ import moldas.professions.commands.tabcompleters.SetPlayerProfTabCompleter;
 import moldas.professions.commands.tabcompleters.StatTabCompleter;
 import moldas.professions.database.DatabaseManager;
 import moldas.professions.database.PlayerDAO;
+import moldas.professions.database.interfaces.DatabaseManagerInterface;
+import moldas.professions.database.interfaces.PlayerDAOInterface;
 import moldas.professions.gui.listeners.GUIClickEvent;
 import moldas.professions.prof.listners.Miner;
 import org.bukkit.Bukkit;
@@ -20,21 +22,27 @@ import java.io.File;
 import java.util.logging.Logger;
 
 public final class Professions extends JavaPlugin {
-    public final String ANSI_GREEN = "\u001B[32m";
-    public final String ANSI_RED = "\u001B[31m";
-    public final String ANSI_RESET = "\u001B[0m";
+    // ANSI color for logger
+    public final static String ANSI_GREEN = "\u001B[32m";
+    public final static String ANSI_RED = "\u001B[31m";
+    public final static String ANSI_RESET = "\u001B[0m";
 
-    PlayerDataHandler playersData = new PlayerDataHandler();
+    private final Logger logger = Bukkit.getLogger();
+
+    // database manipulation objects
     final DatabaseManager databaseManager = new DatabaseManager();
     final PlayerDAO playerDAO = new PlayerDAO(databaseManager);
-    private final Logger logger = Bukkit.getLogger();
+
+    PlayerDataHandler playersData = new PlayerDataHandler();
 
     final Inventory professionPickGUI = Bukkit.createInventory(null, 9, ChatColor.DARK_PURPLE + "Profession choice");
     final Inventory professionLeaveGUI = Bukkit.createInventory(null, 9, ChatColor.DARK_PURPLE + "Leave profession");
     final Inventory myProfessionGUI = Bukkit.createInventory(null, 27, ChatColor.DARK_PURPLE + "My professions");
 
+    // paths to crucial plugin directories
     private final File DATABASE_FILE = new File("./plugins/professions/player_data.db");
     private final File PLUGIN_FOLDER = new File("./plugins/professions");
+    // db url which databaseManager will use to create connection, write data etc
     public static final String DATABASE_URL = "jdbc:sqlite:./plugins/professions/player_data.db";
 
     @Override
@@ -44,6 +52,7 @@ public final class Professions extends JavaPlugin {
             if (!PLUGIN_FOLDER.mkdirs()) {
                 logger.info(ANSI_RED + "[Professions] Plugin folder cannot be created. Plugin will shutdown now"
                         + ANSI_RESET);
+                // TODO: plugin shutdown
             }
         }
         // creating database file if it doesn't exist...
@@ -51,11 +60,13 @@ public final class Professions extends JavaPlugin {
             if (!databaseManager.createDatabase()) {
                 logger.info(ANSI_RED + "[Professions] Database file cannot be created. Plugin will shutdown now"
                         + ANSI_RESET);
+                // TODO: plugin shutdown
             }
             // ...and table
             if (!databaseManager.createPlayerdataTable()) {
                 logger.info(ANSI_RED + "[Professions] Database table cannot be created. Plugin will shutdown now"
                         + ANSI_RESET);
+                // TODO: plugin shutdown and database file deletion
             }
         }
 

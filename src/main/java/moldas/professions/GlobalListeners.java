@@ -31,7 +31,8 @@ public class GlobalListeners implements Listener {
         UUID playerUUID = player.getUniqueId();
 
         // TODO: change this logic to use database checks
-        if(playersData.addPlayer(playerUUID, player.getName())
+
+        /*if(playersData.addPlayer(playerUUID, player.getName())
                 && playerDAO.setPlayerData(playerUUID, playersData.getPlayer(playerUUID))) {
             System.out.println(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
                     ChatColor.RESET + player.getName() + " entered to your server, a newbie here!");
@@ -39,7 +40,9 @@ public class GlobalListeners implements Listener {
                     ChatColor.RESET + " Welcome, " + player.getName() + ", please choose your professions using command /getprof");
         } else {
             // TODO: get playerData form database and update it in hashmap
-        }
+        }*/
+
+        // ^ this now needs to check if method throws setplayerexception or not
 
         //example of set logged in player stat from hash table
         //setting only stats that can be set by existing methods for object Player
