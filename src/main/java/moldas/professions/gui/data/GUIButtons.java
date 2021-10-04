@@ -48,7 +48,7 @@ public class GUIButtons {
     //Custom buttons for show player stats in GUI
     public static GUIButton ATHLETIC_BUTTON_CUSTOM = new GUIButton(Material.LEATHER_BOOTS, ChatColor.AQUA,
             "Athletic");
-    public static GUIButton ACROBATIC_BUTTONS_CUSTOM = new GUIButton(Material.RABBIT_FOOT, ChatColor.GREEN,
+    public static GUIButton ACROBATIC_BUTTONS_CUSTOM = new GUIButton(Material.ELYTRA, ChatColor.GREEN,
             "Acrobatic");
     public static GUIButton STRENGTH_BUTTON_CUSTOM = new GUIButton(Material.NETHERITE_SWORD, ChatColor.GRAY,
             "Strength");
