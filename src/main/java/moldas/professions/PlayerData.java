@@ -76,7 +76,7 @@ public class PlayerData implements Serializable {
     }
 
     /**
-     * @param amount will ve added to primary profession progress if it exist
+     * @param amount will be added to primary profession progress if it exist
      * @return true if added
      * false if player already get max lvl of that profession
      */
@@ -97,6 +97,11 @@ public class PlayerData implements Serializable {
         return false;
     }
 
+    /**
+     * @param amount will be added to secondary profession progress if it exist
+     * @return true if added
+     * false if player already get max lvl of that profession
+     */
     public boolean addSecondaryProgress(int amount) {
         if(!playerProfessionProgress.secondaryMaxLvl() && playerProfession.get("Secondary") != null) {
             playerProfessionProgress.secondaryProfProgress += amount;

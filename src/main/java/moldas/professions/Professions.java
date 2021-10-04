@@ -13,13 +13,12 @@ import moldas.professions.gui.listeners.GUIClickEvent;
 import moldas.professions.prof.listners.Miner;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Logger;
 
 public final class Professions extends JavaPlugin {
@@ -87,6 +86,13 @@ public final class Professions extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Miner(playersData), this);
 
         getServer().getPluginManager().registerEvents(new GUIClickEvent(playersData, professionPickGUI, professionLeaveGUI, myProfessionGUI), this);
+
+        Collection<Player> players = (Collection<Player>) Bukkit.getOnlinePlayers();
+
+        for(Player player : players) {
+            playersData.addPlayer(player.getUniqueId(), player.getName());
+            playersData.playerUpdate(player.getUniqueId(), playerDAO.getPlayerData(player.getUniqueId()));
+        }
 
         logger.info(ANSI_GREEN + "[Professions] Plugin started successfully" + ANSI_RESET);
     }

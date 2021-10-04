@@ -10,13 +10,19 @@ public class ProfessionProgress implements Serializable {
 
     public int pointsToLvlUp = 100;
 
+    /**
+     * @return true if max lvl of primary profession reached
+     */
     public boolean primaryMaxLvl() {
         int maxPrimaryLvl = 100;
-        return primaryProfLvl != maxPrimaryLvl;
+        return primaryProfLvl == maxPrimaryLvl;
     }
 
+    /**
+     * @return true if max lvl of secondary profession reached
+     */
     public boolean secondaryMaxLvl() {
         int maxSecondaryLvl = 100;
-        return secondaryProfLvl != maxSecondaryLvl;
+        return secondaryProfLvl == maxSecondaryLvl;
     }
 }
