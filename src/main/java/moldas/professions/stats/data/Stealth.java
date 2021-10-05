@@ -8,10 +8,6 @@ public class Stealth extends Stats implements Serializable {
 
     public float shiftSpeedMultiplier = 1;
 
-    public Stealth() {
-        System.out.println();
-    }
-
     @Override
     public void onLvlUp() {
         // ...
