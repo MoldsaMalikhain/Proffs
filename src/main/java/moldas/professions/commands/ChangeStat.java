@@ -56,28 +56,28 @@ public class ChangeStat implements CommandExecutor {
 
             switch(statName) {
                 case "health":
-                    player.playerStats.health = Integer.parseInt(statValue);
+                    player.playerStats.vitality.health = Integer.parseInt(statValue);
                     break;
                 case "speed":
-                    player.playerStats.speed = Float.parseFloat(statValue);
+                    player.playerStats.athletic.speed = Float.parseFloat(statValue);
                     break;
                 case "harvestSpeed":
-                    player.playerStats.harvestSpeedMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.strength.harvestSpeedMultiplier = Float.parseFloat(statValue);
                     break;
                 case "jumpHeight":
-                    player.playerStats.jumpHeightMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.acrobatic.jumpHeightMultiplier = Float.parseFloat(statValue);
                     break;
                 case "fallingDamage":
-                    player.playerStats.fallingDamageMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.acrobatic.fallingDamageMultiplier = Float.parseFloat(statValue);
                     break;
                 case "damage":
-                    player.playerStats.damageMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.strength.damageMultiplier = Float.parseFloat(statValue);
                     break;
                 case "armor":
-                    player.playerStats.armorMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.blocking.armorMultiplier = Float.parseFloat(statValue);
                     break;
                 case "shiftSpeed":
-                    player.playerStats.shiftSpeedMultiplier = Float.parseFloat(statValue);
+                    player.playerStats.stealth.shiftSpeedMultiplier = Float.parseFloat(statValue);
                     break;
                 default:
                     sender.sendMessage("Entered wrong argument!");

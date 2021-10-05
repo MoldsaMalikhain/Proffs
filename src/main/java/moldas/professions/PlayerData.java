@@ -1,7 +1,6 @@
 package moldas.professions;
 
 import moldas.professions.progress.ProfessionProgress;
-import moldas.professions.progress.StatsProgress;
 import moldas.professions.progress.data.ProgressMaxValues;
 import moldas.professions.stats.StatsData;
 import org.bukkit.Bukkit;
@@ -16,7 +15,6 @@ public class PlayerData implements Serializable {
     public HashMap <String, String> playerProfession = new HashMap<>();
     public ProfessionProgress playerProfessionProgress = new ProfessionProgress();
     public StatsData playerStats = new StatsData();
-    public StatsProgress playerStatsProgress = new StatsProgress();
 
     PlayerData(String _playerName) {
         playerName = _playerName;
