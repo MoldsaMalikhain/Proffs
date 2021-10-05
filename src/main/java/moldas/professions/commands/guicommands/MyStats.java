@@ -36,39 +36,39 @@ public class MyStats implements CommandExecutor {
             //Custom buttons construction with player stats information
             GUIButton athletic = GUIButtons.ATHLETIC_BUTTON_CUSTOM;
             athletic.setButtonLore("Current level: "
-                            + playerData.playerStats.athletic + "/" + ProgressMaxValues.MAX_LVL,
+                            + playerData.playerStats.athletic.getLvl() + "/" + ProgressMaxValues.MAX_LVL,
                     ChatColor.YELLOW + "Next level: "
-                            + playerData.playerStatsProgress.athleticProgress + "/"
+                            + playerData.playerStats.athletic.getProgress() + "/"
                             + ProgressMaxValues.POINTS_TO_LVL_UP);
             GUIButton acrobatic = GUIButtons.ACROBATIC_BUTTONS_CUSTOM;
             acrobatic.setButtonLore("Current level: "
-                            + playerData.playerStats.acrobatic + "/" + ProgressMaxValues.MAX_LVL,
+                            + playerData.playerStats.acrobatic.getLvl() + "/" + ProgressMaxValues.MAX_LVL,
                     ChatColor.YELLOW + "Next level: "
-                            + playerData.playerStatsProgress.acrobaticProgress + "/"
+                            + playerData.playerStats.acrobatic.getProgress() + "/"
                             + ProgressMaxValues.POINTS_TO_LVL_UP);
             GUIButton strength = GUIButtons.STRENGTH_BUTTON_CUSTOM;
             strength.setButtonLore("Current level: "
-                            + playerData.playerStats.strength + "/" + ProgressMaxValues.MAX_LVL,
+                            + playerData.playerStats.strength.getLvl() + "/" + ProgressMaxValues.MAX_LVL,
                     ChatColor.YELLOW + "Next level: "
-                            + playerData.playerStatsProgress.strengthProgress + "/"
+                            + playerData.playerStats.strength.getProgress() + "/"
                             + ProgressMaxValues.POINTS_TO_LVL_UP);
             GUIButton blocking = GUIButtons.BLOCKING_BUTTON_CUSTOM;
             blocking.setButtonLore("Current level: "
-                            + playerData.playerStats.blocking + "/" + ProgressMaxValues.MAX_LVL,
+                            + playerData.playerStats.blocking.getLvl() + "/" + ProgressMaxValues.MAX_LVL,
                     ChatColor.YELLOW + "Next level: "
-                            + playerData.playerStatsProgress.blockingProgress + "/"
+                            + playerData.playerStats.blocking.getProgress() + "/"
                             + ProgressMaxValues.POINTS_TO_LVL_UP);
             GUIButton vitality = GUIButtons.VITALITY_BUTTON_CUSTOM;
             vitality.setButtonLore("Current level: "
-                            + playerData.playerStats.vitality + "/" + ProgressMaxValues.MAX_LVL,
+                            + playerData.playerStats.vitality.getLvl() + "/" + ProgressMaxValues.MAX_LVL,
                     ChatColor.YELLOW + "Next level: "
-                            + playerData.playerStatsProgress.vitalityProgress + "/"
+                            + playerData.playerStats.vitality.getProgress() + "/"
                             + ProgressMaxValues.POINTS_TO_LVL_UP);
             GUIButton stealth = GUIButtons.STEALTH_BUTTON_CUSTOM;
             stealth.setButtonLore("Current level: "
-                            + playerData.playerStats.stealth + "/" + ProgressMaxValues.MAX_LVL,
+                            + playerData.playerStats.stealth.getLvl() + "/" + ProgressMaxValues.MAX_LVL,
                     ChatColor.YELLOW + "Next level: "
-                            + playerData.playerStatsProgress.stealthProgress + "/"
+                            + playerData.playerStats.stealth.getProgress() + "/"
                             + ProgressMaxValues.POINTS_TO_LVL_UP);
 
             MenuDataCreator menu = new MenuDataCreator(
