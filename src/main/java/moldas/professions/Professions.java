@@ -1,16 +1,11 @@
 package moldas.professions;
 
 import moldas.professions.commands.*;
-import moldas.professions.commands.guicommands.GetProf;
-import moldas.professions.commands.guicommands.LeaveProf;
-import moldas.professions.commands.guicommands.MyProf;
-import moldas.professions.commands.guicommands.MyStats;
-import moldas.professions.commands.tabcompleters.DeletePlayerProfTabCompleter;
-import moldas.professions.commands.tabcompleters.SetPlayerProfTabCompleter;
-import moldas.professions.commands.tabcompleters.StatTabCompleter;
-import moldas.professions.database.DatabaseManager;
-import moldas.professions.database.PlayerDAO;
+import moldas.professions.commands.guicommands.*;
+import moldas.professions.commands.tabcompleters.*;
+import moldas.professions.database.*;
 import moldas.professions.gui.listeners.GUIClickEvent;
+import moldas.professions.prof.data.*;
 import moldas.professions.prof.listners.Miner;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -29,6 +24,9 @@ public final class Professions extends JavaPlugin {
     public final static String ANSI_RESET = "\u001B[0m";
 
     private final Logger logger = Bukkit.getLogger();
+
+    //Map for GUI
+    public final static HashMap<String, String> GUIMap = new HashMap<>();
 
     // database manipulation objects
     final DatabaseManager databaseManager = new DatabaseManager();
@@ -72,6 +70,8 @@ public final class Professions extends JavaPlugin {
             }
         }
 
+        mapInitialization();
+
         this.getCommand("myprof").setExecutor(new MyProf(playersData, myProfessionGUI));
         this.getCommand("getprof").setExecutor(new GetProf(professionPickGUI));
         this.getCommand("setplayerprof").setExecutor(new SetPlayerProf(playersData));
@@ -107,5 +107,19 @@ public final class Professions extends JavaPlugin {
         for (Map.Entry<UUID, PlayerData> set : allPlayersData.entrySet()) {
             playerDAO.updatePlayerData(set.getKey(), set.getValue());
         }
+    }
+
+
+    //Will be needed later
+    private void mapInitialization() {
+
+        GUIMap.put(AlchemistData.PROF_NAME, AlchemistData.PROF_TYPE);
+        GUIMap.put(ArcherData.PROF_NAME, ArcherData.PROF_TYPE);
+        GUIMap.put(BlacksmithData.PROF_NAME, BlacksmithData.PROF_TYPE);
+        GUIMap.put(EnchanterData.PROF_NAME, EnchanterData.PROF_TYPE);
+        GUIMap.put(FarmerData.PROF_NAME, FarmerData.PROF_TYPE);
+        GUIMap.put(LumberjackData.PROF_NAME, LumberjackData.PROF_TYPE);
+        GUIMap.put(MinerData.PROF_NAME, MinerData.PROF_TYPE);
+        GUIMap.put(WarriorData.PROF_NAME, WarriorData.PROF_TYPE);
     }
 }
