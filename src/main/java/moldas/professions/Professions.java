@@ -109,7 +109,6 @@ public final class Professions extends JavaPlugin {
         }
     }
 
-
     //Will be needed later
     private void mapInitialization() {
 

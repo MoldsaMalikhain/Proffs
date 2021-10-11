@@ -1,6 +1,6 @@
 package moldas.professions;
 
-import moldas.professions.progress.ProfessionProgress;
+import moldas.professions.prof.Profession;
 import moldas.professions.progress.data.ProgressMaxValues;
 import moldas.professions.stats.StatsData;
 import org.bukkit.Bukkit;
@@ -12,14 +12,12 @@ import java.util.HashMap;
 public class PlayerData implements Serializable {
 
     public String playerName;
-    public HashMap <String, String> playerProfession = new HashMap<>();
-    public ProfessionProgress playerProfessionProgress = new ProfessionProgress();
+    public HashMap <String, Profession> playerProfession = new HashMap<>();
     public StatsData playerStats = new StatsData();
 
     PlayerData(String _playerName) {
         playerName = _playerName;
     }
-
     /**
      * Set profession for player
      * @param professionType profession type
@@ -37,7 +35,9 @@ public class PlayerData implements Serializable {
 
         Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
                 ChatColor.GOLD + " Congratulation, you now have " + professionName + " profession!");
-        playerProfession.put(professionType, professionName);
+
+        Profession profession = new Profession(professionName);
+        playerProfession.put(professionType, profession);
 
         return true;
     }
@@ -79,45 +79,19 @@ public class PlayerData implements Serializable {
      * @return true if added
      * false if player already get max lvl of that profession
      */
-    public boolean addPrimaryProgress(int amount) {
-        if(!playerProfessionProgress.primaryMaxLvl() && playerProfession.get("Primary") != null) {
-            playerProfessionProgress.primaryProfProgress += amount;
-            if((playerProfessionProgress.primaryProfLvl * ProgressMaxValues.POINTS_TO_LVL_UP)
-                    <= playerProfessionProgress.primaryProfProgress) {
-                playerProfessionProgress.primaryProfProgress -=
-                        playerProfessionProgress.primaryProfLvl * ProgressMaxValues.POINTS_TO_LVL_UP;
-                playerProfessionProgress.primaryProfLvl += 1;
-                Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
-                        ChatColor.GOLD + " You get a new lvl of " + playerProfession.get("Primary") + " profession! " +
-                        "Now its " + playerProfessionProgress.primaryProfLvl + "!");
+    public boolean addProgress(String professionType, int amount) {
+        Profession profession = playerProfession.get(professionType);
+
+        if (!profession.maxLvl()) {
+            profession.progress += amount;
+            if ((profession.lvl * ProgressMaxValues.POINTS_TO_LVL_UP) <= profession.progress) {
+                profession.progress -= profession.lvl * ProgressMaxValues.POINTS_TO_LVL_UP;
+                profession.lvl += 1;
+                Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
+                        ChatColor.GOLD + " You got new level of " + profession.name + " profession!");
             }
             return true;
         }
         return false;
     }
-
-    /**
-     * @param amount will be added to secondary profession progress if it exist
-     * @return true if added
-     * false if player already get max lvl of that profession
-     */
-    public boolean addSecondaryProgress(int amount) {
-        if(!playerProfessionProgress.secondaryMaxLvl() && playerProfession.get("Secondary") != null) {
-            playerProfessionProgress.secondaryProfProgress += amount;
-            if((playerProfessionProgress.secondaryProfLvl * ProgressMaxValues.POINTS_TO_LVL_UP)
-                    <= playerProfessionProgress.secondaryProfProgress) {
-                playerProfessionProgress.secondaryProfProgress -=
-                        playerProfessionProgress.secondaryProfLvl * ProgressMaxValues.POINTS_TO_LVL_UP;
-                playerProfessionProgress.secondaryProfLvl += 1;
-                Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
-                        ChatColor.GOLD + " You get a new lvl of " + playerProfession.get("Secondary") + " profession! " +
-                        "Now its " + playerProfessionProgress.secondaryProfLvl + "!");
-            }
-            return true;
-        }
-
-        return false;
-    }
-
-    //TODO: Logic for lvlup stats of player
 }
