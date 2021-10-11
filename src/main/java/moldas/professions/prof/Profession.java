@@ -1,8 +1,6 @@
 package moldas.professions.prof;
 
 import moldas.professions.progress.data.ProgressMaxValues;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 
 public class Profession {
 
