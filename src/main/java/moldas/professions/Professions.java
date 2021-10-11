@@ -5,7 +5,6 @@ import moldas.professions.commands.guicommands.*;
 import moldas.professions.commands.tabcompleters.*;
 import moldas.professions.database.*;
 import moldas.professions.gui.GUIButton;
-import moldas.professions.gui.data.GUIButtons;
 import moldas.professions.gui.listeners.GUIClickEvent;
 import moldas.professions.prof.data.*;
 import moldas.professions.prof.listners.Miner;
@@ -28,7 +27,7 @@ public final class Professions extends JavaPlugin {
     private final Logger logger = Bukkit.getLogger();
 
     //Map for GUI
-    public final static HashMap<String, GUIButton> GUIMap = new HashMap<>();
+    public final static HashMap<String, String> GUIMap = new HashMap<>();
 
     // database manipulation objects
     final DatabaseManager databaseManager = new DatabaseManager();
@@ -114,13 +113,13 @@ public final class Professions extends JavaPlugin {
     //Will be needed later
     private void mapInitialization() {
 
-        GUIMap.put(AlchemistData.PROF_NAME, GUIButtons.ALCHEMIST_BUTTON);
-        GUIMap.put(ArcherData.PROF_NAME, GUIButtons.ARCHER_BUTTON);
-        GUIMap.put(BlacksmithData.PROF_NAME, GUIButtons.BLACKSMITH_BUTTON);
-        GUIMap.put(EnchanterData.PROF_NAME, GUIButtons.ENCHANTER_BUTTON);
-        GUIMap.put(FarmerData.PROF_NAME, GUIButtons.FARMER_BUTTON);
-        GUIMap.put(LumberjackData.PROF_NAME, GUIButtons.LUMBERJACK_BUTTON);
-        GUIMap.put(MinerData.PROF_NAME, GUIButtons.MINER_BUTTON);
-        GUIMap.put(WarriorData.PROF_NAME, GUIButtons.WARRIOR_BUTTON);
+        GUIMap.put(AlchemistData.PROF_NAME, AlchemistData.PROF_TYPE);
+        GUIMap.put(ArcherData.PROF_NAME, ArcherData.PROF_TYPE);
+        GUIMap.put(BlacksmithData.PROF_NAME, BlacksmithData.PROF_TYPE);
+        GUIMap.put(EnchanterData.PROF_NAME, EnchanterData.PROF_TYPE);
+        GUIMap.put(FarmerData.PROF_NAME, FarmerData.PROF_TYPE);
+        GUIMap.put(LumberjackData.PROF_NAME, LumberjackData.PROF_TYPE);
+        GUIMap.put(MinerData.PROF_NAME, MinerData.PROF_TYPE);
+        GUIMap.put(WarriorData.PROF_NAME, WarriorData.PROF_TYPE);
     }
 }

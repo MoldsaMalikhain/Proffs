@@ -52,7 +52,7 @@ public class PlayerData implements Serializable {
 
         if(playerProfession.containsKey(professionType)) {
             Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
-                    ChatColor.GOLD + " You leave " + playerProfession.get(professionType) + " profession!");
+                    ChatColor.GOLD + " You leave " + playerProfession.get(professionType).name + " profession!");
             playerProfession.remove(professionType);
 
             return true;
