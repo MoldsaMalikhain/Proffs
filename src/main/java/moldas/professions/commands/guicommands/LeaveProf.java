@@ -46,12 +46,12 @@ public class LeaveProf implements CommandExecutor {
 
             for(int i = 0; i < check.length; i++) {
                 if(playerData.playerProfession.get("Primary") != null &&
-                        playerData.playerProfession.get("Primary").equals(check[i].getButtonName())) {
+                        playerData.playerProfession.get("Primary").name.equals(check[i].getButtonName())) {
                     items[0] = check[i].itemStack;
                     continue;
                 }
                 if(playerData.playerProfession.get("Secondary") != null &&
-                        playerData.playerProfession.get("Secondary").equals(check[i].getButtonName())) {
+                        playerData.playerProfession.get("Secondary").name.equals(check[i].getButtonName())) {
                     items[1] = check[i].itemStack;
                     continue;
                 }

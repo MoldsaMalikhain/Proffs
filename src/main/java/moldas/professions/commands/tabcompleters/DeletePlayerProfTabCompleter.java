@@ -26,10 +26,10 @@ public class DeletePlayerProfTabCompleter implements TabCompleter {
             UUID playerUUID = Bukkit.getPlayer(sender.getName()).getUniqueId();
 
             if(players.getPlayer(playerUUID).playerProfession.containsKey("Primary")) {
-                arguments.add(players.getPlayer(playerUUID).playerProfession.get("Primary"));
+                arguments.add(players.getPlayer(playerUUID).playerProfession.get("Primary").name);
             }
             if(players.getPlayer(playerUUID).playerProfession.containsKey("Secondary")) {
-                arguments.add(players.getPlayer(playerUUID).playerProfession.get("Secondary"));
+                arguments.add(players.getPlayer(playerUUID).playerProfession.get("Secondary").name);
             }
 
             if(!arguments.isEmpty()) { return arguments; }
