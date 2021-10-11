@@ -5,7 +5,6 @@ import moldas.professions.PlayerDataHandler;
 import moldas.professions.Professions;
 import moldas.professions.gui.data.GUIButtons;
 import moldas.professions.gui.data.GUIConfirmationWindow;
-import moldas.professions.prof.data.*;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

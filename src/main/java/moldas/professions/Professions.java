@@ -4,7 +4,6 @@ import moldas.professions.commands.*;
 import moldas.professions.commands.guicommands.*;
 import moldas.professions.commands.tabcompleters.*;
 import moldas.professions.database.*;
-import moldas.professions.gui.GUIButton;
 import moldas.professions.gui.listeners.GUIClickEvent;
 import moldas.professions.prof.data.*;
 import moldas.professions.prof.listners.Miner;
