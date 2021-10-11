@@ -27,6 +27,16 @@ public final class Professions extends JavaPlugin {
 
     //Map for GUI
     public final static HashMap<String, String> GUIMap = new HashMap<>();
+    {
+        GUIMap.put(AlchemistData.PROF_NAME, AlchemistData.PROF_TYPE);
+        GUIMap.put(ArcherData.PROF_NAME, ArcherData.PROF_TYPE);
+        GUIMap.put(BlacksmithData.PROF_NAME, BlacksmithData.PROF_TYPE);
+        GUIMap.put(EnchanterData.PROF_NAME, EnchanterData.PROF_TYPE);
+        GUIMap.put(FarmerData.PROF_NAME, FarmerData.PROF_TYPE);
+        GUIMap.put(LumberjackData.PROF_NAME, LumberjackData.PROF_TYPE);
+        GUIMap.put(MinerData.PROF_NAME, MinerData.PROF_TYPE);
+        GUIMap.put(WarriorData.PROF_NAME, WarriorData.PROF_TYPE);
+    }
 
     // database manipulation objects
     final DatabaseManager databaseManager = new DatabaseManager();
@@ -70,8 +80,6 @@ public final class Professions extends JavaPlugin {
             }
         }
 
-        mapInitialization();
-
         this.getCommand("myprof").setExecutor(new MyProf(playersData, myProfessionGUI));
         this.getCommand("getprof").setExecutor(new GetProf(professionPickGUI));
         this.getCommand("setplayerprof").setExecutor(new SetPlayerProf(playersData));
@@ -107,18 +115,5 @@ public final class Professions extends JavaPlugin {
         for (Map.Entry<UUID, PlayerData> set : allPlayersData.entrySet()) {
             playerDAO.updatePlayerData(set.getKey(), set.getValue());
         }
-    }
-
-    //Will be needed later
-    private void mapInitialization() {
-
-        GUIMap.put(AlchemistData.PROF_NAME, AlchemistData.PROF_TYPE);
-        GUIMap.put(ArcherData.PROF_NAME, ArcherData.PROF_TYPE);
-        GUIMap.put(BlacksmithData.PROF_NAME, BlacksmithData.PROF_TYPE);
-        GUIMap.put(EnchanterData.PROF_NAME, EnchanterData.PROF_TYPE);
-        GUIMap.put(FarmerData.PROF_NAME, FarmerData.PROF_TYPE);
-        GUIMap.put(LumberjackData.PROF_NAME, LumberjackData.PROF_TYPE);
-        GUIMap.put(MinerData.PROF_NAME, MinerData.PROF_TYPE);
-        GUIMap.put(WarriorData.PROF_NAME, WarriorData.PROF_TYPE);
     }
 }

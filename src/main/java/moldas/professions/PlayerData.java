@@ -82,7 +82,7 @@ public class PlayerData implements Serializable {
     public boolean addProgress(String professionType, int amount) {
         Profession profession = playerProfession.get(professionType);
 
-        if (!profession.maxLvl()) {
+        if (!profession.isMaxLvl()) {
             profession.progress += amount;
             if ((profession.lvl * ProgressMaxValues.POINTS_TO_LVL_UP) <= profession.progress) {
                 profession.progress -= profession.lvl * ProgressMaxValues.POINTS_TO_LVL_UP;
