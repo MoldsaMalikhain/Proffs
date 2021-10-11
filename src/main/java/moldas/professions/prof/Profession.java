@@ -2,7 +2,9 @@ package moldas.professions.prof;
 
 import moldas.professions.progress.data.ProgressMaxValues;
 
-public class Profession {
+import java.io.Serializable;
+
+public class Profession implements Serializable {
 
     public String name;
     public int lvl = 1;

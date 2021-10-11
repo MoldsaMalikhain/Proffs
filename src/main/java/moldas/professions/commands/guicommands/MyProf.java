@@ -5,6 +5,7 @@ import moldas.professions.PlayerDataHandler;
 import moldas.professions.gui.GUIButton;
 import moldas.professions.gui.data.GUIButtons;
 import moldas.professions.gui.MenuDataCreator;
+import moldas.professions.prof.Profession;
 import moldas.professions.progress.data.ProgressMaxValues;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -47,30 +48,40 @@ public class MyProf implements CommandExecutor {
             items[1] = GUIButtons.SECONDARY_PROF_NOT_DEFINED.itemStack;
 
             //TODO: On button click open achievements for player profs
-
             //Custom buttons construction with player data information
-            for(int i = 0; i < check.length; i++) {
-                if(playerData.playerProfession.get("Primary") != null &&
-                        playerData.playerProfession.get("Primary").equals(check[i].getButtonName())) {
-                    check[i].setButtonLore("Profession level: "
-                                    + playerData.playerProfessionProgress.primaryProfLvl + "/"
-                                    + ProgressMaxValues.MAX_LVL,
-                            ChatColor.YELLOW + "Your progress on this profession: "
-                                    + playerData.playerProfessionProgress.primaryProfProgress + "/"
-                                    + ProgressMaxValues.POINTS_TO_LVL_UP);
-                    items[0] = check[i].itemStack;
-                    continue;
+            if(playerData.playerProfession.get("Primary") != null) {
+
+                Profession profession = playerData.playerProfession.get("Primary");
+
+                for(int i = 0; i < check.length; i++) {
+                    if(profession.name.equals(check[i].getButtonName())) {
+                        check[i].setButtonLore("Profession level: "
+                                        + profession.lvl + "/"
+                                        + ProgressMaxValues.MAX_LVL,
+                                ChatColor.YELLOW + "Your progress on this profession: "
+                                        + profession.progress + "/"
+                                        + ProgressMaxValues.POINTS_TO_LVL_UP);
+                        items[0] = check[i].itemStack;
+
+                        break;
+                    }
                 }
-                if(playerData.playerProfession.get("Secondary") != null &&
-                        playerData.playerProfession.get("Secondary").equals(check[i].getButtonName())) {
-                    check[i].setButtonLore("Profession level: "
-                                    + playerData.playerProfessionProgress.secondaryProfLvl + "/"
-                                    + ProgressMaxValues.MAX_LVL,
-                            ChatColor.YELLOW + "Your progress on this profession: "
-                                    + playerData.playerProfessionProgress.secondaryProfProgress + "/"
-                                    + ProgressMaxValues.POINTS_TO_LVL_UP);
-                    items[1] = check[i].itemStack;
-                    continue;
+            }
+
+            if(playerData.playerProfession.get("Secondary") != null) {
+                Profession profession = playerData.playerProfession.get("Secondary");
+
+                for(int i = 0; i < check.length; i++) {
+                    if(profession.name.equals(check[i].getButtonName())) {
+                        check[i].setButtonLore("Profession level: "
+                                        + profession.lvl + "/"
+                                        + ProgressMaxValues.MAX_LVL,
+                                ChatColor.YELLOW + "Your progress on this profession: "
+                                        + profession.progress + "/"
+                                        + ProgressMaxValues.POINTS_TO_LVL_UP);
+                        items[1] = check[i].itemStack;
+                        break;
+                    }
                 }
             }
 
