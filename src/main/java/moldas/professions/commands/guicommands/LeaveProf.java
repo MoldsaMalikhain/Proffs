@@ -12,6 +12,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class LeaveProf implements CommandExecutor {
@@ -33,29 +35,33 @@ public class LeaveProf implements CommandExecutor {
             PlayerData playerData = players.getPlayer(playerUUID);
 
             //Open GUI
-            GUIButton[] check = {
-                    GUIButtons.MINER_BUTTON, GUIButtons.LUMBERJACK_BUTTON,
-                    GUIButtons.FARMER_BUTTON, GUIButtons.ARCHER_BUTTON,
-                    GUIButtons.WARRIOR_BUTTON, GUIButtons.BLACKSMITH_BUTTON,
-                    GUIButtons.ALCHEMIST_BUTTON, GUIButtons.ENCHANTER_BUTTON
-            };
+            List<GUIButton> check = new ArrayList<>();
+                check.add(GUIButtons.MINER_BUTTON);
+                check.add(GUIButtons.LUMBERJACK_BUTTON);
+                check.add(GUIButtons.FARMER_BUTTON);
+                check.add(GUIButtons.ARCHER_BUTTON);
+                check.add(GUIButtons.WARRIOR_BUTTON);
+                check.add(GUIButtons.BLACKSMITH_BUTTON);
+                check.add(GUIButtons.ALCHEMIST_BUTTON);
+                check.add(GUIButtons.ENCHANTER_BUTTON);
 
             ItemStack[] items = new ItemStack[2];
             items[0] = GUIButtons.PRIMARY_PROF_NOT_DEFINED.itemStack;
             items[1] = GUIButtons.SECONDARY_PROF_NOT_DEFINED.itemStack;
 
-            for(int i = 0; i < check.length; i++) {
-                if(playerData.playerProfession.get("Primary") != null &&
-                        playerData.playerProfession.get("Primary").name.equals(check[i].getButtonName())) {
-                    items[0] = check[i].itemStack;
-                    continue;
-                }
-                if(playerData.playerProfession.get("Secondary") != null &&
-                        playerData.playerProfession.get("Secondary").name.equals(check[i].getButtonName())) {
-                    items[1] = check[i].itemStack;
-                    continue;
-                }
-            }
+            if(playerData.playerProfession.get("Primary") != null)
+                items[0] = check.stream()
+                        .filter(x -> playerData.playerProfession.get("Primary").name.equals(x.getButtonName()))
+                        .findAny()
+                        .get()
+                        .itemStack;
+
+            if(playerData.playerProfession.get("Secondary") != null)
+                items[1] = check.stream()
+                        .filter(x -> playerData.playerProfession.get("Secondary").name.equals(x.getButtonName()))
+                        .findAny()
+                        .get()
+                        .itemStack;
 
             MenuDataCreator menu = new MenuDataCreator(items[0], items[1], GUIButtons.NONE_BUTTON.itemStack,
                     GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack,

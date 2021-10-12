@@ -36,16 +36,16 @@ public class GUIButton {
         itemStack.setItemMeta(buttonMeta);
     }
 
-    public Boolean setButtonLore(final String... _buttonLore) {
+    public GUIButton setButtonLore(final String... _buttonLore) {
         ItemMeta buttonMeta = itemStack.getItemMeta();
 
         if(buttonMeta.getLore() == null) {
             buttonMeta.setLore(Arrays.asList(_buttonLore));
             itemStack.setItemMeta(buttonMeta);
-            return true;
+            return this;
         }
 
-        return false;
+        return this;
     }
 
     public String getButtonName() { return buttonName; }
