@@ -15,6 +15,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class MyProf implements CommandExecutor {
@@ -36,54 +38,88 @@ public class MyProf implements CommandExecutor {
             PlayerData playerData = players.getPlayer(playerUUID);
 
             //Open GUI
-            GUIButton[] check = {
-                    GUIButtons.MINER_BUTTON_CUSTOM, GUIButtons.LUMBERJACK_BUTTON_CUSTOM,
-                    GUIButtons.FARMER_BUTTON_CUSTOM, GUIButtons.ARCHER_BUTTON_CUSTOM,
-                    GUIButtons.WARRIOR_BUTTON_CUSTOM, GUIButtons.BLACKSMITH_BUTTON_CUSTOM,
-                    GUIButtons.ALCHEMIST_BUTTON_CUSTOM, GUIButtons.ENCHANTER_BUTTON_CUSTOM
-            };
+            List<GUIButton> check =  new ArrayList<>();
+                check.add(GUIButtons.MINER_BUTTON_CUSTOM);
+                check.add(GUIButtons.LUMBERJACK_BUTTON_CUSTOM);
+                check.add(GUIButtons.FARMER_BUTTON_CUSTOM);
+                check.add(GUIButtons.ARCHER_BUTTON_CUSTOM);
+                check.add(GUIButtons.WARRIOR_BUTTON_CUSTOM);
+                check.add(GUIButtons.BLACKSMITH_BUTTON_CUSTOM);
+                check.add(GUIButtons.ALCHEMIST_BUTTON_CUSTOM);
+                check.add(GUIButtons.ENCHANTER_BUTTON_CUSTOM);
 
             ItemStack[] items = new ItemStack[2];
             items[0] = GUIButtons.PRIMARY_PROF_NOT_DEFINED.itemStack;
             items[1] = GUIButtons.SECONDARY_PROF_NOT_DEFINED.itemStack;
 
             //TODO: On button click open achievements for player profs
-            //Custom buttons construction with player data information
             if(playerData.playerProfession.get("Primary") != null) {
-
                 Profession profession = playerData.playerProfession.get("Primary");
-
-                for(int i = 0; i < check.length; i++) {
-                    if(profession.name.equals(check[i].getButtonName())) {
-                        check[i].setButtonLore("Profession level: "
+                items[0] = check.stream()
+                        .filter(x -> profession.name.equals(x.getButtonName()))
+                        .findAny()
+                        .get()
+                        .setButtonLore(
+                                "Profession level: "
                                         + profession.lvl + "/"
                                         + ProgressMaxValues.MAX_LVL,
                                 ChatColor.YELLOW + "Your progress on this profession: "
                                         + profession.progress + "/"
-                                        + ProgressMaxValues.POINTS_TO_LVL_UP);
-                        items[0] = check[i].itemStack;
-
-                        break;
-                    }
-                }
+                                        + ProgressMaxValues.POINTS_TO_LVL_UP
+                        ).itemStack;
             }
 
             if(playerData.playerProfession.get("Secondary") != null) {
                 Profession profession = playerData.playerProfession.get("Secondary");
-
-                for(int i = 0; i < check.length; i++) {
-                    if(profession.name.equals(check[i].getButtonName())) {
-                        check[i].setButtonLore("Profession level: "
+                items[1] = check.stream()
+                        .filter(x -> profession.name.equals(x.getButtonName()))
+                        .findAny()
+                        .get()
+                        .setButtonLore(
+                                "Profession level: "
                                         + profession.lvl + "/"
                                         + ProgressMaxValues.MAX_LVL,
                                 ChatColor.YELLOW + "Your progress on this profession: "
                                         + profession.progress + "/"
-                                        + ProgressMaxValues.POINTS_TO_LVL_UP);
-                        items[1] = check[i].itemStack;
-                        break;
-                    }
-                }
+                                        + ProgressMaxValues.POINTS_TO_LVL_UP
+                        ).itemStack;
             }
+            //Custom buttons construction with player data information
+            //if(playerData.playerProfession.get("Primary") != null) {
+
+            //
+
+            //    for(int i = 0; i < check.length; i++) {
+            //        if(profession.name.equals(check[i].getButtonName())) {
+            //            check[i].setButtonLore("Profession level: "
+            //                            + profession.lvl + "/"
+            //                            + ProgressMaxValues.MAX_LVL,
+            //                    ChatColor.YELLOW + "Your progress on this profession: "
+            //                            + profession.progress + "/"
+            //                            + ProgressMaxValues.POINTS_TO_LVL_UP);
+            //            items[0] = check[i].set;
+
+            //            break;
+            //        }
+            //    }
+            //}
+
+            //if(playerData.playerProfession.get("Secondary") != null) {
+            //    Profession profession = playerData.playerProfession.get("Secondary");
+
+            //    for(int i = 0; i < check.length; i++) {
+            //        if(profession.name.equals(check[i].getButtonName())) {
+            //            check[i].setButtonLore("Profession level: "
+            //                            + profession.lvl + "/"
+            //                            + ProgressMaxValues.MAX_LVL,
+            //                    ChatColor.YELLOW + "Your progress on this profession: "
+            //                            + profession.progress + "/"
+            //                            + ProgressMaxValues.POINTS_TO_LVL_UP);
+            //            items[1] = check[i].itemStack;
+            //            break;
+            //        }
+            //    }
+            //}
 
             MenuDataCreator menu = new MenuDataCreator(
                     GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack,
