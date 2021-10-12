@@ -84,42 +84,6 @@ public class MyProf implements CommandExecutor {
                                         + ProgressMaxValues.POINTS_TO_LVL_UP
                         ).itemStack;
             }
-            //Custom buttons construction with player data information
-            //if(playerData.playerProfession.get("Primary") != null) {
-
-            //
-
-            //    for(int i = 0; i < check.length; i++) {
-            //        if(profession.name.equals(check[i].getButtonName())) {
-            //            check[i].setButtonLore("Profession level: "
-            //                            + profession.lvl + "/"
-            //                            + ProgressMaxValues.MAX_LVL,
-            //                    ChatColor.YELLOW + "Your progress on this profession: "
-            //                            + profession.progress + "/"
-            //                            + ProgressMaxValues.POINTS_TO_LVL_UP);
-            //            items[0] = check[i].set;
-
-            //            break;
-            //        }
-            //    }
-            //}
-
-            //if(playerData.playerProfession.get("Secondary") != null) {
-            //    Profession profession = playerData.playerProfession.get("Secondary");
-
-            //    for(int i = 0; i < check.length; i++) {
-            //        if(profession.name.equals(check[i].getButtonName())) {
-            //            check[i].setButtonLore("Profession level: "
-            //                            + profession.lvl + "/"
-            //                            + ProgressMaxValues.MAX_LVL,
-            //                    ChatColor.YELLOW + "Your progress on this profession: "
-            //                            + profession.progress + "/"
-            //                            + ProgressMaxValues.POINTS_TO_LVL_UP);
-            //            items[1] = check[i].itemStack;
-            //            break;
-            //        }
-            //    }
-            //}
 
             MenuDataCreator menu = new MenuDataCreator(
                     GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack,
