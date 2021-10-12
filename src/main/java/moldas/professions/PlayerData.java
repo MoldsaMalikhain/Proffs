@@ -8,6 +8,7 @@ import org.bukkit.ChatColor;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class PlayerData implements Serializable {
 
@@ -80,18 +81,22 @@ public class PlayerData implements Serializable {
      * false if player already get max lvl of that profession
      */
     public boolean addProgress(String professionType, int amount) {
-        Profession profession = playerProfession.get(professionType);
+        try {
+            Profession profession = playerProfession.get(professionType);
 
-        if (!profession.isMaxLvl()) {
-            profession.progress += amount;
-            if ((profession.lvl * ProgressMaxValues.POINTS_TO_LVL_UP) <= profession.progress) {
-                profession.progress -= profession.lvl * ProgressMaxValues.POINTS_TO_LVL_UP;
-                profession.lvl += 1;
-                Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
-                        ChatColor.GOLD + " You got new level of " + profession.name + " profession!");
+            if (!profession.isMaxLvl()) {
+                profession.progress += amount;
+                if ((profession.lvl * ProgressMaxValues.POINTS_TO_LVL_UP) <= profession.progress) {
+                    profession.progress -= profession.lvl * ProgressMaxValues.POINTS_TO_LVL_UP;
+                    profession.lvl += 1;
+                    Bukkit.getPlayer(playerName).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
+                            ChatColor.GOLD + " You got new level of " + profession.name + " profession!");
+                }
+                return true;
             }
-            return true;
-        }
+            return false;
+        } catch (NullPointerException e) { }
+
         return false;
     }
 }
