@@ -13,6 +13,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -63,12 +64,12 @@ public class LeaveProf implements CommandExecutor {
                         .get()
                         .itemStack;
 
-            MenuDataCreator menu = new MenuDataCreator(items[0], items[1], GUIButtons.NONE_BUTTON.itemStack,
-                    GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack,
-                    GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.CLOSE_BUTTON.itemStack);
+            HashMap<Integer, ItemStack> buttons = new HashMap<>();
+            buttons.put(1, items[0]);
+            buttons.put(2, items[1]);
 
+            MenuDataCreator menu = new MenuDataCreator(buttons, professionLeaveGUI.getSize());
             professionLeaveGUI.setContents(menu.getMenuItems());
-
             player.openInventory(professionLeaveGUI);
 
             return true;
