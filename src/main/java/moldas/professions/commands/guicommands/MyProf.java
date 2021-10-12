@@ -87,6 +87,7 @@ public class MyProf implements CommandExecutor {
             }
 
             HashMap<Integer, ItemStack> buttons = new HashMap<>();
+            buttons.put(9, GUIButtons.CLOSE_BUTTON.itemStack);
             buttons.put(12, items[0]);
             buttons.put(16, items[1]);
 

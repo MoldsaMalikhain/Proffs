@@ -69,7 +69,7 @@ public class GUIButtons {
 
     //Control buttons
     public static final GUIButton CLOSE_BUTTON = new GUIButton(Material.BARRIER, ChatColor.WHITE,
-            "Close", ChatColor.WHITE + "Close the UI");
+            "Close", ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "" + "Close the UI");
     public static final GUIButton NONE_BUTTON = new GUIButton(Material.WHITE_STAINED_GLASS_PANE, ChatColor.GOLD,
             "~There nothing here right now~", "");
     public static final GUIButton YES_BUTTON = new GUIButton(Material.GREEN_WOOL, ChatColor.GREEN, "Yes",

@@ -67,6 +67,7 @@ public class LeaveProf implements CommandExecutor {
             HashMap<Integer, ItemStack> buttons = new HashMap<>();
             buttons.put(1, items[0]);
             buttons.put(2, items[1]);
+            buttons.put(9, GUIButtons.CLOSE_BUTTON.itemStack);
 
             MenuDataCreator menu = new MenuDataCreator(buttons, professionLeaveGUI.getSize());
             professionLeaveGUI.setContents(menu.getMenuItems());
