@@ -16,6 +16,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -84,54 +85,12 @@ public class MyProf implements CommandExecutor {
                                         + ProgressMaxValues.POINTS_TO_LVL_UP
                         ).itemStack;
             }
-            //Custom buttons construction with player data information
-            //if(playerData.playerProfession.get("Primary") != null) {
 
-            //
+            HashMap<Integer, ItemStack> buttons = new HashMap<>();
+            buttons.put(12, items[0]);
+            buttons.put(16, items[1]);
 
-            //    for(int i = 0; i < check.length; i++) {
-            //        if(profession.name.equals(check[i].getButtonName())) {
-            //            check[i].setButtonLore("Profession level: "
-            //                            + profession.lvl + "/"
-            //                            + ProgressMaxValues.MAX_LVL,
-            //                    ChatColor.YELLOW + "Your progress on this profession: "
-            //                            + profession.progress + "/"
-            //                            + ProgressMaxValues.POINTS_TO_LVL_UP);
-            //            items[0] = check[i].set;
-
-            //            break;
-            //        }
-            //    }
-            //}
-
-            //if(playerData.playerProfession.get("Secondary") != null) {
-            //    Profession profession = playerData.playerProfession.get("Secondary");
-
-            //    for(int i = 0; i < check.length; i++) {
-            //        if(profession.name.equals(check[i].getButtonName())) {
-            //            check[i].setButtonLore("Profession level: "
-            //                            + profession.lvl + "/"
-            //                            + ProgressMaxValues.MAX_LVL,
-            //                    ChatColor.YELLOW + "Your progress on this profession: "
-            //                            + profession.progress + "/"
-            //                            + ProgressMaxValues.POINTS_TO_LVL_UP);
-            //            items[1] = check[i].itemStack;
-            //            break;
-            //        }
-            //    }
-            //}
-
-            MenuDataCreator menu = new MenuDataCreator(
-                    GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack,
-                    GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack,
-                    GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack,
-                    GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, items[0],
-                    GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack,
-                    items[1], GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack,
-                    GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack,
-                    GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack,
-                    GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack, GUIButtons.NONE_BUTTON.itemStack);
-
+            MenuDataCreator menu = new MenuDataCreator(buttons, myProfessionGUI.getSize());
             myProfessionGUI.setContents(menu.getMenuItems());
             player.openInventory(myProfessionGUI);
 
