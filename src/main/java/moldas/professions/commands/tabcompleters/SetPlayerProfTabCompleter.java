@@ -16,8 +16,6 @@ public class SetPlayerProfTabCompleter implements TabCompleter {
         if(args.length == 2) {
             List<String> arguments = new ArrayList<>();
 
-            //TODO Change to .yml file
-
             arguments.add(AlchemistData.PROF_NAME);
             arguments.add(ArcherData.PROF_NAME);
             arguments.add(BlacksmithData.PROF_NAME);

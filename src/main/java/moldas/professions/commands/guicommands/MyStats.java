@@ -12,7 +12,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 
 public class MyStats implements CommandExecutor {
     
@@ -28,7 +27,6 @@ public class MyStats implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
 
         if(sender instanceof Player) {
-            //TODO Show stats of player in GUI
             Player player = ((Player) sender).getPlayer();
             PlayerData playerData = players.getPlayer(player.getUniqueId());
 

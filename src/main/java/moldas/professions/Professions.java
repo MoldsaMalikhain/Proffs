@@ -48,6 +48,7 @@ public final class Professions extends JavaPlugin {
     final Inventory professionLeaveGUI = Bukkit.createInventory(null, 9, ChatColor.DARK_PURPLE + "Leave profession");
     final Inventory myProfessionGUI = Bukkit.createInventory(null, 27, ChatColor.DARK_PURPLE + "My professions");
     final Inventory myStatsGUI = Bukkit.createInventory(null, 27, ChatColor.DARK_PURPLE + "Your Stats");
+    final Inventory pluginInfoGUI = Bukkit.createInventory(null, 27, ChatColor.DARK_PURPLE + "Profession plugin v1.0");
 
     // paths to crucial plugin directories
     private final File DATABASE_FILE = new File("./plugins/professions/player_data.db");
@@ -84,7 +85,7 @@ public final class Professions extends JavaPlugin {
         this.getCommand("getprof").setExecutor(new GetProf(professionPickGUI));
         this.getCommand("setplayerprof").setExecutor(new SetPlayerProf(playersData));
         this.getCommand("setplayerprof").setTabCompleter(new SetPlayerProfTabCompleter());
-        this.getCommand("helpprof").setExecutor(new HelpProf());
+        this.getCommand("helpprof").setExecutor(new HelpProf(pluginInfoGUI));
         this.getCommand("leaveprof").setExecutor(new LeaveProf(professionLeaveGUI, playersData));
         this.getCommand("deleteplayerprof").setExecutor(new DeletePlayerProf(playersData));
         this.getCommand("deleteplayerprof").setTabCompleter(new DeletePlayerProfTabCompleter(playersData));
