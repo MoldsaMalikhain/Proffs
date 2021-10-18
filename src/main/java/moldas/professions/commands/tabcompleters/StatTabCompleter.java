@@ -15,8 +15,6 @@ public class StatTabCompleter implements TabCompleter {
         if(args.length == 2) {
             List<String> arguments = new ArrayList<>();
 
-            //TODO Change to .yml file
-
             arguments.add("health");
             arguments.add("speed");
             arguments.add("harvestSpeed");

@@ -22,7 +22,8 @@ public class Miner implements Listener {
         Player player = event.getPlayer();
         UUID playerUUID = player.getUniqueId();
 
-        if(players.playerExist(playerUUID) && players.getPlayer(playerUUID).playerProfession.containsValue(MinerData.PROF_NAME)) {
+        if(players.playerExist(playerUUID)
+                && players.getPlayer(playerUUID).playerProfession.get("Primary").name.equals(MinerData.PROF_NAME)) {
             System.out.println("Block was mined");
 
             player.giveExp(25);

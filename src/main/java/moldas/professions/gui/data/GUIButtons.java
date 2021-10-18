@@ -69,11 +69,19 @@ public class GUIButtons {
 
     //Control buttons
     public static final GUIButton CLOSE_BUTTON = new GUIButton(Material.BARRIER, ChatColor.WHITE,
-            "Close", ChatColor.WHITE + "Close the UI");
+            "Close", ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "" + "Close the UI");
     public static final GUIButton NONE_BUTTON = new GUIButton(Material.WHITE_STAINED_GLASS_PANE, ChatColor.GOLD,
-            "~There nothing here right now~", "");
+            " ", "");
     public static final GUIButton YES_BUTTON = new GUIButton(Material.GREEN_WOOL, ChatColor.GREEN, "Yes",
             "Yes, i agree");
     public static final GUIButton NO_BUTTON = new GUIButton(Material.RED_WOOL, ChatColor.GREEN, "No",
             "No, i disagree");
+
+    //Creators heads
+    public static final GUIButton AT13_HEAD = new GUIButton(Material.PLAYER_HEAD, ChatColor.GOLD,
+            "AT13", "None");
+    public static final GUIButton XIMURE_HEAD = new GUIButton(Material.PLAYER_HEAD, ChatColor.GOLD,
+            "ximure", "None");
+    public static final GUIButton MOLDAS_HEAD = new GUIButton(Material.PLAYER_HEAD, ChatColor.GOLD,
+            "Moldas_Malikhain", "None");
 }

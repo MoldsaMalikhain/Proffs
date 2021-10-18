@@ -66,7 +66,7 @@ public class MyProf implements CommandExecutor {
                                         + ProgressMaxValues.MAX_LVL,
                                 ChatColor.YELLOW + "Your progress on this profession: "
                                         + profession.progress + "/"
-                                        + ProgressMaxValues.POINTS_TO_LVL_UP
+                                        + ProgressMaxValues.POINTS_TO_LVL_UP * profession.lvl
                         ).itemStack;
             }
 
@@ -82,11 +82,12 @@ public class MyProf implements CommandExecutor {
                                         + ProgressMaxValues.MAX_LVL,
                                 ChatColor.YELLOW + "Your progress on this profession: "
                                         + profession.progress + "/"
-                                        + ProgressMaxValues.POINTS_TO_LVL_UP
+                                        + ProgressMaxValues.POINTS_TO_LVL_UP * profession.lvl
                         ).itemStack;
             }
 
             HashMap<Integer, ItemStack> buttons = new HashMap<>();
+            buttons.put(9, GUIButtons.CLOSE_BUTTON.itemStack);
             buttons.put(12, items[0]);
             buttons.put(16, items[1]);
 
