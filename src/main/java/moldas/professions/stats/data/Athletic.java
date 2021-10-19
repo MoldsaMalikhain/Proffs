@@ -10,6 +10,6 @@ public class Athletic extends Stats implements Serializable {
 
     @Override
     public void onLvlUp() {
-        speed += 0.01;
+        speed += 0.0015;
     }
 }

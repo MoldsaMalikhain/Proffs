@@ -11,7 +11,7 @@ public class Strength extends Stats implements Serializable {
 
     @Override
     public void onLvlUp() {
-        harvestSpeedMultiplier += 0.1;
-        damageMultiplier += 0.5;
+        harvestSpeedMultiplier += 0.015;
+        damageMultiplier += 0.015;
     }
 }
