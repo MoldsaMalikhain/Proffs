@@ -7,5 +7,7 @@ public class Enchanter implements Listener {
 
     PlayerDataHandler players;
 
-    public Enchanter(PlayerDataHandler _players) { players = _players; }
+    public Enchanter(PlayerDataHandler players) {
+        this.players = players;
+    }
 }

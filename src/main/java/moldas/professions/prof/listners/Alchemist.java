@@ -7,5 +7,7 @@ public class Alchemist implements Listener {
 
     PlayerDataHandler players;
 
-    public Alchemist(PlayerDataHandler _players) { players = _players; }
+    public Alchemist(PlayerDataHandler players) {
+        this.players = players;
+    }
 }

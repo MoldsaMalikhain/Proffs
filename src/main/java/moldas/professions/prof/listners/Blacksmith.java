@@ -7,5 +7,7 @@ public class Blacksmith implements Listener {
 
     PlayerDataHandler players;
 
-    public Blacksmith(PlayerDataHandler _players) { players = _players; }
+    public Blacksmith(PlayerDataHandler players) {
+        this.players = players;
+    }
 }

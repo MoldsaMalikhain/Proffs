@@ -8,6 +8,7 @@ public class Farmer implements Listener {
 
     PlayerDataHandler players;
 
-    public Farmer(PlayerDataHandler _players) { players = _players; }
-
+    public Farmer(PlayerDataHandler players) {
+        this.players = players;
+    }
 }

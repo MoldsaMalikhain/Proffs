@@ -7,5 +7,7 @@ public class Archer implements Listener {
 
     PlayerDataHandler players;
 
-    public Archer(PlayerDataHandler _players) { players = _players; }
+    public Archer(PlayerDataHandler players) {
+        this.players = players;
+    }
 }

@@ -7,5 +7,7 @@ public class Warrior implements Listener {
 
     PlayerDataHandler players;
 
-    public Warrior(PlayerDataHandler _players) { players = _players; }
+    public Warrior(PlayerDataHandler players) {
+        this.players = players;
+    }
 }

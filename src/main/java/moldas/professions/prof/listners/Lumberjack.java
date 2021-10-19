@@ -7,6 +7,7 @@ public class Lumberjack implements Listener {
 
     PlayerDataHandler players;
 
-    public Lumberjack(PlayerDataHandler _players) { players = _players; }
-
+    public Lumberjack(PlayerDataHandler players) {
+        this.players = players;
+    }
 }

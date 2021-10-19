@@ -10,11 +10,10 @@ import org.bukkit.event.block.BlockBreakEvent;
 import java.util.UUID;
 
 public class Miner implements Listener {
-
     PlayerDataHandler players;
 
-    public Miner(PlayerDataHandler _players) {
-        players = _players;
+    public Miner(PlayerDataHandler players) {
+        this.players = players;
     }
 
     @EventHandler
@@ -22,10 +21,9 @@ public class Miner implements Listener {
         Player player = event.getPlayer();
         UUID playerUUID = player.getUniqueId();
 
-        if(players.playerExist(playerUUID)
-                && players.getPlayer(playerUUID).playerProfession.get("Primary").name.equals(MinerData.PROF_NAME)) {
+        if (players.playerExist(playerUUID) &&
+                players.getPlayer(playerUUID).playerProfession.get("Primary").name.equals(MinerData.PROF_NAME)) {
             System.out.println("Block was mined");
-
             player.giveExp(25);
             player.sendMessage("You harvested" + event.getBlock());
         }
