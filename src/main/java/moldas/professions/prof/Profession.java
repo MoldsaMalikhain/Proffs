@@ -18,6 +18,6 @@ public class Profession implements Serializable {
      * @return true if max lvl of profession reached
      */
     public boolean isMaxLvl() {
-        return lvl == ProgressMaxValues.POINTS_TO_LVL_UP;
+        return lvl == ProgressMaxValues.MAX_LVL;
     }
 }
