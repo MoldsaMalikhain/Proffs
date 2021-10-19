@@ -6,11 +6,10 @@ import java.io.Serializable;
 
 public class Stealth extends Stats implements Serializable {
 
-    public float shiftSpeedMultiplier = 1;
+    public float shiftSpeedMultiplier = (float) 0.23;
 
     @Override
     public void onLvlUp() {
-        // ...
-        // Add stats here on level up
+        shiftSpeedMultiplier += 0.01;
     }
 }
