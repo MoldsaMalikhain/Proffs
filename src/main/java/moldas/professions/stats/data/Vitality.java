@@ -10,7 +10,6 @@ public class Vitality extends Stats implements Serializable {
 
     @Override
     public void onLvlUp() {
-        // ...
-        // Add stats here on level up
+        health += 1;
     }
 }

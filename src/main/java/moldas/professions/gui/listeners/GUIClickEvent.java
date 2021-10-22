@@ -49,11 +49,12 @@ public class GUIClickEvent implements Listener {
                 String click = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
 
                 //GUI system buttons check
-                if(click.equals("Close")) {
+                if(click.equals(GUIButtons.CLOSE_BUTTON.getButtonName())) {
                     player.closeInventory();
                     return;
                 }
-                if(click.equals("Primary") || click.equals("Secondary")) {
+                if(click.equals(GUIButtons.PRIMARY_PROF_NOT_DEFINED.getButtonName())
+                        || click.equals(GUIButtons.SECONDARY_PROF_NOT_DEFINED.getButtonName())) {
                     player.chat("/getprof");
                     return;
                 }
@@ -85,11 +86,12 @@ public class GUIClickEvent implements Listener {
                 String click = (ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 
                 //GUI system buttons check
-                if(click.equals("Close")) {
+                if(click.equals(GUIButtons.CLOSE_BUTTON.getButtonName())) {
                     player.closeInventory();
                     return;
                 }
-                if(click.equals("Primary") || click.equals("Secondary")) {
+                if(click.equals(GUIButtons.PRIMARY_PROF_NOT_DEFINED.getButtonName())
+                        || click.equals(GUIButtons.SECONDARY_PROF_NOT_DEFINED.getButtonName())) {
                     player.chat("/getprof");
                     return;
                 }
@@ -129,11 +131,12 @@ public class GUIClickEvent implements Listener {
                 String click = (ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 
                 //GUI system buttons check
-                if(click.equals("Close")) {
+                if(click.equals(GUIButtons.CLOSE_BUTTON.getButtonName())) {
                     player.closeInventory();
                     return;
                 }
-                if(click.equals("Primary") || click.equals("Secondary")) {
+                if(click.equals(GUIButtons.PRIMARY_PROF_NOT_DEFINED.getButtonName())
+                        || click.equals(GUIButtons.SECONDARY_PROF_NOT_DEFINED.getButtonName())) {
                     player.chat("/getprof");
                     return;
                 }
@@ -155,9 +158,14 @@ public class GUIClickEvent implements Listener {
         try {
             if (e.getClickedInventory().equals(myStatsGUI)) {
                 //Need to be right here, otherwise player can`t move items in his inventory
-                if(checkClick(e)) return;
+                if(!checkClick(e)) return;
 
                 String click = (ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+
+                if(click.equals(GUIButtons.CLOSE_BUTTON.getButtonName())) {
+                    player.closeInventory();
+                    return;
+                }
 
                 //Do mapping, don`t be dumb
                 //On Stats click

@@ -27,6 +27,11 @@ public class GUIButton {
         itemStack.setItemMeta(buttonMeta);
     }
 
+    /**
+     * @param _itemStack Button img in GUI
+     * @param _tittleColor Button tittle color in GUI
+     * @param _buttonName Button tittle text in GUI
+     */
     public GUIButton(Material _itemStack, ChatColor _tittleColor, String _buttonName) {
         itemStack = new ItemStack(_itemStack);
         ItemMeta buttonMeta = itemStack.getItemMeta();

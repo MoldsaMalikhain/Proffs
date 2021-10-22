@@ -6,8 +6,6 @@ import java.io.Serializable;
 
 public class StatsData implements Serializable {
 
-    //TODO: Lvl up logic for this stats
-
     public Acrobatic acrobatic = new Acrobatic();
     public Athletic athletic = new Athletic();
     public Blocking blocking = new Blocking();

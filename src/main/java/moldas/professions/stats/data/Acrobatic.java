@@ -11,7 +11,7 @@ public class Acrobatic extends Stats implements Serializable {
 
     @Override
     public void onLvlUp() {
-        // ...
-        // Add stats here on level up
+        jumpHeightMultiplier += 0.02;
+        fallingDamageMultiplier -= 0.01;
     }
 }

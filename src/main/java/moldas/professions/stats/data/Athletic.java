@@ -6,11 +6,10 @@ import java.io.Serializable;
 
 public class Athletic extends Stats implements Serializable {
 
-    public float speed = (float) 0.2;
+    public float speed = (float) 0.23;
 
     @Override
     public void onLvlUp() {
-        // ...
-        // Add stats here on level up
+        speed += 0.0015;
     }
 }

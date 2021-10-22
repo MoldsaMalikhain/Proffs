@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.UUID;
@@ -26,11 +25,6 @@ public class GlobalListeners implements Listener {
     }
 
     @EventHandler
-    public void onLogin(PlayerLoginEvent event) {
-        //TODO Read logged in player data? Maybe not needed here
-    }
-
-    @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         UUID playerUUID = player.getUniqueId();
@@ -40,8 +34,6 @@ public class GlobalListeners implements Listener {
                     && !playerDAO.exists(playerUUID)) {
                 playerDAO.setPlayerData(playerUUID, playersData.getPlayer(playerUUID));
 
-                System.out.println(ChatColor.YELLOW + "" + ChatColor.BOLD + "(*)" +
-                        ChatColor.RESET + player.getName() + " entered to your server, a newbie here!");
                 player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "(!)" +
                         ChatColor.RESET + " Welcome, " + player.getName() + ", please choose your professions using command /getprof");
             } else {

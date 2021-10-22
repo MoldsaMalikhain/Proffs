@@ -10,7 +10,6 @@ public class Blocking extends Stats implements Serializable {
 
     @Override
     public void onLvlUp() {
-        // ...
-        // Add stats here on level up
+        armorMultiplier += 0.01;
     }
 }
