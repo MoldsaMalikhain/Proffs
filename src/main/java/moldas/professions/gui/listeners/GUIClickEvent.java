@@ -116,6 +116,7 @@ public class GUIClickEvent implements Listener {
         }
     }
 
+    //GUI EventHandler for /myprof command
     @EventHandler
     public void onClickMyProfession(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
@@ -149,6 +150,7 @@ public class GUIClickEvent implements Listener {
         }
     }
 
+    //GUI EventHandler for /mystats command
     @EventHandler
     public void onClickMyStats(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();

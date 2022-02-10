@@ -27,7 +27,7 @@ public class GUIButtons {
     public static final GUIButton ENCHANTER_BUTTON = new GUIButton(Material.ENCHANTING_TABLE, ChatColor.DARK_PURPLE,
             EnchanterData.PROF_NAME, EnchanterData.BUTTON_LORE);
 
-    //Custom buttons for show player data in GUI
+    //Custom buttons for show player profession data in GUI
     public static GUIButton MINER_BUTTON_CUSTOM = new GUIButton(Material.IRON_PICKAXE, ChatColor.GOLD,
             MinerData.PROF_NAME);
     public static GUIButton LUMBERJACK_BUTTON_CUSTOM = new GUIButton(Material.IRON_AXE, ChatColor.RED,
